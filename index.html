@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Fajar | Portfolio</title>
-    <!-- Font 1: Outfit (Geometris Modern) -->
+    <!-- Font 1: Roboto (Geometris Modern) -->
     <!-- Font 2: Permanent Marker (Tulis Tangan untuk About Me) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     
     <style>
         /* --- RESET & VARIABLES --- */
@@ -33,7 +33,7 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
@@ -43,13 +43,13 @@
 
         /* --- TYPOGRAPHY --- */
         h2, h3 {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto', sans-serif;
             font-weight: 700;
             letter-spacing: -0.02em;
             color: var(--text-main);
             margin-bottom: 4rem;
-            text-align: center;
-            padding-bottom: 1.5rem;
+            text-align: left;
+            padding-bottom: 0.5rem; /* Perbaikan typo comma ke titik */
             position: relative;
         }
 
@@ -73,7 +73,7 @@
         p {
             color: var(--text-muted);
             margin-bottom: 1rem;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto', sans-serif;
             font-weight: 400;
         }
 
@@ -90,57 +90,58 @@
             padding: 5rem 0;
         }
 
-        /* --- HERO SECTION (RATA LAYAR) --- */
+        /* --- HERO SECTION (MULTI-LAYER PARALLAX) --- */
         .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
+            height: 100vh; /* Full tinggi layar */
             width: 100%;
+            position: relative;
+            overflow: hidden; /* Agar gambar tidak keluar border saat parallax */
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            background-color: #f0f4f8; /* Warna cadangan jika SVG belum loading */
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Memastikan gambar menutupi area */
+            will-change: transform; /* Optimasi performa animasi */
+        }
+
+        /* Layer Belakang (Background) */
+        .layer-bg {
             z-index: 1;
+            /* Opsional: Jika ingin sedikit transparan */
+            opacity: 1; 
         }
 
-        .hero-image-wrapper {
-            width: 100vw;
-            max-width: none;
+        /* Layer Depan (Foreground) */
+        .layer-fg {
+            z-index: 2;
+        }
+
+        /* Container konten hero jika ingin menambah teks di tengah */
+        .hero-content {
             position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            
-            display: flex;
-            justify-content: center;
-            will-change: transform;
-            opacity: 0;
-            animation: zoomIn 1.2s ease-out forwards;
-        }
-
-        .pixel-art {
+            z-index: 3; /* Di atas kedua gambar */
+            text-align: center;
+            /* Saat ini hanya spasi kosong agar visualisasi gambar terlihat jelas */
+            height: 100%; 
             width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-            border: none;
-            box-shadow: none;
-            border-radius: 0;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            animation: float 6s ease-in-out infinite;
+            pointer-events: none; /* Agar klik tembus ke body */
         }
 
         /* --- ABOUT ME SECTION (UPDATE: CLEAN & BIG FONT) --- */
         #about {
-            padding: 8rem 0; /* Padding lebih lega */
+            padding: 8rem 0;
             overflow: hidden;
+            position: relative;
+            z-index: 4; /* Pastikan konten di atas hero background */
+            background-color: var(--bg-color); /* Background solid untuk section ini */
         }
 
         .about-wrapper {
@@ -160,18 +161,18 @@
 
         .about-title {
             font-family: 'Permanent Marker', cursive;
-            font-size: clamp(5rem, 12vw, 9rem); /* SANGAT BESAR */
+            font-size: clamp(5rem, 12vw, 9rem);
             color: #ef4444;
             text-transform: lowercase;
             line-height: 0.9;
-            margin-bottom: 0; /* Hilangkan margin bawah */
+            margin-bottom: 0;
             transform: rotate(-2deg);
         }
 
         .about-desc {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto', sans-serif;
             max-width: 600px;
-            margin: 1rem auto 0 auto; /* Margin atas ditambah */
+            margin: 1rem auto 0 auto;
             font-size: 0.95rem;
             line-height: 1.6;
             color: var(--text-muted);
@@ -189,23 +190,10 @@
             width: 100%;
             max-width: 400px;
             height: auto;
-            border: none; /* BORDER DIHAPUS */
-            box-shadow: none; /* SHADOW DIHAPUS */
-            filter: none; /* FILTER DIHAPUS */
-            border-radius: 0; /* RATA (NO RADIUS) */
-        }
-
-        /* --- ANIMASI KEYFRAMES --- */
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            border: none;
+            box-shadow: none;
+            filter: none;
+            border-radius: 0;
         }
 
         /* --- TIMELINE BOX --- */
@@ -287,7 +275,6 @@
 
         .card-company {
             font-size: 0.95rem;
-            font-style: italic;
             color: var(--text-muted);
             margin-bottom: 1rem;
             display: block;
@@ -296,7 +283,7 @@
         }
         
         .box-card ul li {
-            text-align: justify;
+            text-align: left;
         }
 
         /* --- SKILLS & CERTS --- */
@@ -365,7 +352,7 @@
             .about-wrapper {
                 flex-direction: column-reverse;
                 text-align: center;
-                gap: 2rem;
+                gap: 1rem;
             }
             .about-text {
                 text-align: center;
@@ -394,40 +381,43 @@
                 left: 14px;
             }
             
-            .hero-image-wrapper {
-                width: 100%;
-                margin: 0;
-                left: auto;
-                right: auto;
+            .hero {
+                height: 80vh; /* Sedikit lebih pendek di mobile */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (PARALLAX SVG) -->
     <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-image-wrapper" id="parallaxImage">
-                    <img 
-                        src="https://i.ibb.co.com/234nfkMr/1.png" 
-                        alt="Portfolio Pixel Art Full Width" 
-                        class="pixel-art"
-                    >
-                </div>
-            </div>
-        </div>
+        <!-- Layer Belakang: SVG 2 -->
+        <img 
+            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/74c52c2867e2a31beb6d2047c85fbe6d6991c679/2.svg" 
+            alt="Background Layer" 
+            class="parallax-layer layer-bg"
+            id="parallaxBg"
+        >
+
+        <!-- Layer Depan: SVG 3 -->
+        <img 
+            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/74c52c2867e2a31beb6d2047c85fbe6d6991c679/3.svg" 
+            alt="Foreground Layer" 
+            class="parallax-layer layer-fg"
+            id="parallaxFg"
+        >
+
+        <!-- Konten Hero (opsional, jika ingin menambah teks nanti) -->
+        <div class="hero-content"></div>
     </header>
 
     <main>
-        <!-- ABOUT ME SECTION (UPDATED: CLEAN, BIG FONT, NO BORDER) -->
+        <!-- ABOUT ME SECTION -->
         <section id="about" class="reveal">
             <div class="about-wrapper">
                 <!-- Kiri: Teks -->
                 <div class="about-text">
                     <h1 class="about-title">about me.</h1>
-                    <!-- Nama "Muhammad Fajar" DIHAPUS -->
                     <p class="about-desc">
                         Lulusan Sarjana Teknik Sipil dengan keahlian teknis dalam pelaksanaan dan pengawasan proyek konstruksi. Fokus pada ketepatan waktu serta efisiensi anggaran. Menguasai aplikasi penunjang ketekniksipilan dengan memiliki dedikasi untuk terus tumbuh dan berkontribusi bagi kemajuan tim.
                     </p>
@@ -579,27 +569,36 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT UNTUK ANIMASI PARALLAX -->
+    <!-- JAVASCRIPT UNTUK PARALLAX SVG -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Logic 1: Parallax Effect pada Gambar
-            const parallaxImage = document.getElementById('parallaxImage');
+            // Logic 1: Parallax Effect untuk SVG Layer
+            const parallaxBg = document.getElementById('parallaxBg'); // Layer Belakang
+            const parallaxFg = document.getElementById('parallaxFg'); // Layer Depan
             
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
                 
-                // Gerakkan gambar dengan kecepatan 30% dari scroll.
-                if (scrollY < 800) {
-                    parallaxImage.style.transform = `translateY(${scrollY * 0.3}px)`;
-                }
+                // Batasi animasi hanya saat di area hero (opsional, agar tidak terlalu berat)
+                // Tapi kita biarkan smooth transition
+                
+                // Layer Belakang bergerak lambat (efek jauh)
+                // multiplier 0.2 artinya gambar turun sejauh 20% dari jarak scroll
+                parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`;
+                
+                // Layer Depan bergerak sedikit lebih cepat (efek dekat)
+                // multiplier 0.5 artinya gambar turun sejauh 50% dari jarak scroll
+                // Ini menciptakan ilusi depth antara gedung depan dan belakang
+                parallaxFg.style.transform = `translateY(${scrollY * 0.5}px)`;
             });
 
-            // Logic 2: Reveal Animation (Timeline)
+            // Logic 2: Reveal Animation (Timeline & Sections)
             const reveals = document.querySelectorAll('.reveal');
             const revealOnScroll = () => {
                 const windowHeight = window.innerHeight;
                 const elementVisible = 100;
+                
                 reveals.forEach((reveal) => {
                     const elementTop = reveal.getBoundingClientRect().top;
                     if (elementTop < windowHeight - elementVisible) {
@@ -607,7 +606,9 @@
                     }
                 });
             };
+            
             window.addEventListener('scroll', revealOnScroll);
+            // Panggil sekali saat load
             revealOnScroll();
         });
     </script>
