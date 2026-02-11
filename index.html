@@ -381,9 +381,18 @@
                 left: 14px;
             }
             
+            /* --- PERBAIKAN HERO AGAR TIDAK NGESKALA DI HP --- */
             .hero {
-                height: 80vh; /* Sedikit lebih pendek di mobile */
+                height: 70vh; /* Kita set tingginya fix (misal 70% layar) */
+                background-color: #f0f4f8; /* Tambah warna background jika gambar ada sisa ruang */
             }
+
+            .parallax-layer {
+                object-fit: contain; /* INI KUNCINYA: Gambar akan dikecilkan utuh agar terlihat penuh, tidak dipotong */
+            }
+            
+            /* Opsional: Matikan parallax di HP agar lebih smooth */
+            /* Jika ingin parallax tetap jalan, hapus komentar di bawah JS nanti */
         }
     </style>
 </head>
@@ -573,27 +582,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // Logic 1: Parallax Effect untuk SVG Layer
-            const parallaxBg = document.getElementById('parallaxBg'); // Layer Belakang
-            const parallaxFg = document.getElementById('parallaxFg'); // Layer Depan
+            const parallaxBg = document.getElementById('parallaxBg');
+            const parallaxFg = document.getElementById('parallaxFg');
             
+            // Cek apakah lebar layar kurang dari 768px (HP)
+            const isMobile = window.innerWidth < 768;
+
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
                 
-                // Batasi animasi hanya saat di area hero (opsional, agar tidak terlalu berat)
-                // Tapi kita biarkan smooth transition
-                
-                // Layer Belakang bergerak lambat (efek jauh)
-                // multiplier 0.2 artinya gambar turun sejauh 20% dari jarak scroll
-                parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`;
-                
-                // Layer Depan bergerak sedikit lebih cepat (efek dekat)
-                // multiplier 0.5 artinya gambar turun sejauh 50% dari jarak scroll
-                // Ini menciptakan ilusi depth antara gedung depan dan belakang
-                parallaxFg.style.transform = `translateY(${scrollY * 0.5}px)`;
+                // JIKA BUKAN HP (Desktop/Tablet), jalankan Parallax
+                if (!isMobile) {
+                    parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`;
+                    parallaxFg.style.transform = `translateY(${scrollY * 0.5}px)`;
+                } else {
+                    // JIKA HP, biarkan statis (kosongkan logika gerak)
+                    // Gambar akan diam, tidak ikut gerak scroll (karena kita pakai object-fit: contain di CSS)
+                }
             });
 
-            // Logic 2: Reveal Animation (Timeline & Sections)
+            // Logic Reveal Animation (tetap jalan)
             const reveals = document.querySelectorAll('.reveal');
             const revealOnScroll = () => {
                 const windowHeight = window.innerHeight;
@@ -608,7 +616,6 @@
             };
             
             window.addEventListener('scroll', revealOnScroll);
-            // Panggil sekali saat load
             revealOnScroll();
         });
     </script>
