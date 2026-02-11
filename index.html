@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fajar | Portfolio</title>
+    <!-- Font 1: Outfit (Geometris Modern) -->
+    <!-- Font 2: Permanent Marker (Tulis Tangan untuk About Me) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --accent-color: #2563eb; /* Biru Profesional */
+            --line-color: #e5e7eb;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --card-hover-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            margin-bottom: 4rem;
+            text-align: center;
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* Gaya Garis Modern: Gradient Fade */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #111827, transparent);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* --- HERO SECTION (RATA LAYAR) --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image-wrapper {
+            width: 100vw;
+            max-width: none;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            
+            display: flex;
+            justify-content: center;
+            will-change: transform;
+            opacity: 0;
+            animation: zoomIn 1.2s ease-out forwards;
+        }
+
+        .pixel-art {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* --- ABOUT ME SECTION (UPDATE: CLEAN & BIG FONT) --- */
+        #about {
+            padding: 8rem 0; /* Padding lebih lega */
+            overflow: hidden;
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .about-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(5rem, 12vw, 9rem); /* SANGAT BESAR */
+            color: #ef4444;
+            text-transform: lowercase;
+            line-height: 0.9;
+            margin-bottom: 0; /* Hilangkan margin bawah */
+            transform: rotate(-2deg);
+        }
+
+        .about-desc {
+            font-family: 'Outfit', sans-serif;
+            max-width: 600px;
+            margin: 1rem auto 0 auto; /* Margin atas ditambah */
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        .about-image-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-photo {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: none; /* BORDER DIHAPUS */
+            box-shadow: none; /* SHADOW DIHAPUS */
+            filter: none; /* FILTER DIHAPUS */
+            border-radius: 0; /* RATA (NO RADIUS) */
+        }
+
+        /* --- ANIMASI KEYFRAMES --- */
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- TIMELINE BOX --- */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--line-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 3rem;
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 3rem;
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #ffffff;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            top: 20px;
+            right: -6px;
+            z-index: 10;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            right: auto;
+            left: -6px;
+        }
+
+        .box-card {
+            background: #ffffff;
+            border: 1px solid var(--line-color);
+            border-radius: 8px;
+            padding: 2rem;
+            width: 100%;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--accent-color);
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .card-company {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .box-card ul li {
+            text-align: justify;
+        }
+
+        /* --- SKILLS & CERTS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-box {
+            border: 1px solid var(--line-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: var(--card-shadow);
+        }
+
+        .skill-box h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            color: var(--text-main);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--line-color);
+            background: #fafafa;
+        }
+
+        .contact-item {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Animation Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .about-wrapper {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .about-text {
+                text-align: center;
+            }
+            .about-desc {
+                text-align: justify;
+            }
+            .about-photo {
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-left: 50px;
+            }
+            .timeline-item::after, .timeline-item:nth-child(even)::after {
+                left: 14px;
+            }
+            
+            .hero-image-wrapper {
+                width: 100%;
+                margin: 0;
+                left: auto;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image-wrapper" id="parallaxImage">
+                    <img 
+                        src="https://i.ibb.co.com/234nfkMr/1.png" 
+                        alt="Portfolio Pixel Art Full Width" 
+                        class="pixel-art"
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ABOUT ME SECTION (UPDATED: CLEAN, BIG FONT, NO BORDER) -->
+        <section id="about" class="reveal">
+            <div class="about-wrapper">
+                <!-- Kiri: Teks -->
+                <div class="about-text">
+                    <h1 class="about-title">about me.</h1>
+                    <!-- Nama "Muhammad Fajar" DIHAPUS -->
+                    <p class="about-desc">
+                        Lulusan Sarjana Teknik Sipil dengan keahlian teknis dalam pelaksanaan dan pengawasan proyek konstruksi. Fokus pada ketepatan waktu serta efisiensi anggaran. Menguasai aplikasi penunjang ketekniksipilan dengan memiliki dedikasi untuk terus tumbuh dan berkontribusi bagi kemajuan tim.
+                    </p>
+                </div>
+                
+                <!-- Kanan: Foto (NO BORDER/SHADOW) -->
+                <div class="about-image-container">
+                    <img 
+                        src="https://i.ibb.co.com/QFHq9Cwg/fotoku.gif" 
+                        alt="Muhammad Fajar - Civil Engineer" 
+                        class="about-photo"
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- PENGALAMAN KERJA (TIMELINE BOX) -->
+        <section id="experience">
+            <div class="container">
+                <h2>Pengalaman Kerja</h2>
+                
+                <div class="timeline">
+                    
+                    <!-- Item 1 -->
+                    <article class="timeline-item reveal">
+                        <div class="box-card">
+                            <span class="card-date">Mei 2025 – Sekarang</span>
+                            <h3>Tim Teknis Administrasi / Quantity Surveyor</h3>
+                            <span class="card-company">Komando Distrik Militer 0909/ Kutai Timur (Freelance)</span>
+                            <ul>
+                                <li>Menyusun Rencana Anggaran Pelaksanaan (RAP) dan optimasi lahan secara akurat.</li>
+                                <li>Mengelola dan merevisi Contract Change Order (CCO) dengan penyesuaian teknis di lapangan.</li>
+                                <li>Menginisiasi pengembangan sistem e-monitoring terintegrasi website.</li>
+                                <li>Penyusunan SPJ penggunaan anggaran proyek sesuai regulasi.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Item 2 -->
+                    <article class="timeline-item reveal">
+                        <div class="box-card">
+                            <span class="card-date">Jan 2022 – Apr 2025</span>
+                            <h3>Pengawas Lapangan</h3>
+                            <span class="card-company">CV. Aqasuma (Freelance)</span>
+                            <ul>
+                                <li>Mengawasi pelaksanaan pekerjaan konstruksi sesuai gambar kerja dan standar kualitas.</li>
+                                <li>Monitoring mutu, progres, dan jadwal proyek secara harian.</li>
+                                <li>Menyusun pelaporan progres pekerjaan lapangan sebagai dasar keputusan teknis.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Item 3 -->
+                    <article class="timeline-item reveal">
+                        <div class="box-card">
+                            <span class="card-date">Jun 2021 – Des 2021</span>
+                            <h3>Pengawas Lapangan</h3>
+                            <span class="card-company">CV. FM Jaya Mandiri (Freelance)</span>
+                            <ul>
+                                <li>Mengawasi pelaksanaan pekerjaan konstruksi secara ketat.</li>
+                                <li>Identifikasi kendala lebih awal untuk mencegah keterlambatan penyelesaian proyek.</li>
+                                <li>Menyusun laporan progres lapangan yang akurat.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Item 4 -->
+                    <article class="timeline-item reveal">
+                        <div class="box-card">
+                            <span class="card-date">Mei 2020 – Okt 2020</span>
+                            <h3>Pengawas Lapangan (Magang)</h3>
+                            <span class="card-company">PT. Teknikal Global Konsultan</span>
+                            <ul>
+                                <li>Membantu pengawasan konstruksi dengan verifikasi lapangan fisik vs gambar kerja.</li>
+                                <li>Menyusun laporan harian dan mingguan proyek secara sistematis.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS & CERTIFICATIONS -->
+        <section id="skills">
+            <div class="container">
+                <h2>Sertifikasi & Keahlian</h2>
+                
+                <div class="skills-grid reveal">
+                    <!-- Kolom 1: Sertifikasi -->
+                    <div class="skill-box">
+                        <h4>Sertifikasi (SKK Konstruksi)</h4>
+                        <ul style="list-style: none; margin-top: 1rem;">
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
+                                Manajer Pelaksanaan Pekerjaan Gedung / Jenjang 6
+                            </li>
+                            <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
+                                Pengawas Lapangan Drainase Kota / Jenjang 6
+                            </li>
+                            <li style="padding-left: 1.2rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
+                                Pelaksana Pemasangan Jembatan Rangka Baja / Jenjang 6
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Kolom 2: Keahlian Teknis -->
+                    <div class="skill-box">
+                        <h4>Kemampuan Teknis</h4>
+                        <div class="tag-container">
+                            <span class="tag">AutoCAD</span>
+                            <span class="tag">SAP 2000</span>
+                            <span class="tag">Perhitungan RAB</span>
+                            <span class="tag">Microsoft Office</span>
+                            <span class="tag">Adobe Software</span>
+                        </div>
+                        <h4 style="margin-top: 1.5rem;">Manajerial</h4>
+                        <div class="tag-container">
+                            <span class="tag">Manajemen Proyek</span>
+                            <span class="tag">Kepemimpinan</span>
+                            <span class="tag">Komunikasi</span>
+                            <span class="tag">Penyelesaian Masalah</span>
+                        </div>
+                    </div>
+
+                    <!-- Kolom 3: Pendidikan -->
+                    <div class="skill-box">
+                        <h4>Pendidikan</h4>
+                        <p style="font-weight: 700; margin-bottom: 0.2rem;">S1 Teknik Sipil</p>
+                        <p style="font-size: 0.9rem;">Universitas Mulawarman</p>
+                        <p style="font-size: 0.9rem;">Jul 2017 – Des 2022</p>
+                        <p style="font-size: 0.9rem;">IPK: 3.16 / 4.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2 style="margin-bottom: 2rem;">Hubungi Saya</h2>
+            <div class="contact-item">📧 <a href="mailto:fajrmuh@gmail.com" style="color: inherit; text-decoration: none;">fajrmuh@gmail.com</a></div>
+            <div class="contact-item">📱 <a href="tel:+6281347088491" style="color: inherit; text-decoration: none;">+62 813 4708 8491</a></div>
+            <div class="contact-item">📍 Sangatta, Kalimantan Timur</div>
+            
+            <p style="margin-top: 3rem; font-size: 0.85rem; opacity: 0.6;">&copy; 2023 Muhammad Fajar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT UNTUK ANIMASI PARALLAX -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Logic 1: Parallax Effect pada Gambar
+            const parallaxImage = document.getElementById('parallaxImage');
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                
+                // Gerakkan gambar dengan kecepatan 30% dari scroll.
+                if (scrollY < 800) {
+                    parallaxImage.style.transform = `translateY(${scrollY * 0.3}px)`;
+                }
+            });
+
+            // Logic 2: Reveal Animation (Timeline)
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
