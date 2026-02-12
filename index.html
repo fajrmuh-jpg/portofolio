@@ -139,7 +139,7 @@
             gap: 4rem;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 5rem;
         }
 
         .about-text {
@@ -227,13 +227,13 @@
             border: 2px solid var(--accent-color);
             border-radius: 50%;
             top: 20px;
-            right: -6px;
+            right: -8px;
             z-index: 10;
         }
 
         .timeline-item:nth-child(even)::after {
             right: auto;
-            left: -6px;
+            left: -8px;
         }
 
         .box-card {
@@ -255,7 +255,7 @@
         .card-date {
             font-size: 0.7rem;
             font-weight: 700;
-			color: #1e5782;
+            color: #1e5782;
             margin-bottom: 0.1rem;
             display: block;
             text-transform: uppercase;
@@ -271,16 +271,17 @@
         }
         
         .box-card ul li {
-            text-align: Left;
+            text-align: Justify;
             font-size: 0.9rem; /* <--- TAMBAHKAN BARIS INI untuk mengatur ukuran */
         }
 
         /* --- SKILLS & CERTS --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            /* DIUBAH DARI 100% KE 240px AGAR BISA 2X2 DI DESKTOP */
+            grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); 
+            gap: 1rem;
+            margin-top: 0rem;
         }
 
         .skill-box {
@@ -299,8 +300,8 @@
         /* --- TAMBAHKAN KODE INI DI SINI --- */
         .skill-box ul li {
             font-size: 0.9rem; /* <--- Ubah angka ini untuk mengatur ukuran font */
-		}
-		
+        }
+        
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -315,30 +316,50 @@
             border-radius: 4px;
             color: var(--text-main);
         }
-		/* Untuk Judul S1 Teknik Sipil */
-		.skill-box .title-edu {
-			font-weight: 700;
-			margin-bottom: 0.1rem;
-			font-size: 1rem;
-		}
+        
+        /* Styling untuk Box Kontak Tambahan */
+        .contact-box-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        .contact-icon {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
 
-		/* Untuk Universitas, Tanggal, dan IPK */
-		.skill-box p {
-			margin-bottom: 0.1rem; /* Jarak antar baris */
-			font-size: 0.95rem;     /* Ukuran font */
-		}
+        /* Untuk Judul S1 Teknik Sipil */
+        .skill-box .title-edu {
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+            font-size: 1rem;
+        }
+
+        /* Untuk Universitas, Tanggal, dan IPK */
+        .skill-box p {
+            margin-bottom: 0.1rem; /* Jarak antar baris */
+            font-size: 0.95rem;     /* Ukuran font */
+        }
+        
         /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 4rem 0;
+            padding: 0; /* <--- DIUBAH JADI 0 AGAR GAMBAR MENYATU */
             margin-top: 4rem;
-            border-top: 1px solid var(--line-color);
-            background: #fafafa;
+            border-top: none(--line-color);
+            background: #ffffff; /* Diperbaiki typo #fffff */
         }
 
-        .contact-item {
-            margin: 0.5rem 0;
-            font-size: 1.1rem;
+        /* --- STYLING GAMBAR FOOTER --- */
+        .footer-img {
+            width: 100%;          /* Lebar tetap penuh */
+            height: auto;         /* Tinggi otomatis menyesuaikan */
+            display: block;       
+            
+            /* TAMBAHKAN KODE DI BAWAH INI */
+            max-height: 200px;    /* <--- BATASI TINGGI GAMBAR */
+            object-fit: contain;  /* <--- MEMASTIKAN GAMBAR TIDAK GEPENG/DIPOTONG */
         }
 
         /* Animation Reveal */
@@ -385,7 +406,17 @@
             .timeline-item::after, .timeline-item:nth-child(even)::after {
                 left: 14px;
             }
-            
+			
+                        /* 1. Bagian About Me */
+            .about-desc {
+                text-align: Justify; /* Di HP jadi rata kiri supaya tidak ada jarak aneh */
+            }
+
+            /* 2. Bagian List Pengalaman Kerja */
+            .box-card ul li {
+                text-align: left; /* Pastikan rata kiri di HP */
+            }
+			
             /* --- PERBAIKAN HERO AGAR TIDAK NGESKALA DI HP --- */
             .hero {
                 height: 100vh; /* Tinggi full layar */
@@ -448,7 +479,7 @@
         <!-- PENGALAMAN KERJA (TIMELINE BOX) -->
         <section id="experience">
             <div class="container">
-                <h2>Pengalaman Kerja</h2>
+                <h2>Perjalanan Karir</h2>
                 
                 <div class="timeline">
                     
@@ -457,7 +488,7 @@
                         <div class="box-card">
                             <span class="card-date">Mei 2025 – Sekarang</span>
                             <h3>Tim Teknis Administrasi / Quantity Surveyor</h3>
-                            <span class="card-company">Komando Distrik Militer 0909/ Kutai Timur (Freelance)</span>
+                            <span class="card-company">Komando Distrik Militer 0909/ Kutai Timur ( Pekerja Lepas )</span>
                             <ul>
                                 <li>Menyusun Rencana Anggaran Pelaksanaan (RAP) dan optimasi lahan secara akurat.</li>
                                 <li>Mengelola dan merevisi Contract Change Order (CCO) dengan penyesuaian teknis di lapangan.</li>
@@ -472,7 +503,7 @@
                         <div class="box-card">
                             <span class="card-date">Jan 2022 – Apr 2025</span>
                             <h3>Pengawas Lapangan</h3>
-                            <span class="card-company">CV. Aqasuma (Freelance)</span>
+                            <span class="card-company">CV. Aqasuma ( Pekerja Lepas )</span>
                             <ul>
                                 <li>Mengawasi pelaksanaan pekerjaan konstruksi sesuai gambar kerja dan standar kualitas.</li>
                                 <li>Monitoring mutu, progres, dan jadwal proyek secara harian.</li>
@@ -484,9 +515,9 @@
                     <!-- Item 3 -->
                     <article class="timeline-item reveal">
                         <div class="box-card">
-                            <span class="card-date">Jun 2021 – Des 2021</span>
+                            <span class="card-date">Des 2021 – Jan 2022</span>
                             <h3>Pengawas Lapangan</h3>
-                            <span class="card-company">CV. FM Jaya Mandiri (Freelance)</span>
+                            <span class="card-company">PT. Tunas Karya Perkasa ( Pekerja Lepas )</span>
                             <ul>
                                 <li>Mengawasi pelaksanaan pekerjaan konstruksi secara ketat.</li>
                                 <li>Identifikasi kendala lebih awal untuk mencegah keterlambatan penyelesaian proyek.</li>
@@ -495,19 +526,49 @@
                         </div>
                     </article>
 
-                    <!-- Item 4 -->
+                    <!-- Item 3 -->
                     <article class="timeline-item reveal">
                         <div class="box-card">
-                            <span class="card-date">Mei 2020 – Okt 2020</span>
-                            <h3>Pengawas Lapangan (Magang)</h3>
-                            <span class="card-company">PT. Teknikal Global Konsultan</span>
+                            <span class="card-date">Jun 2021 – Des 2021</span>
+                            <h3>Pengawas Lapangan</h3>
+                            <span class="card-company">CV. FM Jaya Mandiri ( Pekerja Lepas )</span>
                             <ul>
-                                <li>Membantu pengawasan konstruksi dengan verifikasi lapangan fisik vs gambar kerja.</li>
-                                <li>Menyusun laporan harian dan mingguan proyek secara sistematis.</li>
+                                <li>Mengawasi pelaksanaan pekerjaan konstruksi secara ketat.</li>
+                                <li>Identifikasi kendala lebih awal untuk mencegah keterlambatan penyelesaian proyek.</li>
+                                <li>Menyusun laporan progres lapangan yang akurat.</li>
                             </ul>
                         </div>
                     </article>
 
+                    <!-- Item 5 -->
+                    <article class="timeline-item reveal">
+                        <div class="box-card">
+                            <span class="card-date">Mei 2020 – Okt 2020</span>
+                            <h3>Pengawas Lapangan (Magang / Internship)</h3>
+                            <span class="card-company">PT. Teknikal Global Konsultan</span>
+                            <ul>
+                                <li>Setelah menyelesaikan masa PKL, saya mendapatkan tawaran berharga untuk kembali bergabung dengan PT Teknikal Global Konsultan sebagai anak magang. Meski saat itu dunia sedang menghadapi tantangan pandemi COVID-19, dan disaat yang bersamaan kuliah dilaksanakan VIA Daring
+								saya justru melihatnya sebagai kesempatan untuk menyelami lebih dalam bagaimana dunia konstruksi sebenarnya bekerja. Kali ini, langkah saya berlanjut ke <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Proyek Pelebaran Bahu Jalan Mulawarman di Batakan, Balikpapan</span>. Peran saya bukan lagi sekadar mengamati, melainkan aktif membantu konsultan lapangan dalam
+								 <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Memastikan kesesuaian antara fisik bangunan di lapangan dengan gambar kerja</span> yang teknis merupakan sebuah proses belajar yang sangat mengasah ketelitian, dan selain itu aku juga membantu <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">menyusun laporan proyek secara teratur</span> untuk menjaga transparansi progres pembangunan. Pengalaman magang ini benar-benar membuka mata saya. Di balik debu dan aspal jalanan, saya belajar bahwa dunia proyek bukan hanya soal membangun fisik, 
+								 tapi juga tentang sinkronisasi antara perencanaan di atas kertas dengan realita di lapangan.</li>
+                            </ul>
+                        </div>
+                    </article>
+					
+					<!-- Item 6 -->
+                    <article class="timeline-item reveal">
+                        <div class="box-card">
+                            <span class="card-date">Mei 2020 – Agu 2020</span>
+                            <h3>Praktik Kerja Lapangan</h3>
+                            <span class="card-company">PT. Teknikal Global Konsultan</span>
+                            <ul>
+                                <li>Perjalanan ini dimulai saat saya mengambil Praktik Kerja Lapangan (PKL) di semester 6. Melalui penempatan dari kampus, 
+								saya berkesempatan terjun langsung ke proyek <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Pembangunan Gedung BPMP Provinsi Kalimantan Timur (Tahap 2)</span>. Di bawah bimbingan PT. Teknikal Global Konsultan, saya tidak hanya sekadar hadir, 
+								tetapi belajar menjadi mata yang jeli di lapangan. Tugas harian saya adalah <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">mengawasi jalannya pekerjaan konstruksi dan memastikan setiap progres terdokumentasi dengan akurat</span>. Bagi saya, momen 
+								ini bukan sekadar tugas kuliah, melainkan kesempatan berharga untuk menyerap ilmu praktis dan etika kerja langsung dari para profesional di industri konsultan.</li>
+                            </ul>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -515,7 +576,7 @@
         <!-- SKILLS & CERTIFICATIONS -->
         <section id="skills">
             <div class="container">
-                <h2></h2>
+                <h2>Miscellaneous</h2>
                 
                 <div class="skills-grid reveal">
                     <!-- Kolom 1: Sertifikasi -->
@@ -524,15 +585,15 @@
                         <ul style="list-style: none; margin-top: 1rem;">
                             <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;">
                                 <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
-                                Manajer Pelaksanaan Pekerjaan Gedung / Jenjang 6
+                                Manajer Pelaksanaan Pekerjaan Gedung Jenjang 6 | Lembaga Sertifikasi Profesi Gatensi Konstruksi Indonesia
                             </li>
                             <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;">
                                 <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
-                                Pengawas Lapangan Drainase Kota / Jenjang 6
+                                Pengawas Lapangan Drainase Kota Jenjang 6 | Lembaga Sertifikasi Profesi Ataki Konstruksi Indonesia
                             </li>
                             <li style="padding-left: 1.2rem; position: relative;">
                                 <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
-                                Pelaksana Pemasangan Jembatan Rangka Baja / Jenjang 6
+                                Pelaksana Pemasangan Jembatan Rangka Baja Jenjang 6 | Lembaga Sertifikasi Profesi Tenaga Konstruksi Nasional
                             </li>
                         </ul>
                     </div>
@@ -562,20 +623,29 @@
                         <p style="font-weight: 700; margin-bottom: 0.2rem;">S1 Teknik Sipil Universitas Mulawarman</p>
                         <p style="font-size: 0.9rem;">Jul 2017 – Des 2022 | IPK 3.16/4.00 </p>
                     </div>
+
+                    <!-- Kolom 4: Kontak (BARU DITAMBAHKAN) -->
+                    <div class="skill-box">
+                        <h4>Hubungi Saya</h4>
+                        
+                        <div class="contact-box-item">
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:fajrmuh@gmail.com" style="text-decoration: none; color: inherit;">fajrmuh@gmail.com</a>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER DENGAN SVG -->
     <footer>
-        <div class="container">
-            <h2 style="margin-bottom: 2rem;">Hubungi Saya</h2>
-            <div class="contact-item">📧 <a href="mailto:fajrmuh@gmail.com" style="color: inherit; text-decoration: none;">fajrmuh@gmail.com</a></div>
-            <div class="contact-item">📱 <a href="tel:+6281347088491" style="color: inherit; text-decoration: none;">+62 813 4708 8491</a></div>
-            <div class="contact-item">📍 Sangatta, Kalimantan Timur</div>
-            
-            <p style="margin-top: 3rem; font-size: 0.85rem; opacity: 0.6;">&copy; 2023 Muhammad Fajar. All Rights Reserved.</p>
-        </div>
+        <img 
+            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/b4226db3e67f5fd56446940501605ac79f002786/footer.svg" 
+            alt="Footer Illustration" 
+            class="footer-img">
     </footer>
 
     <!-- JAVASCRIPT UNTUK PARALLAX SVG -->
