@@ -47,22 +47,10 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             color: var(--text-main);
-            margin-bottom: 4rem;
-            text-align: left;
-            padding-bottom: 0.5rem; /* Perbaikan typo comma ke titik */
+            margin-bottom: 1rem;
+            text-align: Left;
+            padding-bottom: 0.2rem; /* Perbaikan typo comma ke titik */
             position: relative;
-        }
-
-        /* Gaya Garis Modern: Gradient Fade */
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #111827, transparent);
         }
 
         h3 {
@@ -99,7 +87,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f4f8; /* Warna cadangan jika SVG belum loading */
+            background-color: #ffffff; /* Warna cadangan jika SVG belum loading */
         }
 
         .parallax-layer {
@@ -156,12 +144,12 @@
 
         .about-text {
             flex: 1;
-            text-align: left;
+            text-align: Justify;
         }
 
         .about-title {
             font-family: 'Permanent Marker', cursive;
-            font-size: clamp(5rem, 12vw, 9rem);
+            font-size: clamp(2rem, 12vw, 6rem);
             color: #ef4444;
             text-transform: lowercase;
             line-height: 0.9;
@@ -172,10 +160,10 @@
         .about-desc {
             font-family: 'Roboto', sans-serif;
             max-width: 600px;
-            margin: 1rem auto 0 auto;
-            font-size: 0.95rem;
+            margin: 2rem auto 0 auto;
+            font-size: 0.9rem;
             line-height: 1.6;
-            color: var(--text-muted);
+            color: #000000;
             text-align: justify;
         }
 
@@ -265,10 +253,10 @@
         }
 
         .card-date {
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: var(--accent-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.1rem;
             display: block;
             text-transform: uppercase;
         }
@@ -283,7 +271,8 @@
         }
         
         .box-card ul li {
-            text-align: left;
+            text-align: Left;
+            font-size: 0.9rem; /* <--- TAMBAHKAN BARIS INI untuk mengatur ukuran */
         }
 
         /* --- SKILLS & CERTS --- */
@@ -383,16 +372,13 @@
             
             /* --- PERBAIKAN HERO AGAR TIDAK NGESKALA DI HP --- */
             .hero {
-                height: 100vh; /* Kita set tingginya fix (misal 70% layar) */
-                background-color: #f0f4f8; /* Tambah warna background jika gambar ada sisa ruang */
+                height: 100vh; /* Tinggi full layar */
+                background-color: #f0f4f8;
             }
 
             .parallax-layer {
                 object-fit: contain; /* INI KUNCINYA: Gambar akan dikecilkan utuh agar terlihat penuh, tidak dipotong */
             }
-            
-            /* Opsional: Matikan parallax di HP agar lebih smooth */
-            /* Jika ingin parallax tetap jalan, hapus komentar di bawah JS nanti */
         }
     </style>
 </head>
@@ -400,17 +386,17 @@
 
     <!-- HERO SECTION (PARALLAX SVG) -->
     <header class="hero">
-        <!-- Layer Belakang: SVG 2 -->
+        <!-- Layer Belakang: Artboard 1 -->
         <img 
-            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/84a00f3bc019f93c8f8ac49249e9f62cb01eaa83/2.svg" 
+            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/c67fec452c323ee3ed47a6057451074a55dea612/Artboard%201.svg" 
             alt="Background Layer" 
             class="parallax-layer layer-bg"
             id="parallaxBg"
         >
 
-        <!-- Layer Depan: SVG 3 -->
+        <!-- Layer Depan: Artboard 2 -->
         <img 
-            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/74c52c2867e2a31beb6d2047c85fbe6d6991c679/3.svg" 
+            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/937aa640415542fda13d9a8e798200d283472aed/Artboard%202.svg" 
             alt="Foreground Layer" 
             class="parallax-layer layer-fg"
             id="parallaxFg"
@@ -621,4 +607,3 @@
     </script>
 </body>
 </html>
-
