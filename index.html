@@ -42,13 +42,13 @@
         }
 
         /* --- TYPOGRAPHY --- */
-        h2, h3 {
+        h2 {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             letter-spacing: -0.02em;
-            color: var(--text-main);
+            color: #000000;
             margin-bottom: 1rem;
-            text-align: Left;
+            text-align: Center;
             padding-bottom: 0.2rem; /* Perbaikan typo comma ke titik */
             position: relative;
         }
@@ -255,7 +255,7 @@
         .card-date {
             font-size: 0.7rem;
             font-weight: 700;
-            color: var(--accent-color);
+			color: #1e5782;
             margin-bottom: 0.1rem;
             display: block;
             text-transform: uppercase;
@@ -278,9 +278,9 @@
         /* --- SKILLS & CERTS --- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
 
         .skill-box {
@@ -293,9 +293,14 @@
 
         .skill-box h4 {
             margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
+        /* --- TAMBAHKAN KODE INI DI SINI --- */
+        .skill-box ul li {
+            font-size: 0.9rem; /* <--- Ubah angka ini untuk mengatur ukuran font */
+		}
+		
         .tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -306,11 +311,22 @@
             background: #f5f5f5;
             border: 1px solid #e0e0e0;
             padding: 4px 10px;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             border-radius: 4px;
             color: var(--text-main);
         }
+		/* Untuk Judul S1 Teknik Sipil */
+		.skill-box .title-edu {
+			font-weight: 700;
+			margin-bottom: 0.1rem;
+			font-size: 1rem;
+		}
 
+		/* Untuk Universitas, Tanggal, dan IPK */
+		.skill-box p {
+			margin-bottom: 0.1rem; /* Jarak antar baris */
+			font-size: 0.95rem;     /* Ukuran font */
+		}
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -499,7 +515,7 @@
         <!-- SKILLS & CERTIFICATIONS -->
         <section id="skills">
             <div class="container">
-                <h2>Sertifikasi & Keahlian</h2>
+                <h2></h2>
                 
                 <div class="skills-grid reveal">
                     <!-- Kolom 1: Sertifikasi -->
@@ -543,10 +559,8 @@
                     <!-- Kolom 3: Pendidikan -->
                     <div class="skill-box">
                         <h4>Pendidikan</h4>
-                        <p style="font-weight: 700; margin-bottom: 0.2rem;">S1 Teknik Sipil</p>
-                        <p style="font-size: 0.9rem;">Universitas Mulawarman</p>
-                        <p style="font-size: 0.9rem;">Jul 2017 – Des 2022</p>
-                        <p style="font-size: 0.9rem;">IPK: 3.16 / 4.00</p>
+                        <p style="font-weight: 700; margin-bottom: 0.2rem;">S1 Teknik Sipil Universitas Mulawarman</p>
+                        <p style="font-size: 0.9rem;">Jul 2017 – Des 2022 | IPK 3.16/4.00 </p>
                     </div>
                 </div>
             </div>
