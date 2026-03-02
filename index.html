@@ -11,6 +11,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
     
     <style>
+        .top-nav {
+            position: relative; /* <--- UBAH DARI FIXED KE RELATIVE (IKUT SCROLL) */
+            
+            margin: 10px auto 0 auto; /* <--- GUNAKAN MARGIN AUTO UNTUK TENGAH HORIZONTAL */
+            
+            z-index: 10; /* Z-index cukup kecil agar tidak menghalangi parallax di bawah jika tumpang tindih */
+            
+            width: auto;
+            display: flex;
+            justify-content: right; /* Agar tombol di tengah area nav */
+            
+            /* Hapus baris di bawah ini agar posisi tidak kacau */
+            /* left: 50%; */
+            /* top: 20px; */
+            /* transform: translateX(-50%); */
+            
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            padding: 0;
+            backdrop-filter: none;
+        }
+
+        .lang-btn {
+            background: #ffffff; /* Putih agar kontras dengan gambar di belakang */
+            border: 0px solid var(--line-color); /* Border abu-abu tipis */
+            color: var(--text-main);
+            padding: 0.2rem 1rem;
+            border-radius: 0px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Bayangan agar tombol timbul */
+        }
+
+        .lang-btn:hover {
+            background: var(--bg-color);
+            color: #000000;
+            border-color: var(--accent-color);
+            transform: scale(1.05); /* Sedikit membesar saat hover */
+        }
+
+        /* Supaya konten utama tidak tertutup navbar */
+        body {
+            padding-top: 0px; 
+        }
+        /* --------------------------- */
+		
         /* --- RESET & VARIABLES --- */
         :root {
             --bg-color: #ffffff;
@@ -25,6 +74,7 @@
         * {
             margin: 0;
             padding: 0;
+            box-box: border-box;
             box-sizing: border-box;
         }
 
@@ -80,14 +130,14 @@
 
         /* --- HERO SECTION (MULTI-LAYER PARALLAX) --- */
         .hero {
-            height: 100vh; /* Full tinggi layar */
+            height: 100vh; 
             width: 100%;
             position: relative;
-            overflow: hidden; /* Agar gambar tidak keluar border saat parallax */
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffffff; /* Warna cadangan jika SVG belum loading */
+            background-color: #ffffff;
         }
 
         .parallax-layer {
@@ -96,29 +146,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Memastikan gambar menutupi area */
-            will-change: transform; /* Optimasi performa animasi */
+            object-fit: cover;
+            will-change: transform;
         }
 
-        /* Layer Belakang (Background) */
-        .layer-bg {
-            z-index: 1;
-            opacity: 1; 
-        }
-
-        /* Layer Depan (Foreground) */
-        .layer-fg {
-            z-index: 2;
-        }
-
-        /* Container konten hero jika ingin menambah teks di tengah */
+        .layer-bg { z-index: 1; opacity: 1; }
+        .layer-fg { z-index: 2; }
         .hero-content {
             position: relative;
-            z-index: 3; /* Di atas kedua gambar */
+            z-index: 3;
             text-align: center;
             height: 100%; 
             width: 100%;
-            pointer-events: none; /* Agar klik tembus ke body */
+            pointer-events: none;
         }
 
         /* --- ABOUT ME SECTION --- */
@@ -140,10 +180,7 @@
             padding: 0 5rem;
         }
 
-        .about-text {
-            flex: 1;
-            text-align: justify; 
-        }
+        .about-text { flex: 1; text-align: justify; }
 
         .about-title {
             font-family: 'Permanent Marker', cursive;
@@ -273,13 +310,8 @@
             font-size: 0.9rem; 
         }
 
-        /* --- STYLING READ MORE --- */
-        .timeline-details {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px dashed var(--line-color); 
-        }
-
+        /* --- READ MORE --- */
+        .timeline-details { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--line-color); }
         .read-more-btn {
             display: flex;
             align-items: center;
@@ -292,24 +324,10 @@
             user-select: none;
             transition: opacity 0.2s;
         }
-
-        .read-more-btn:hover {
-            opacity: 0.8;
-        }
-
-        .read-more-btn::-webkit-details-marker {
-            display: none;
-        }
-
-        .read-more-icon {
-            transition: transform 0.3s ease;
-            font-size: 0.8rem;
-        }
-
-        details[open] .read-more-icon {
-            transform: rotate(180deg);
-        }
-
+        .read-more-btn:hover { opacity: 0.8; }
+        .read-more-btn::-webkit-details-marker { display: none; }
+        .read-more-icon { transition: transform 0.3s ease; font-size: 0.8rem; }
+        details[open] .read-more-icon { transform: rotate(180deg); }
         .details-content {
             margin-top: 1rem;
             padding: 1rem;
@@ -322,13 +340,25 @@
             border-left: 3px solid var(--accent-color); 
         }
 
-        /* --- PORTFOLIO SECTION --- */
+        /* --- PORTFOLIO SECTION (CAROUSEL WITH ARROWS) --- */
         .portfolio-container {
-            display: grid;
-            grid-template-columns: 1fr; 
-            gap: 2rem;
-            margin-top: 2rem;
+            position: relative; /* Untuk posisi tombol panah */
+            width: 100%;
+            max-width: 1000px;
+            margin: 2rem auto;
+            overflow: visible; /* Agar tombol panah bisa keluar sedikit */
         }
+
+        /* Area Geser (Track) */
+        .portfolio-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            width: 100%;
+            /* Sembunyikan scrollbar agar rapi */
+            scrollbar-width: none; /* Firefox */
+        }
+        .portfolio-track::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
 
         .project-card {
             display: flex;
@@ -338,15 +368,49 @@
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Kunci Carousel: Lebar 100% dari wadah */
+            flex: 0 0 100%;
+            width: 100%;
         }
 
         .project-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--card-hover-shadow);
+        }
+
+        /* Tombol Panah (Arrow Buttons) */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #ffffff;
+            color: var(--accent-color);
+            border: 1px solid var(--line-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 6px 10px rgba(37, 99, 235, 0.3);
             border-color: var(--accent-color);
         }
 
-        /* Bagian Info Proyek (Tabel Kiri) */
+        .nav-btn.prev { left: -20px; }
+        .nav-btn.next { right: -20px; }
+
+        /* Isi Kartu Proyek (Sama seperti desain awal) */
         .project-info {
             flex: 1;
             padding: 2rem;
@@ -370,48 +434,34 @@
             text-transform: uppercase;
         }
 
-        /* Ubah warna keterangan proyek menjadi hitam */
         .project-info p {
             color: #000000; 
             font-size: 0.95rem;
             margin-bottom: 0;
         }
 
-        /* Bagian Foto (Dokumentasi Kanan) */
         .project-img {
-            flex: 0 0 40%; /* Lebar gambar 40% dari kartu */
+            flex: 0 0 40%;
             background-color: #f0f0f0;
             position: relative;
-            
-            /* FITUR HORIZONTAL SLIDER / BILAH GESER */
             display: flex;
             flex-direction: row;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
         }
-
-        /* Styling Scrollbar agar terlihat rapi (Bilah Geser) */
-        .project-img::-webkit-scrollbar {
-            height: 8px; 
-        }
-        .project-img::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        .project-img::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 4px;
-        }
-        .project-img::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
-        }
+        
+        .project-img::-webkit-scrollbar { height: 6px; }
+        .project-img::-webkit-scrollbar-track { background: #f1f1f1; }
+        .project-img::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+        .project-img::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
 
         .project-img img {
-            flex: 0 0 100%; /* Tiap foto melebar full box */
+            flex: 0 0 100%;
             height: 100%;
             object-fit: cover; 
             display: block;
-            scroll-snap-align: start; /* Efek 'snap' saat geser */
+            scroll-snap-align: start;
         }
 
         /* --- SKILLS & CERTS --- */
@@ -430,14 +480,8 @@
             box-shadow: var(--card-shadow);
         }
 
-        .skill-box h4 {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .skill-box ul li {
-            font-size: 0.9rem; 
-        }
+        .skill-box h4 { margin-bottom: 1rem; font-size: 1rem; }
+        .skill-box ul li { font-size: 0.9rem; }
         
         .tag-container {
             display: flex;
@@ -511,15 +555,9 @@
                 text-align: center;
                 gap: 1rem;
             }
-            .about-text {
-                text-align: center;
-            }
-            .about-desc {
-                text-align: justify;
-            }
-            .about-photo {
-                max-width: 280px;
-            }
+            .about-text { text-align: center; }
+            .about-desc { text-align: justify; }
+            .about-photo { max-width: 280px; }
         }
 
         @media (max-width: 768px) {
@@ -534,58 +572,41 @@
                 left: 0;
                 padding-left: 50px;
             }
-            .timeline-item::after, .timeline-item:nth-child(even)::after {
-                left: 14px;
-            }
+            .timeline-item::after, .timeline-item:nth-child(even)::after { left: 14px; }
             
-            .about-desc {
-                text-align: Justify; 
-            }
-
-            .box-card ul li {
-                text-align: left; 
-            }
+            .about-desc { text-align: Justify; }
+            .box-card ul li { text-align: left; }
             
-            .hero {
-                height: 100vh; 
-                background-color: #ffffff;
-            }
-
-            .parallax-layer {
-                object-fit: contain;
-            }
+            .hero { height: 100vh; background-color: #ffffff; }
+            .parallax-layer { object-fit: contain; }
 
             /* --- RESPONSIVE PORTFOLIO --- */
             .project-card {
-                flex-direction: column; /* Foto pindah ke atas */
+                flex-direction: column; 
             }
             .project-img {
-                flex: 0 0 200px; /* Tinggi foto di HP */
+                flex: 0 0 200px;
                 width: 100%;
             }
+            
+            /* Sesuaikan posisi tombol di HP */
+            .nav-btn { width: 30px; height: 30px; font-size: 1rem; }
+            .nav-btn.prev { left: 5px; }
+            .nav-btn.next { right: 5px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- BILAH ATAS / NAVBAR -->
+<nav class="top-nav">
+    <button class="lang-btn" id="langToggle">EN</button>
+</nav>
+
     <!-- HERO SECTION (PARALLAX SVG) -->
     <header class="hero">
-        <!-- Layer Belakang: Artboard 1 -->
-        <img 
-            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/c67fec452c323ee3ed47a6057451074a55dea612/Artboard%201.svg" 
-            alt="Background Layer" 
-            class="parallax-layer layer-bg"
-            id="parallaxBg"
-        >
-
-        <!-- Layer Depan: Artboard 2 -->
-        <img 
-            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/937aa640415542fda13d9a8e798200d283472aed/Artboard%202.svg" 
-            alt="Foreground Layer" 
-            class="parallax-layer layer-fg"
-            id="parallaxFg"
-        >
-
+        <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/c67fec452c323ee3ed47a6057451074a55dea612/Artboard%201.svg" alt="Background Layer" class="parallax-layer layer-bg" id="parallaxBg">
+        <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/937aa640415542fda13d9a8e798200d283472aed/Artboard%202.svg" alt="Foreground Layer" class="parallax-layer layer-fg" id="parallaxFg">
         <div class="hero-content"></div>
     </header>
 
@@ -594,18 +615,14 @@
         <section id="about" class="reveal">
             <div class="about-wrapper">
                 <div class="about-text">
-                    <h1 class="about-title">about me.</h1>
-                    <p class="about-desc">
+                    <h1 class="about-title" id="txt-about-title">about me.</h1>
+                    <p class="about-desc" id="txt-about-desc">
                         Nama Saya Mauhammad Fajar, seorang lulusan Teknik Sipil secara latar belakang, namun seorang desainer grafis secara hobi. Fokus pada akurasi data dan detail visual untuk menampilkan hasil yang terbaik. Adaptif dengan teknologi terbaru untuk hasil yang efisien.
                     </p>
                 </div>
                 
                 <div class="about-image-container">
-                    <img 
-                        src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/fotoku.gif" 
-                        alt="Muhammad Fajar - Civil Engineer" 
-                        class="about-photo"
-                    >
+                    <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/fotoku.gif" alt="Muhammad Fajar - Civil Engineer" class="about-photo">
                 </div>
             </div>
         </section>
@@ -630,17 +647,9 @@
 
                             <!-- AREA READ MORE -->
                             <details class="timeline-details">
-                                <summary class="read-more-btn">
-                                    Read More
-                                    <span class="read-more-icon">▼</span>
-                                </summary>
+                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
                                 <div class="details-content">
-                                    <p>
-                                        Perjalanan ini dimulai saat saya mengambil Praktik Kerja Lapangan (PKL) di semester 6. Melalui penempatan dari kampus, 
-								saya berkesempatan terjun langsung ke proyek <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Pembangunan Gedung BPMP Provinsi Kalimantan Timur (Tahap 2)</span>. Di bawah bimbingan PT. Teknikal Global Konsultan, saya tidak hanya sekadar hadir, 
-								tetapi belajar menjadi mata yang jeli di lapangan. Tugas harian saya adalah <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">mengawasi jalannya pekerjaan konstruksi dan memastikan setiap progres terdokumentasi dengan akurat</span>. Bagi saya, momen 
-								ini bukan sekadar tugas kuliah, melainkan kesempatan berharga untuk menyerap ilmu praktis dan etika kerja langsung dari para profesional di industri konsultan.
-                                    </p>
+                                    <p>Perjalanan ini dimulai saat saya mengambil Praktik Kerja Lapangan (PKL) di semester 6. Melalui penempatan dari kampus, saya berkesempatan terjun langsung ke proyek <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Pembangunan Gedung BPMP Provinsi Kalimantan Timur (Tahap 2)</span>. Di bawah bimbingan PT. Teknikal Global Konsultan, saya tidak hanya sekadar hadir, tetapi belajar menjadi mata yang jeli di lapangan. Tugas harian saya adalah <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">mengawasi jalannya pekerjaan konstruksi dan memastikan setiap progres terdokumentasi dengan akurat</span>.</p>
                                 </div>
                             </details>
                         </div>
@@ -657,19 +666,10 @@
                                 <li>Membantu menyusun laporan Kegiatan</li>
                             </ul>
 
-                            <!-- AREA READ MORE -->
                             <details class="timeline-details">
-                                <summary class="read-more-btn">
-                                    Read More
-                                    <span class="read-more-icon">▼</span>
-                                </summary>
+                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
                                 <div class="details-content">
-                                    <p>
-                                        Setelah menyelesaikan masa PKL, saya mendapatkan tawaran berharga untuk kembali bergabung dengan PT Teknikal Global Konsultan sebagai anak magang. Meski saat itu dunia sedang menghadapi tantangan pandemi COVID-19, dan disaat yang bersamaan kuliah dilaksanakan VIA Daring
-								saya justru melihatnya sebagai kesempatan untuk menyelami lebih dalam bagaimana dunia konstruksi sebenarnya bekerja. Kali ini, langkah saya berlanjut ke <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Proyek Pelebaran Bahu Jalan Mulawarman di Batakan, Balikpapan</span>. Peran saya bukan lagi sekadar mengamati, melainkan aktif membantu konsultan lapangan dalam
-								 <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Memastikan kesesuaian antara fisik bangunan di lapangan dengan gambar kerja</span> yang teknis merupakan sebuah proses belajar yang sangat mengasah ketelitian, dan selain itu aku juga membantu <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">menyusun laporan proyek secara teratur</span> untuk menjaga transparansi progres pembangunan. Pengalaman magang ini benar-benar membuka mata saya. Di balik debu dan aspal jalanan, saya belajar bahwa dunia proyek bukan hanya soal membangun fisik, 
-								 tapi juga tentang sinkronisasi antara perencanaan di atas kertas dengan realita di lapangan.
-                                    </p>
+                                    <p>Setelah menyelesaikan masa PKL, saya mendapatkan tawaran berharga untuk kembali bergabung dengan PT Teknikal Global Konsultan sebagai anak magang. Meski saat itu dunia sedang menghadapi tantangan pandemi COVID-19, saya justru melihatnya sebagai kesempatan untuk menyelami lebih dalam bagaimana dunia konstruksi sebenarnya bekerja.</p>
                                 </div>
                             </details>
                         </div>
@@ -685,21 +685,13 @@
                                 <li>Memimpin pelaksanaan konstruksi</li>
                                 <li>Manajemen Progres & Penjadwalan</li>
                                 <li>Pengendalian Mutu</li>
-								<li>Menyusun Laporan</li>
+                                <li>Menyusun Laporan</li>
                             </ul>
 
-                            <!-- AREA READ MORE -->
                             <details class="timeline-details">
-                                <summary class="read-more-btn">
-                                    Read More
-                                    <span class="read-more-icon">▼</span>
-                                </summary>
+                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
                                 <div class="details-content">
-                                    <p>
-                                        Setelah masa magang selesai, fokus utama saya adalah menuntaskan skripsi. Namun, kenyataan di lapangan berkata lain, kendala komunikasi dengan dosen pembimbing membuat proses akademik berjalan lebih lambat dari rencana. Alih-alih hanya berdiam diri menunggu, saya memutuskan untuk mengambil langkah proaktif dan mulai mencari peluang kerja formal. Peluang tersebut datang melalui informasi dari seorang rekan yang membawa saya bergabung dengan Kontraktor CV. FM Jaya Mandiri. Di sinilah tanggung jawab saya meningkat. Saya dipercaya menjadi Pelaksana Lapangan untuk proyek <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Rehabilitasi Jalan Masuk & Keluar Pelabuhan Kariangau, Balikpapan</span>. 
-								Pada proyek ini, peran saya bukan lagi sekadar membantu, melainkan menjadi garda depan dalam memastikan pekerjaan selesai dengan waktu dan biaya seefisien mungkin. Tanggung jawab utama saya meliputi: <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Manajemen Pelaksanaan</span>, yaitu Mengarahkan tahapan pekerjaan di lapangan agar berjalan presisi sesuai standar teknis <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Kendali Jadwal (Problem Solving)</span>, Mengidentifikasi dan mengatasi kendala teknis lebih awal guna menjamin proyek selesai tepat waktu, serta
-								<span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Menyusun Laporan Progres</span>, yaitu Menyusun laporan progres fisik yang akurat sebagai dasar pengambilan keputusan manajemen. Pengalaman di Pelabuhan Kariangau ini benar-benar membentuk mentalitas saya. Saya belajar bahwa menjadi Pelaksana bukan hanya soal melihat orang bekerja, tapi tentang tanggung jawab besar dalam menjaga integritas sebuah infrastruktur penting.
-                                    </p>
+                                    <p>Setelah masa magang selesai, fokus utama saya adalah menuntaskan skripsi. Namun, kenyataan di lapangan berkata lain, kendala komunikasi dengan dosen pembimbing membuat proses akademik berjalan lebih lambat dari rencana.</p>
                                 </div>
                             </details>
                         </div>
@@ -715,26 +707,18 @@
                                 <li>Memimpin pelaksanaan konstruksi</li>
                                 <li>Manajemen Progres & Penjadwalan</li>
                                 <li>Pengendalian Mutu</li>
-								<li>Menyusun Laporan</li>
+                                <li>Menyusun Laporan</li>
                             </ul>
 
-                            <!-- AREA READ MORE -->
                             <details class="timeline-details">
-                                <summary class="read-more-btn">
-                                    Read More
-                                    <span class="read-more-icon">▼</span>
-                                </summary>
+                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
                                 <div class="details-content">
-                                    <p>
-                                        Pasca menyelesaikan studi, saya berkesempatan terlibat dalam <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">pembangunan Ibu Kota Nusantara (IKN) pada proyek Pembangunan Jalan Sumbu Kebangsaan Sisi Timur</span>. Bergabung dengan PT Tunas Karya Perkasa (Sub-Kontraktor PT Wijaya Karya), saya terjun langsung dalam fase awal pembangunan infrastruktur utama negara.
-									Meskipun durasi keterlibatan saya di proyek ini singkat karena faktor manajemen internal perusahaan, pengalaman satu bulan tersebut memberikan saya perspektif berharga mengenai:
-									Standar Kerja BUMN: <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Mengadaptasi ritme kerja dan standar kualitas tinggi</span> di bawah supervisi PT WIKA.Skala Proyek Besar.
-                                    </p>
+                                    <p>Pasca menyelesaikan studi, saya berkesempatan terlibat dalam <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">pembangunan Ibu Kota Nusantara (IKN) pada proyek Pembangunan Jalan Sumbu Kebangsaan Sisi Timur</span>.</p>
                                 </div>
                             </details>
                         </div>
                     </article>
-					
+                    
                     <!-- Item 5 -->
                     <article class="timeline-item reveal">
                         <div class="box-card">
@@ -745,26 +729,13 @@
                                 <li>Memimpin pelaksanaan konstruksi</li>
                                 <li>Manajemen Progres & Penjadwalan</li>
                                 <li>Pengendalian Mutu</li>
-								<li>Menyusun Laporan</li>
+                                <li>Menyusun Laporan</li>
                             </ul>
 
-                            <!-- AREA READ MORE -->
                             <details class="timeline-details">
-                                <summary class="read-more-btn">
-                                    Read More
-                                    <span class="read-more-icon">▼</span>
-                                </summary>
+                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
                                 <div class="details-content">
-                                    <p>
-                                        Langkah saya berlanjut ke Sangatta, Kutai Timur, sebuah kota yang dikenal sebagai pusat tambang batubara terbesar. Di sini saya bergabung dengan kontraktor lokal yang bernama CV. Aqasuma, peran kami disini banyak menangani berbagai proyek infrastruktur, mulai dari skala kecil hingga menengah.
-
-									Beberapa pencapaian penting dalam fase kami ini adalah disaat berkolaborasi bersama <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">PT Wijaya Karya (Wika) dalam pembangunan infrastruktur underpass, dan Menangani berbagai sektor pembangunan infrastruktur di PT Multi Kusuma Cemerlang</span>.
-
-									<li>Evolusi Karir: Dari Lapangan ke Manajemen Teknis
-									Setelah beberapa tahun terjun langsung di debu lapangan, saya menyadari bahwa potensi terbesar saya bukan hanya terletak pada eksekusi fisik, melainkan pada manajemen data, perencanaan teknis, dan pengolahan informasi di balik layar.
-
-									Saya memutuskan untuk mencoba bertransisi dari peran lapangan menuju peran yang lebih berfokus pada analisis teknis dan manajemen proyek berbasis komputer. Saya percaya bahwa kombinasi pengalaman lapangan yang kuat dengan kemahiran di depan perangkat lunak teknis akan menciptakan hasil kerja yang lebih presisi, efisien, dan strategis.
-                                    </p>
+                                    <p>Langkah saya berlanjut ke Sangatta, Kutai Timur, sebuah kota yang dikenal sebagai pusat tambang batubara terbesar. Di sini saya bergabung dengan kontraktor lokal yang bernama CV. Aqasuma.</p>
                                 </div>
                             </details>
                         </div>
@@ -780,180 +751,128 @@
                                 <li>Menyusun Rencana Anggaran Pelaksanaan (RAP)</li>
                                 <li>Mengelola dan merevisi Contract Change Order (CCO)</li>
                                 <li>Menyusun pelaporan progres</li>
-								<li>Bertanggung jawab penuh atas penyusunan SPJ</li>
+                                <li>Bertanggung jawab penuh atas penyusunan SPJ</li>
                             </ul>
 
-                            <!-- AREA READ MORE -->
                             <details class="timeline-details">
-                                <summary class="read-more-btn">
-                                    Read More
-                                    <span class="read-more-icon">▼</span>
-                                </summary>
+                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
                                 <div class="details-content">
-                                    <p>
-                                        Setelah melewati berbagai dinamika di lapangan, saya mencoba mengambil peluang baru untuk fokus pada sisi manajemen tekni ang akhirnya saat ini, saya bergabung dalam Tim Teknis Administrasi & Quantity di bawah naungan Komando Distrik Militer (KODIM) 0909/Kutai Timur.
-
-									Saya bertanggung jawab dalam dua program utama yang dijalankan bersama Dinas Pertanian:</li>
-
-									<li>1. Optimasi Lahan (OPLAH) Konstruksi Fisik.
-									Program ini berfokus pada pembangunan infrastruktur irigasi sawah. Di sini, saya menangani seluruh aspek dalam kegiatan fisik konstruksi proyek yaitu, Perencanaan Anggaran: <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Menyusun Rencana Anggaran Pelaksanaan dan Pekerjaan Tambah kurang (CCO RAB)</span> agar alokasi dana sesuai dengan kebutuhan fisik lapangan. Lalu saya juga berperan dalam
-									penyusunan Administrasi seperti, <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Mengelola pelaporan progres harian hingga penyusunan SPJ, sampai surat menyurat untuk disampaikan ke pihak Dinas Pertanian</span>.</li>
-									
-									<li>2. Kegiatan Cetak Sawah yang dimana program ini masih merupakan cakupan yang sama dari kegiatan OPLAH dari kementrian pertanian dalam rangka menaikan nilai Indeks Pangan. Pada kegiatan ini fokus utama saya adalah membantu menyusun Pelaporan progres fisik dan menyusun SPJ. terobosan yang saya berikan pada kegiatan ini adalah saya <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">berhasil membuat sebuah website sistem pelaporan progres berbasis digital</span>.
-
-									Inovasi ini memastikan setiap perkembangan pembukaan lahan terpantau secara real-time, transparan, dan jauh lebih efisien. klik tautan berikut <a href="https://cetaksawahktm.vercel.app/" target="_blank" rel="noopener" style="color: #2563eb; text-decoration: none; font-weight: bold;">Website E-Monitoring</a> untuk melihat.
-                                    </p>
+                                    <p>Setelah melewati berbagai dinamika di lapangan, saya mencoba mengambil peluang baru untuk fokus pada sisi manajemen tekni ang akhirnya saat ini, saya bergabung dalam Tim Teknis Administrasi & Quantity di bawah naungan Komando Distrik Militer (KODIM) 0909/Kutai Timur.</p>
                                 </div>
                             </details>
                         </div>
                     </article>
-					
                 </div>
             </div>
         </section>
 
-        <!-- PORTOFOLIO PROYEK -->
+        <!-- PORTOFOLIO PROYEK (CAROUSEL WITH ARROWS) -->
         <section id="portfolio">
             <div class="container">
                 <h2>Dokumentasi Proyek</h2>
                 
+                <!-- CONTAINER SLIDER -->
                 <div class="portfolio-container reveal">
-                    
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2026 | Quantity & Administrasi</span>
-                            <h3 class="project-title">Kegiatan OPLAH & Cetak Sawah</h3>
-                            <p>
-                                Bertanggung jawab penuh dalam mengelola efisiensi biaya, volume pekerjaan, dan administrasi kontrak pada proyek OPLAH Fisik (Irigasi & Cetak Sawah). Lingkup kerja mencakup pengawasan progres secara komprehensif dari awal hingga akhir, penyusunan dokumen SPJ yang akuntabel, serta pembuatan As-Built Drawing sebagai dokumentasi teknis akhir. Sebagai bentuk inovasi, saya juga berhasil mengembangkan Website E-Monitoring untuk memantau progres pekerjaan secara real-time dan transparan.
-                            </p>
+                    <!-- TOMBOL KIRI -->
+                    <button class="nav-btn prev" id="prevBtn">❮</button>
+
+                    <!-- TRACK SLIDER (Wadah Kartu) -->
+                    <div class="portfolio-track" id="portfolioTrack">
+                        
+                        <!-- Project 1 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2026 | Quantity & Administrasi</span>
+                                <h3 class="project-title">Kegiatan OPLAH & Cetak Sawah</h3>
+                                <p>Bertanggung jawab penuh dalam mengelola efisiensi biaya, volume pekerjaan, dan administrasi kontrak pada proyek OPLAH Fisik (Irigasi & Cetak Sawah).</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd1.jpg">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd2.jpg">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd3.jpg">
+                            </div>
                         </div>
-                        <!-- Kanan: Foto Slider (Hanya 1 Foto) -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd1.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd2.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd3.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd5.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd6.jpg">
+
+                        <!-- Project 2 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2025 | Pelaksana Lapangan</span>
+                                <h3 class="project-title">Dokumentasi Kegiatan di CV. Aqasuma</h3>
+                                <p>Mengawal seluruh siklus pengerjaan fisik secara langsung di lokasi, mulai dari tahap mobilisasi hingga penyelesaian akhir.</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q1.jpg">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q2.jpg">
+                            </div>
                         </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2025 | Pelaksana Lapangan</span>
+                                <h3 class="project-title">Pembangunan Jalan Sumbu Kebangsaan Sisi Timur (IKN)</h3>
+                                <p>Sebagai mitra subkontraktor PT Wijaya Karya (Persero) Tbk. dalam proyek strategis nasional di Ibu Kota Nusantara.</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp1.jpg">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp2.jpg">
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2021 | Pelaksana Lapangan</span>
+                                <h3 class="project-title">Rehabilitasi Jalan Masuk & Keluar Pelabuhan Kariangau</h3>
+                                <p>Mengelola teknis rehabilitasi jalan di Pelabuhan Kariangau dengan tanggung jawab menyeluruh.</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f1.jpg">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f2.jpg">
+                            </div>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2020 | Magang Konsultan Pengawas</span>
+                                <h3 class="project-title">Pelebaran Bahu Jalan Mulawarman, Balikpapan</h3>
+                                <p>Bertanggung jawab sebagai asisten pengawas lapangan dalam memantau teknis pelaksanaan proyek pelebaran bahu jalan.</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg1.jpg">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg2.jpg">
+                            </div>
+                        </div>
+
+                        <!-- Project 6 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2020 | Praktik Kerja Lapangan</span>
+                                <h3 class="project-title">Pembangunan Gedung BPMP, Samarinda</h3>
+                                <p>Melaksanakan praktik kerja lapangan pada proyek pembangunan gedung bertingkat.</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/bpmp.jpg">
+                            </div>
+                        </div>
+
+                        <!-- Project 7 -->
+                        <div class="project-card">
+                            <div class="project-info">
+                                <span class="project-meta">2017 | Desain Poster Nasional</span>
+                                <h3 class="project-title">Juara 2 Desain Poster FLS2N</h3>
+                                <p>Meraih predikat Juara 2 dalam kompetisi Desain Poster pada ajang Festival dan Lomba Seni Siswa Nasional (FLS2N).</p>
+                            </div>
+                            <div class="project-img">
+                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/fls.jpg">
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2025 | Pelaksana Lapangan</span>
-                            <h3 class="project-title">Dokumentasi Kegiatan di CV. Aqasuma</h3>
-                            <p>
-                                Mengawal seluruh siklus pengerjaan fisik secara langsung di lokasi, mulai dari tahap mobilisasi, Pembelian bahan bangunan, hingga penyelesaian akhir (finishing). Selain memastikan kualitas konstruksi di lapangan, saya juga berperan dalam mengecek volume bangunan guna menjaga efisiensi anggaran.
-                            </p>
-                        </div>
-                        <!-- Kanan: Foto Slider -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q1.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q2.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q3.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q4.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q5.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q6.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q7.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q8.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q9.jpg">
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2021 | Pelaksana Lapangan</span>
-                            <h3 class="project-title">Pembangunan Jalan Sumbu Kebangsaan Sisi Timur (IKN)</h3>
-                            <p>
-                                sebagai mitra subkontraktor PT Wijaya Karya (Persero) Tbk. dalam proyek strategis nasional di Ibu Kota Nusantara. Bertanggung jawab penuh sebagai pelaksana lapangan untuk pekerjaan Cut and Fill lahan, mengelola pergerakan alat berat secara masif, serta memastikan elevasi dan pematangan lahan sesuai dengan spesifikasi teknis yang ketat. Seluruh progres pekerjaan dipantau secara akurat untuk mendukung percepatan infrastruktur dasar di kawasan inti IKN.
-                            </p>
-                        </div>
-                        <!-- Kanan: Foto Slider -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp1.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp2.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp3.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp4.jpg">
-                        </div>
-                    </div>
-
-                    <!-- Project 5 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2021 | Pelaksana Lapangan</span>
-                            <h3 class="project-title">Rehabilitasi Jalan Masuk & Keluar Pelabuhan Kariangau, Balikpapan</h3>
-                            <p>
-                                Mengelola teknis rehabilitasi jalan di Pelabuhan Kariangau dengan tanggung jawab menyeluruh, mulai dari pengorganisasian tenaga kerja hingga manajemen pengadaan material bangunan. Menjamin kelancaran pengerjaan fisik di kawasan strategis tanpa mengganggu alur lalu lintas pelabuhan yang padat.
-                            </p>
-                        </div>
-                        <!-- Kanan: Foto Slider -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f1.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f2.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f3.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f4.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f5.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f6.jpg">
-							<img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f7.jpg">
-                        </div>
-                    </div>
-
-                    <!-- Project 6 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2020 | Magang Konsultan Pengawas</span>
-                            <h3 class="project-title">Pelebaran Bahu Jalan Mulawarman, Balikpapan</h3>
-                            <p>
-                               Bertanggung jawab sebagai asisten pengawas lapangan dalam memantau teknis pelaksanaan proyek pelebaran bahu jalan. Peran ini berfokus pada memastikan seluruh aktivitas konstruksi berjalan sesuai dengan rencana kerja.
-                            </p>
-                        </div>
-                        <!-- Kanan: Foto Slider -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg1.jpg">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg2.jpg">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg3.jpg">
-                        </div>
-                    </div>
-
-                    <!-- Project 7 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2020 | Praktik Kerja Lapangan</span>
-                            <h3 class="project-title">Pembangunan Gedung BPMP, Samarinda</h3>
-                            <p>
-                                Melaksanakan praktik kerja lapangan pada proyek pembangunan gedung bertingkat, dengan fokus mempelajari manajemen pelaksanaan konstruksi, metode kerja struktur, serta pengawasan kualitas di lokasi proyek.
-                            </p>
-                        </div>
-                        <!-- Kanan: Foto Slider -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/bpmp.jpg">
-                        </div>
-                    </div>
-
-                    <!-- Project 8 -->
-                    <div class="project-card">
-                        <!-- Kiri: Info Tabel -->
-                        <div class="project-info">
-                            <span class="project-meta">2017 | Desain Poster Nasional</span>
-                            <h3 class="project-title">Juara 2 Desain Poster FLS2N</h3>
-                            <p>
-                                Meraih predikat Juara 2 dalam kompetisi Desain Poster pada ajang Festival dan Lomba Seni Siswa Nasional (FLS2N). Kompetisi ini menguji kemampuan dalam memvisualisasikan ide, teknik komposisi grafis, serta penyampaian pesan melalui media visual yang komunikatif dan estetis.
-                            </p>
-                        </div>
-                        <!-- Kanan: Foto Slider -->
-                        <div class="project-img">
-                            <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/fls.jpg" alt="Foto Proyek 3">
-                        </div>
-                    </div>
-
+                    <!-- TOMBOL KANAN -->
+                    <button class="nav-btn next" id="nextBtn">❯</button>
                 </div>
             </div>
         </section>
@@ -976,10 +895,10 @@
                         <h4>Kemampuan Teknis</h4>
                         <div class="tag-container">
                             <span class="tag">AutoCAD</span>
-							<span class="tag">Revit</span>
+                            <span class="tag">Revit</span>
                             <span class="tag">SAP 2000</span>
                             <span class="tag">Perhitungan RAB</span>
-							<span class="tag">Bluebeam Revu</span>
+                            <span class="tag">Bluebeam Revu</span>
                             <span class="tag">Microsoft Office</span>
                             <span class="tag">Adobe Software</span>
                         </div>
@@ -1014,14 +933,11 @@
                     <!-- Kolom 4: Kontak -->
                     <div class="skill-box">
                         <h4>Hubungi Saya</h4>
-                        
                         <div class="contact-box-item">
                             <span class="contact-icon">📧</span>
                             <a href="mailto:fajrmuh@gmail.com" style="text-decoration: none; color: inherit;">fajrmuh@gmail.com</a>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </section>
@@ -1029,35 +945,31 @@
 
     <!-- FOOTER DENGAN SVG -->
     <footer>
-        <img 
-            src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/b4226db3e67f5fd56446940501605ac79f002786/footer.svg" 
-            alt="Footer Illustration" 
-            class="footer-img">
+        <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/b4226db3e67f5fd56446940501605ac79f002786/footer.svg" alt="Footer Illustration" class="footer-img">
     </footer>
 
-    <!-- JAVASCRIPT UNTUK PARALLAX SVG -->
+    <!-- JAVASCRIPT UNTUK PARALLAX & CAROUSEL -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
+            // --- 1. PARALLAX LOGIC ---
             const parallaxBg = document.getElementById('parallaxBg');
             const parallaxFg = document.getElementById('parallaxFg');
-            
             const isMobile = window.innerWidth < 768;
 
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
-                
                 if (!isMobile) {
                     parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`;
                     parallaxFg.style.transform = `translateY(${scrollY * 0.5}px)`;
                 }
             });
 
+            // --- 2. REVEAL ANIMATION ---
             const reveals = document.querySelectorAll('.reveal');
             const revealOnScroll = () => {
                 const windowHeight = window.innerHeight;
                 const elementVisible = 100;
-                
                 reveals.forEach((reveal) => {
                     const elementTop = reveal.getBoundingClientRect().top;
                     if (elementTop < windowHeight - elementVisible) {
@@ -1065,14 +977,70 @@
                     }
                 });
             };
-            
             window.addEventListener('scroll', revealOnScroll);
             revealOnScroll();
+
+            // --- 3. CAROUSEL LOGIC (GESER PANAH) ---
+            const track = document.getElementById('portfolioTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            if (track && prevBtn && nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    // Geser sebesar lebar wadah
+                    track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    // Geser ke belakang sebesar lebar wadah
+                    track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+                });
+            }
+        });
+		        // --- DATA BAHASA (TERJEMAHAN MANUAL) ---
+        const translations = {
+            "txt-about-title": {
+                id: "about me.",
+                en: "about me."
+            },
+            "txt-about-desc": {
+                id: "Nama Saya Mauhammad Fajar, seorang lulusan Teknik Sipil secara latar belakang, namun seorang desainer grafis secara hobi. Fokus pada akurasi data dan detail visual untuk menampilkan hasil yang terbaik. Adaptif dengan teknologi terbaru untuk hasil yang efisien.",
+                en: "My name is Muhammad Fajar, a Civil Engineering graduate by background, but a graphic designer by passion. Focusing on data accuracy and visual details to deliver the best results. Adaptable to the latest technology for efficient outcomes."
+            },
+            "txt-career-title": {
+                id: "Perjalanan Karir",
+                en: "Career Journey"
+            },
+            "txt-portfolio-title": {
+                id: "Dokumentasi Proyek",
+                en: "Project Documentation"
+            },
+            "txt-skills-title": {
+                id: "Miscellaneous",
+                en: "Miscellaneous"
+            }
+            // TAMBAHKAN ID LAINNYA DISINI SESUAI YANG KAMU BUAT DI LANGKAH 3
+        };
+
+        let currentLang = 'id'; // Bahasa default
+
+        const langToggleBtn = document.getElementById('langToggle');
+        
+        langToggleBtn.addEventListener('click', () => {
+            // Ganti Bahasa
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            
+            // Ubah Teks Tombol
+            langToggleBtn.textContent = currentLang === 'id' ? 'EN' : 'ID';
+
+            // Loop semua elemen dan ganti teksnya
+            for (const [id, texts] of Object.entries(translations)) {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.innerText = texts[currentLang];
+                }
+            }
         });
     </script>
 </body>
 </html>
-
-
-
-
