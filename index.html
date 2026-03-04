@@ -2,11 +2,11 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Portofolio - Muhammad Fajar</title>
     <style>
         /* --- RESET & LAYOUT DASAR --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -27,20 +27,19 @@
         .content-wrapper {
             display: flex;
             flex-direction: row;
-            align-items: center; /* Sejajar tengah secara vertikal */
+            align-items: center; 
             gap: 50px;
             width: 100%;
-            justify-content:left;
+            justify-content: left;
         }
 
         /* KOLOM 1: FOTO (Kiri) */
         .image-box { flex: 0 0 auto; width: 400px; position: relative; }
         .image-box img { width: 100%; height: auto; display: block; }
         
-        /* Coretan ilustrasi di sekitar foto (Disesuaikan posisinya) */
         .hand-drawn {
             position: absolute;
-            font-family: 'Comic Sans MS', cursive; /* Meniru coretan tangan */
+            font-family: 'Comic Sans MS', cursive;
             font-size: 12px;
             color: #555;
             opacity: 0.7;
@@ -53,21 +52,12 @@
 
         /* KOLOM 2: BIO (Tengah) */
         .text-box { flex: 1; text-align: left; max-width: 450px; }
-        .text-box h1 { 
-            font-size: 28px; 
-            font-weight: 700; 
-            margin-bottom: 8px; 
-        }
+        .text-box h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
         .text-box .name-jp { font-size: 14px; color: #666; margin-bottom: 15px; }
-        .text-box .bio { 
-            font-size: 14px; 
-            text-align: left; 
-            line-height: 1.6;
-            color: #333;
-        }
+        .text-box .bio { font-size: 14px; text-align: left; line-height: 1.6; color: #333; }
 
         /* KOLOM 3: NAMA (Kanan) */
-        .intro-box { flex: 0 0 auto; width: 350px; text-align: left; } /* Rata kanan */
+        .intro-box { flex: 0 0 auto; width: 350px; text-align: left; }
         .intro-box h2 { 
             font-size: 48px; 
             font-weight: 700; 
@@ -76,11 +66,11 @@
             margin-bottom: 20px;
             letter-spacing: -0.5px;
         }
-        .stats { display: flex; gap: 30px; text-align: left; } /* Stats rata kanan */
+        .stats { display: flex; gap: 30px; text-align: left; }
         .stat-item { font-size: 12px; line-height: 1.2; color: #444; }
         .stat-item span { display: block; font-weight: 600; font-size: 14px; color: #000; }
 
-        /* --- SECTION CAREER MILESTONE DENGAN BOX WARNA 1c486c --- */
+        /* --- SECTION CAREER MILESTONE --- */
         .milestone-section { 
             width: 100%; 
             background-color: #1c486c; 
@@ -88,32 +78,26 @@
             color: #ffffff; 
         }
         
-        .milestone-inner {
-            max-width: 1900px;
-            margin: 0 auto;
-        }
+        .milestone-inner { max-width: 1900px; margin: 0 auto; }
+        .milestone-section h2 { font-size: 28px; font-weight: 700; margin-bottom: 30px; }
 
-        .milestone-section h2 { 
-            font-size: 28px; 
-            font-weight: 700; 
-            margin-bottom: 30px; 
-        }
-
-        /* --- GAME AREA --- */
+        /* --- GAME AREA (PERBAIKAN MOBILE) --- */
         #game-area {
             width: 100%;
             height: 130px; 
             position: relative;
             cursor: pointer;
-            border-bottom: 1px dashed rgba(255,255,255,0.3); 
+            border-bottom: 2px dashed rgba(255,255,255,0.4); 
             overflow: hidden;
             margin-bottom: 30px;
-            touch-action: none; /* Penting untuk mobile */
+            touch-action: none;
         }
 
         #dino {
             width: 45px; height: 45px;
-            position: absolute; bottom: 0; left: 60px;
+            position: absolute; 
+            bottom: 2px; /* Diberi jarak sedikit dari garis agar tidak tenggelam */
+            left: 60px;
             background: url('https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/Dinosaur%20Stan%20Sticker%20by%20Google.gif') no-repeat center;
             background-size: contain;
             filter: brightness(0) invert(1); 
@@ -121,8 +105,9 @@
         }
 
         .crab {
-            width: 40px; height: 40px;
-            position: absolute; bottom: 0;
+            width: 38px; height: 38px;
+            position: absolute; 
+            bottom: 2px; /* Disesuaikan dengan Dino */
             background: url('https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/crab.gif') no-repeat center;
             background-size: contain;
             filter: brightness(0) invert(1); 
@@ -148,22 +133,14 @@
             font-size: 16px;
         }
 
-        /* --- TIMELINE TAHUN --- */
+        /* --- TIMELINE --- */
         .timeline-container { display: flex; justify-content: space-between; }
         .milestone-item { width: 18%; }
-        
-        .year-label { 
-            font-size: 10px; 
-            font-weight: 500; 
-            margin-bottom: 10px; 
-            display: block;
-            color: rgba(255,255,255,0.7);
-        }
-
+        .year-label { font-size: 10px; font-weight: 500; margin-bottom: 10px; display: block; color: rgba(255,255,255,0.7); }
         .milestone-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
         .milestone-content p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
-        /* --- MOBILE --- */
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 1024px) {
             .container, .milestone-section { padding: 40px 20px; }
             .content-wrapper { flex-direction: column; text-align: left; gap: 30px; }
@@ -172,10 +149,10 @@
             .image-box { width: 335px; order: -1; }
             .hand-drawn { display: none; }
             
-            #game-area { height: 100px; display: block; }
-            #dino { width: 35px; height: 35px; left: 30px; }
+            #game-area { height: 100px; }
+            #dino { width: 38px; height: 38px; left: 30px; bottom: 2px; }
+            .crab { width: 32px; height: 32px; bottom: 2px; }
             
-            .crab { width: 30px; height: 30px; }
             .timeline-container { flex-direction: column; gap: 40px; }
             .milestone-item { width: 100%; }
         }
@@ -191,7 +168,6 @@
                 <div class="hand-drawn draw-born"></div>
                 <div class="hand-drawn draw-tags"><br><br></div>
                 <div class="hand-drawn draw-eng"></div>
-                
                 <img src="https://github.com/fajrmuh-jpg/portofolio/blob/main/fotoku.gif?raw=true" alt="Fajar">
             </div>
 
@@ -226,70 +202,36 @@
             </div>
 
             <div class="timeline-container">
-                <div class="milestone-item">
-                    <span class="year-label">2020</span>
-                    <div class="milestone-content">
-                        <h3>Internship</h3>
-                        <p>Elaborate on the activities happening at this point in time.</p>
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <span class="year-label">2021</span>
-                    <div class="milestone-content">
-                        <h3>Site Supervisor</h3>
-                        <p>Elaborate on the activities happening at this point in time.</p>
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <span class="year-label">2022</span>
-                    <div class="milestone-content">
-                        <h3>Site Supervisor</h3>
-                        <p>Elaborate on the activities happening at this point in time.</p>
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <span class="year-label">2023</span>
-                    <div class="milestone-content">
-                        <h3>Site Supervisor</h3>
-                        <p>Elaborate on the activities happening at this point in time.</p>
-                    </div>
-                </div>
-                <div class="milestone-item">
-                    <span class="year-label">2024</span>
-                    <div class="milestone-content">
-                        <h3>Project Controller</h3>
-                        <p>Elaborate on the activities happening at this point in time.</p>
-                    </div>
-                </div>
+                <div class="milestone-item"><span class="year-label">2020</span><div class="milestone-content"><h3>Internship</h3><p>Learning stage.</p></div></div>
+                <div class="milestone-item"><span class="year-label">2021</span><div class="milestone-content"><h3>Site Supervisor</h3><p>Field operations.</p></div></div>
+                <div class="milestone-item"><span class="year-label">2022</span><div class="milestone-content"><h3>Site Supervisor</h3><p>Field operations.</p></div></div>
+                <div class="milestone-item"><span class="year-label">2023</span><div class="milestone-content"><h3>Site Supervisor</h3><p>Field operations.</p></div></div>
+                <div class="milestone-item"><span class="year-label">2024</span><div class="milestone-content"><h3>Project Controller</h3><p>Management & Design.</p></div></div>
             </div>
         </div>
     </div>
 
-<script>
+    <script>
         const dino = document.getElementById("dino");
         const area = document.getElementById("game-area");
         const scoreEl = document.getElementById("score");
         const over = document.getElementById("game-over");
-        const retryBtn = document.getElementById("retry-btn"); // Sekarang sudah aman karena ID ditambahkan di atas
+        const retryBtn = document.getElementById("retry-btn");
 
         let score = 0;
         let isJumping = false;
         let isGameOver = false;
-        let gameActive = true;
 
         function jump() {
             if (isJumping || isGameOver) return;
             isJumping = true;
-            let pos = 0;
+            let pos = 2; // Mulai dari 2px agar tidak tenggelam
             let up = setInterval(() => {
                 if (pos >= 85) { 
                     clearInterval(up);
                     let down = setInterval(() => {
-                        if (pos <= 0) { 
-                            clearInterval(down); 
-                            isJumping = false; 
-                        }
-                        pos -= 5;
+                        if (pos <= 2) { clearInterval(down); isJumping = false; }
+                        pos -= 4;
                         dino.style.bottom = pos + "px";
                     }, 20);
                 }
@@ -308,20 +250,17 @@
             crab.style.left = crabPos + "px";
 
             let move = setInterval(() => {
-                if (isGameOver) { 
-                    clearInterval(move); 
-                    crab.remove();
-                    return; 
-                }
-                crabPos -= 7;
+                if (isGameOver) { clearInterval(move); return; }
+                
+                // --- MODUL EASY MODE: Kecepatan dikurangi ---
+                crabPos -= 5; 
                 crab.style.left = crabPos + "px";
 
-                let dinoBottom = parseInt(dino.style.bottom) || 0;
+                let dinoBottom = parseInt(dino.style.bottom) || 2;
                 
-                // Hitbox detection yang lebih akurat
-                if (crabPos > 40 && crabPos < 80 && dinoBottom < 30) {
+                // Hitbox detection
+                if (crabPos > 40 && crabPos < 75 && dinoBottom < 28) {
                     gameOver();
-                    clearInterval(move);
                 }
 
                 if (crabPos < -40) {
@@ -332,9 +271,9 @@
                 }
             }, 20);
 
-            // Munculkan kepiting berikutnya
+            // --- MODUL EASY MODE: Jeda antar musuh lebih lama ---
             if (!isGameOver) {
-                setTimeout(createCrab, Math.random() * 2000 + 1000);
+                setTimeout(createCrab, Math.random() * 2500 + 1500);
             }
         }
 
@@ -348,25 +287,14 @@
             score = 0;
             scoreEl.innerText = "0";
             over.style.display = "none";
-            // Bersihkan semua kepiting yang tersisa
             document.querySelectorAll('.crab').forEach(c => c.remove());
             createCrab();
         }
 
-        // --- HANDLER EVENT ---
+        retryBtn.addEventListener("click", (e) => { e.stopPropagation(); resetGame(); });
 
-        // Klik tombol retry
-        retryBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); 
-            resetGame();
-        });
+        area.addEventListener("mousedown", (e) => { if (e.target !== retryBtn) jump(); });
 
-        // Klik area game untuk loncat (Desktop)
-        area.addEventListener("mousedown", (e) => {
-            if (e.target !== retryBtn) jump();
-        });
-
-        // Sentuh area game untuk loncat (Mobile)
         area.addEventListener("touchstart", (e) => {
             if (e.target !== retryBtn) {
                 e.preventDefault(); 
@@ -374,18 +302,13 @@
             }
         }, { passive: false });
 
-        // Space bar untuk loncat atau restart
         document.addEventListener("keydown", (e) => {
             if(e.code === "Space") {
-                if (isGameOver) {
-                    resetGame();
-                } else {
-                    jump();
-                }
+                if (isGameOver) resetGame();
+                else jump();
             }
         });
 
-        // Mulai game pertama kali
         createCrab();
     </script>
 </body>
