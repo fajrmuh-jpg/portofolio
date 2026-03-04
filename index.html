@@ -99,6 +99,7 @@
             margin-bottom: 30px; 
         }
 
+        /* --- GAME AREA --- */
         #game-area {
             width: 100%;
             height: 130px; 
@@ -107,6 +108,7 @@
             border-bottom: 1px dashed rgba(255,255,255,0.3); 
             overflow: hidden;
             margin-bottom: 30px;
+            touch-action: none; /* Penting untuk mobile */
         }
 
         #dino {
@@ -130,28 +132,21 @@
 
         #game-over {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(28, 72, 108, 0.9);
-            display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 30;
+            background: rgba(28, 72, 108, 0.95);
+            display: none; flex-direction: column; align-items: center; justify-content: center; 
+            z-index: 100;
         }
-        #game-over button { padding: 8px 16px; background: #fff; color: #1c486c; border: none; cursor: pointer; font-weight: 700; margin-top: 10px; }
-
-		@media (max-width: 1024px) {
-			/* ... kode kamu yang lain ... */
-
-			#game-area { 
-				display: block; /* Munculkan kembali */
-				height: 100px;  /* Sedikit lebih pendek untuk layar HP */
-				margin-bottom: 20px;
-			}
-			
-			#dino {
-				width: 35px; height: 35px; /* Dino lebih kecil sedikit di mobile */
-			}
-			
-			.crab {
-				width: 30px; height: 30px; /* Kepiting lebih kecil sedikit */
-			}
-		}
+        #game-over button { 
+            padding: 12px 24px; 
+            background: #fff; 
+            color: #1c486c; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: 700; 
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
 
         /* --- TIMELINE TAHUN --- */
         .timeline-container { display: flex; justify-content: space-between; }
@@ -171,11 +166,16 @@
         /* --- MOBILE --- */
         @media (max-width: 1024px) {
             .container, .milestone-section { padding: 40px 20px; }
-            .content-wrapper { flex-direction: column; text-align: center; gap: 30px; }
-            .intro-box, .text-box { text-align: center; width: 100%; }
-            .stats { justify-content: center; }
-            .image-box { width: 300px; order: -1; }
+            .content-wrapper { flex-direction: column; text-align: left; gap: 30px; }
+            .intro-box, .text-box { text-align: left; width: 100%; }
+            .stats { justify-content: left; }
+            .image-box { width: 335px; order: -1; }
             .hand-drawn { display: none; }
+            
+            #game-area { height: 100px; display: block; }
+            #dino { width: 35px; height: 35px; left: 30px; }
+            
+            .crab { width: 30px; height: 30px; }
             .timeline-container { flex-direction: column; gap: 40px; }
             .milestone-item { width: 100%; }
         }
@@ -216,12 +216,12 @@
     <div class="milestone-section">
         <div class="milestone-inner">
             <h2>Career Milestone</h2>
-            <div id="game-area" onclick="jump()">
+            <div id="game-area">
                 <div class="score-board">SCORE: <span id="score">0</span></div>
                 <div id="dino"></div>
                 <div id="game-over">
                     <p style="font-weight: 600;">GAME OVER</p>
-                    <button onclick="resetGame()">Try Again</button>
+                    <button id="retry-btn">Try Again</button>
                 </div>
             </div>
 
@@ -265,17 +265,17 @@
         </div>
     </div>
 
-    <script>
-        // Logika game tetap sama, disesuaikan agar kontras di background biru
+<script>
         const dino = document.getElementById("dino");
         const area = document.getElementById("game-area");
         const scoreEl = document.getElementById("score");
         const over = document.getElementById("game-over");
+        const retryBtn = document.getElementById("retry-btn"); // Sekarang sudah aman karena ID ditambahkan di atas
 
         let score = 0;
         let isJumping = false;
         let isGameOver = false;
-        let spawnTimeout;
+        let gameActive = true;
 
         function jump() {
             if (isJumping || isGameOver) return;
@@ -285,7 +285,10 @@
                 if (pos >= 85) { 
                     clearInterval(up);
                     let down = setInterval(() => {
-                        if (pos <= 0) { clearInterval(down); isJumping = false; }
+                        if (pos <= 0) { 
+                            clearInterval(down); 
+                            isJumping = false; 
+                        }
                         pos -= 5;
                         dino.style.bottom = pos + "px";
                     }, 20);
@@ -305,14 +308,20 @@
             crab.style.left = crabPos + "px";
 
             let move = setInterval(() => {
-                if (isGameOver) { clearInterval(move); return; }
+                if (isGameOver) { 
+                    clearInterval(move); 
+                    crab.remove();
+                    return; 
+                }
                 crabPos -= 7;
                 crab.style.left = crabPos + "px";
 
                 let dinoBottom = parseInt(dino.style.bottom) || 0;
-                if (crabPos > 50 && crabPos < 90 && dinoBottom < 30) {
-                    isGameOver = true;
-                    over.style.display = "flex";
+                
+                // Hitbox detection yang lebih akurat
+                if (crabPos > 40 && crabPos < 80 && dinoBottom < 30) {
+                    gameOver();
+                    clearInterval(move);
                 }
 
                 if (crabPos < -40) {
@@ -323,7 +332,15 @@
                 }
             }, 20);
 
-            spawnTimeout = setTimeout(createCrab, Math.random() * 2000 + 1000);
+            // Munculkan kepiting berikutnya
+            if (!isGameOver) {
+                setTimeout(createCrab, Math.random() * 2000 + 1000);
+            }
+        }
+
+        function gameOver() {
+            isGameOver = true;
+            over.style.display = "flex";
         }
 
         function resetGame() {
@@ -331,18 +348,45 @@
             score = 0;
             scoreEl.innerText = "0";
             over.style.display = "none";
+            // Bersihkan semua kepiting yang tersisa
             document.querySelectorAll('.crab').forEach(c => c.remove());
             createCrab();
         }
 
-        document.addEventListener("keydown", (e) => { if(e.code === "Space") jump(); });
+        // --- HANDLER EVENT ---
+
+        // Klik tombol retry
+        retryBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); 
+            resetGame();
+        });
+
+        // Klik area game untuk loncat (Desktop)
+        area.addEventListener("mousedown", (e) => {
+            if (e.target !== retryBtn) jump();
+        });
+
+        // Sentuh area game untuk loncat (Mobile)
+        area.addEventListener("touchstart", (e) => {
+            if (e.target !== retryBtn) {
+                e.preventDefault(); 
+                jump();
+            }
+        }, { passive: false });
+
+        // Space bar untuk loncat atau restart
+        document.addEventListener("keydown", (e) => {
+            if(e.code === "Space") {
+                if (isGameOver) {
+                    resetGame();
+                } else {
+                    jump();
+                }
+            }
+        });
+
+        // Mulai game pertama kali
         createCrab();
-		
-		// Tambahkan ini di dalam tag <script> agar loncatan lebih responsif di HP
-		area.addEventListener("touchstart", (e) => {
-			e.preventDefault(); // Mencegah zoom/scroll saat ngetap game
-			jump();
-		});
     </script>
 </body>
 </html>
