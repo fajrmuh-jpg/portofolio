@@ -3,1044 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Fajar | Portfolio</title>
-    <!-- Font 1: Roboto (Geometris Modern) -->
-    <!-- Font 2: Permanent Marker (Tulis Tangan untuk About Me) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
-    
+    <title>Portofolio - Muhammad Fajar</title>
     <style>
-        .top-nav {
-            position: relative; /* <--- UBAH DARI FIXED KE RELATIVE (IKUT SCROLL) */
-            
-            margin: 10px auto 0 auto; /* <--- GUNAKAN MARGIN AUTO UNTUK TENGAH HORIZONTAL */
-            
-            z-index: 10; /* Z-index cukup kecil agar tidak menghalangi parallax di bawah jika tumpang tindih */
-            
-            width: auto;
-            display: flex;
-            justify-content: right; /* Agar tombol di tengah area nav */
-            
-            /* Hapus baris di bawah ini agar posisi tidak kacau */
-            /* left: 50%; */
-            /* top: 20px; */
-            /* transform: translateX(-50%); */
-            
-            background: transparent;
-            box-shadow: none;
-            border: none;
-            padding: 0;
-            backdrop-filter: none;
-        }
-
-        .lang-btn {
-            background: #ffffff; /* Putih agar kontras dengan gambar di belakang */
-            border: 0px solid var(--line-color); /* Border abu-abu tipis */
-            color: var(--text-main);
-            padding: 0.2rem 1rem;
-            border-radius: 0px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Bayangan agar tombol timbul */
-        }
-
-        .lang-btn:hover {
-            background: var(--bg-color);
-            color: #000000;
-            border-color: var(--accent-color);
-            transform: scale(1.05); /* Sedikit membesar saat hover */
-        }
-
-        /* Supaya konten utama tidak tertutup navbar */
-        body {
-            padding-top: 0px; 
-        }
-        /* --------------------------- */
-		
-        /* --- RESET & VARIABLES --- */
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #111111;
-            --text-muted: #666666;
-            --accent-color: #2563eb; /* Biru Profesional */
-            --line-color: #e5e7eb;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --card-hover-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-box: border-box;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* --- TYPOGRAPHY --- */
-        h2 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: #000000;
-            margin-bottom: 1rem;
-            text-align: Center;
-            padding-bottom: 0.2rem;
-            position: relative;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
-        }
-
-        p {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-        }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        /* --- HERO SECTION (MULTI-LAYER PARALLAX) --- */
-        .hero {
-            height: 100vh; 
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-        }
-
-        .parallax-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            will-change: transform;
-        }
-
-        .layer-bg { z-index: 1; opacity: 1; }
-        .layer-fg { z-index: 2; }
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            height: 100%; 
-            width: 100%;
-            pointer-events: none;
-        }
-
-        /* --- ABOUT ME SECTION --- */
-        #about {
-            padding: 8rem 0;
-            overflow: hidden;
-            position: relative;
-            z-index: 4;
-            background-color: var(--bg-color);
-        }
-
-        .about-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 5rem;
-        }
-
-        .about-text { flex: 1; text-align: justify; }
-
-        .about-title {
-            font-family: 'Permanent Marker', cursive;
-            font-size: clamp(2rem, 12vw, 6rem);
-            color: #ef4444;
-            text-transform: lowercase;
-            line-height: 0.9;
-            margin-bottom: 0;
-            transform: rotate(-2deg);
-        }
-
-        .about-desc {
-            font-family: 'Roboto', sans-serif;
-            max-width: 600px;
-            margin: 1.2rem auto 0 auto;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #000000;
-            text-align: justify;
-        }
-
-        .about-image-container {
-            flex: 1;
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .about-photo {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border: none;
-            box-shadow: none;
-            filter: none;
-            border-radius: 0;
-        }
-
-        /* --- TIMELINE BOX --- */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background-color: var(--line-color);
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 3rem;
-            position: relative;
-            margin-bottom: 3rem;
-            width: 50%;
-        }
-
-        .timeline-item:nth-child(even) {
-            align-self: flex-end;
-            justify-content: flex-start;
-            padding-right: 0;
-            padding-left: 3rem;
-            left: 50%;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #ffffff;
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            top: 20px;
-            right: -8px;
-            z-index: 10;
-        }
-
-        .timeline-item:nth-child(even)::after {
-            right: auto;
-            left: -8px;
-        }
-
-        .box-card {
-            background: #ffffff;
-            border: 1px solid var(--line-color);
-            border-radius: 8px;
-            padding: 2rem;
-            width: 100%;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .box-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-hover-shadow);
-            border-color: var(--accent-color);
-        }
-
-        .card-date {
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: #1e5782;
-            margin-bottom: 0.1rem;
-            display: block;
-            text-transform: uppercase;
-        }
-
-        .card-company {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            display: block;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 0.5rem;
-        }
+        /* --- RESET & LAYOUT DASAR --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        .box-card ul li {
-            text-align: Left;
-            font-size: 0.9rem; 
-        }
-
-        /* --- READ MORE --- */
-        .timeline-details { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--line-color); }
-        .read-more-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 0.9rem;
-            list-style: none; 
-            user-select: none;
-            transition: opacity 0.2s;
-        }
-        .read-more-btn:hover { opacity: 0.8; }
-        .read-more-btn::-webkit-details-marker { display: none; }
-        .read-more-icon { transition: transform 0.3s ease; font-size: 0.8rem; }
-        details[open] .read-more-icon { transform: rotate(180deg); }
-        .details-content {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: #f9fafb; 
-            border-radius: 6px;
-            font-size: 0.9rem;
-            color: #555;
-            line-height: 1.6;
-            text-align: Left;
-            border-left: 3px solid var(--accent-color); 
-        }
-
-        /* --- PORTFOLIO SECTION (CAROUSEL WITH ARROWS) --- */
-        .portfolio-container {
-            position: relative; /* Untuk posisi tombol panah */
-            width: 100%;
-            max-width: 1000px;
-            margin: 2rem auto;
-            overflow: visible; /* Agar tombol panah bisa keluar sedikit */
-        }
-
-        /* Area Geser (Track) */
-        .portfolio-track {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            width: 100%;
-            /* Sembunyikan scrollbar agar rapi */
-            scrollbar-width: none; /* Firefox */
-        }
-        .portfolio-track::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
-
-        .project-card {
-            display: flex;
-            background: #ffffff;
-            border: 1px solid var(--line-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            
-            /* Kunci Carousel: Lebar 100% dari wadah */
-            flex: 0 0 100%;
-            width: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--card-hover-shadow);
-        }
-
-        /* Tombol Panah (Arrow Buttons) */
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #ffffff;
-            color: var(--accent-color);
-            border: 1px solid var(--line-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn:hover {
-            background-color: var(--accent-color);
-            color: #ffffff;
-            box-shadow: 0 6px 10px rgba(37, 99, 235, 0.3);
-            border-color: var(--accent-color);
-        }
-
-        .nav-btn.prev { left: -20px; }
-        .nav-btn.next { right: -20px; }
-
-        /* Isi Kartu Proyek (Sama seperti desain awal) */
-        .project-info {
-            flex: 1;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-meta {
-            font-size: 0.85rem;
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .project-info p {
             color: #000000; 
-            font-size: 0.95rem;
-            margin-bottom: 0;
+            overflow-x: hidden; 
         }
 
-        .project-img {
-            flex: 0 0 40%;
-            background-color: #f0f0f0;
-            position: relative;
+        .container {
+            width: 100%;
+            max-width: 1900px;
+            display: flex;
+            justify-content: center;
+            padding: 60px 80px;
+            margin: 0 auto;
+        }
+
+        .content-wrapper {
             display: flex;
             flex-direction: row;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-        }
-        
-        .project-img::-webkit-scrollbar { height: 6px; }
-        .project-img::-webkit-scrollbar-track { background: #f1f1f1; }
-        .project-img::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
-        .project-img::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
-
-        .project-img img {
-            flex: 0 0 100%;
-            height: 100%;
-            object-fit: cover; 
-            display: block;
-            scroll-snap-align: start;
-        }
-
-        /* --- SKILLS & CERTS --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); 
-            gap: 1rem;
-            margin-top: 0rem;
-        }
-
-        .skill-box {
-            border: 1px solid var(--line-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            background: #ffffff;
-            box-shadow: var(--card-shadow);
-        }
-
-        .skill-box h4 { margin-bottom: 1rem; font-size: 1rem; }
-        .skill-box ul li { font-size: 0.9rem; }
-        
-        .tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: #f5f5f5;
-            border: 1px solid #e0e0e0;
-            padding: 4px 10px;
-            font-size: 0.7rem;
-            border-radius: 4px;
-            color: var(--text-main);
-        }
-        
-        .contact-box-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-        .contact-icon {
-            margin-right: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-box .title-edu {
-            font-weight: 700;
-            margin-bottom: 0.1rem;
-            font-size: 1rem;
-        }
-
-        .skill-box p {
-            margin-bottom: 0.1rem;
-            font-size: 0.95rem;     
-        }
-        
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 0;
-            margin-top: 4rem;
-            border-top: none; 
-            background: #ffffff;
-        }
-
-        .footer-img {
+            align-items: center; /* Sejajar tengah secara vertikal */
+            gap: 50px;
             width: 100%;
-            height: auto;
-            display: block;       
-            max-height: 200px;
-            object-fit: contain;
+            justify-content:left;
         }
 
-        /* Animation Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+        /* KOLOM 1: FOTO (Kiri) */
+        .image-box { flex: 0 0 auto; width: 400px; position: relative; }
+        .image-box img { width: 100%; height: auto; display: block; }
+        
+        /* Coretan ilustrasi di sekitar foto (Disesuaikan posisinya) */
+        .hand-drawn {
+            position: absolute;
+            font-family: 'Comic Sans MS', cursive; /* Meniru coretan tangan */
+            font-size: 12px;
+            color: #555;
+            opacity: 0.7;
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .draw-name { top: 50px; left: -100px; font-size: 20px; transform: rotate(-10deg); }
+        .draw-age { top: 120px; left: -80px; }
+        .draw-born { top: 60px; right: -80px; }
+        .draw-tags { bottom: 50px; left: -100px; line-height: 1.4; }
+        .draw-eng { bottom: 30px; left: -110px; font-size: 14px; }
+
+        /* KOLOM 2: BIO (Tengah) */
+        .text-box { flex: 1; text-align: left; max-width: 450px; }
+        .text-box h1 { 
+            font-size: 28px; 
+            font-weight: 700; 
+            margin-bottom: 8px; 
+        }
+        .text-box .name-jp { font-size: 14px; color: #666; margin-bottom: 15px; }
+        .text-box .bio { 
+            font-size: 14px; 
+            text-align: left; 
+            line-height: 1.6;
+            color: #333;
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .about-wrapper {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 1rem;
-            }
-            .about-text { text-align: center; }
-            .about-desc { text-align: justify; }
-            .about-photo { max-width: 280px; }
+        /* KOLOM 3: NAMA (Kanan) */
+        .intro-box { flex: 0 0 auto; width: 350px; text-align: left; } /* Rata kanan */
+        .intro-box h2 { 
+            font-size: 48px; 
+            font-weight: 700; 
+            line-height: 1.1; 
+            text-transform: uppercase; 
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .stats { display: flex; gap: 30px; text-align: left; } /* Stats rata kanan */
+        .stat-item { font-size: 12px; line-height: 1.2; color: #444; }
+        .stat-item span { display: block; font-weight: 600; font-size: 14px; color: #000; }
+
+        /* --- SECTION CAREER MILESTONE DENGAN BOX WARNA 1c486c --- */
+        .milestone-section { 
+            width: 100%; 
+            background-color: #1c486c; 
+            padding: 60px 80px; 
+            color: #ffffff; 
+        }
+        
+        .milestone-inner {
+            max-width: 1900px;
+            margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .timeline-item {
-                width: 100%;
-                padding-left: 50px;
-                padding-right: 0;
-                justify-content: flex-start;
-            }
-            .timeline-item:nth-child(even) {
-                left: 0;
-                padding-left: 50px;
-            }
-            .timeline-item::after, .timeline-item:nth-child(even)::after { left: 14px; }
-            
-            .about-desc { text-align: Justify; }
-            .box-card ul li { text-align: left; }
-            
-            .hero { height: 100vh; background-color: #ffffff; }
-            .parallax-layer { object-fit: contain; }
+        .milestone-section h2 { 
+            font-size: 28px; 
+            font-weight: 700; 
+            margin-bottom: 30px; 
+        }
 
-            /* --- RESPONSIVE PORTFOLIO --- */
-            .project-card {
-                flex-direction: column; 
-            }
-            .project-img {
-                flex: 0 0 200px;
-                width: 100%;
-            }
-            
-            /* Sesuaikan posisi tombol di HP */
-            .nav-btn { width: 30px; height: 30px; font-size: 1rem; }
-            .nav-btn.prev { left: 5px; }
-            .nav-btn.next { right: 5px; }
+        #game-area {
+            width: 100%;
+            height: 130px; 
+            position: relative;
+            cursor: pointer;
+            border-bottom: 1px dashed rgba(255,255,255,0.3); 
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        #dino {
+            width: 45px; height: 45px;
+            position: absolute; bottom: 0; left: 60px;
+            background: url('https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/Dinosaur%20Stan%20Sticker%20by%20Google.gif') no-repeat center;
+            background-size: contain;
+            filter: brightness(0) invert(1); 
+            z-index: 10;
+        }
+
+        .crab {
+            width: 40px; height: 40px;
+            position: absolute; bottom: 0;
+            background: url('https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/crab.gif') no-repeat center;
+            background-size: contain;
+            filter: brightness(0) invert(1); 
+        }
+
+        .score-board { position: absolute; top: 0; right: 0; font-weight: 600; font-size: 13px; }
+
+        #game-over {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(28, 72, 108, 0.9);
+            display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 30;
+        }
+        #game-over button { padding: 8px 16px; background: #fff; color: #1c486c; border: none; cursor: pointer; font-weight: 700; margin-top: 10px; }
+
+		@media (max-width: 1024px) {
+			/* ... kode kamu yang lain ... */
+
+			#game-area { 
+				display: block; /* Munculkan kembali */
+				height: 100px;  /* Sedikit lebih pendek untuk layar HP */
+				margin-bottom: 20px;
+			}
+			
+			#dino {
+				width: 35px; height: 35px; /* Dino lebih kecil sedikit di mobile */
+			}
+			
+			.crab {
+				width: 30px; height: 30px; /* Kepiting lebih kecil sedikit */
+			}
+		}
+
+        /* --- TIMELINE TAHUN --- */
+        .timeline-container { display: flex; justify-content: space-between; }
+        .milestone-item { width: 18%; }
+        
+        .year-label { 
+            font-size: 10px; 
+            font-weight: 500; 
+            margin-bottom: 10px; 
+            display: block;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .milestone-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+        .milestone-content p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 1024px) {
+            .container, .milestone-section { padding: 40px 20px; }
+            .content-wrapper { flex-direction: column; text-align: center; gap: 30px; }
+            .intro-box, .text-box { text-align: center; width: 100%; }
+            .stats { justify-content: center; }
+            .image-box { width: 300px; order: -1; }
+            .hand-drawn { display: none; }
+            .timeline-container { flex-direction: column; gap: 40px; }
+            .milestone-item { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BILAH ATAS / NAVBAR -->
-<nav class="top-nav">
-    <button class="lang-btn" id="langToggle">EN</button>
-</nav>
-
-    <!-- HERO SECTION (PARALLAX SVG) -->
-    <header class="hero">
-        <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/c67fec452c323ee3ed47a6057451074a55dea612/Artboard%201.svg" alt="Background Layer" class="parallax-layer layer-bg" id="parallaxBg">
-        <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/937aa640415542fda13d9a8e798200d283472aed/Artboard%202.svg" alt="Foreground Layer" class="parallax-layer layer-fg" id="parallaxFg">
-        <div class="hero-content"></div>
-    </header>
-
-    <main>
-        <!-- ABOUT ME SECTION -->
-        <section id="about" class="reveal">
-            <div class="about-wrapper">
-                <div class="about-text">
-                    <h1 class="about-title" id="txt-about-title">about me.</h1>
-                    <p class="about-desc" id="txt-about-desc">
-                        Nama Saya Mauhammad Fajar, seorang lulusan Teknik Sipil secara latar belakang, namun seorang desainer grafis secara hobi. Fokus pada akurasi data dan detail visual untuk menampilkan hasil yang terbaik. Adaptif dengan teknologi terbaru untuk hasil yang efisien.
-                    </p>
-                </div>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="image-box">
+                <div class="hand-drawn draw-name"><br></div>
+                <div class="hand-drawn draw-age"></div>
+                <div class="hand-drawn draw-born"></div>
+                <div class="hand-drawn draw-tags"><br><br></div>
+                <div class="hand-drawn draw-eng"></div>
                 
-                <div class="about-image-container">
-                    <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/fotoku.gif" alt="Muhammad Fajar - Civil Engineer" class="about-photo">
+                <img src="https://github.com/fajrmuh-jpg/portofolio/blob/main/fotoku.gif?raw=true" alt="Fajar">
+            </div>
+
+            <div class="text-box">
+                <h1>Project Control / Design</h1>
+                <p class="name-jp">当サイトへようこそ</p>
+                <p class="bio">
+                    "Hello! I'm an engineer who sees the world through both blueprints and pixels. My day job involves managing complex projects as a Project Controller, ensuring every detail aligns with the bigger picture. When I'm not analyzing project timelines, you'll find me exploring graphic visuals and web design. I'm on a mission to bridge the gap between technical engineering and modern digital aesthetics."
+                </p>
+            </div>
+
+            <div class="intro-box">
+                <h2>Muhammad<br>Fajar</h2>
+                <div class="stats">
+                    <div class="stat-item"><span>5+ Years of</span>Experience</div>
+                    <div class="stat-item"><span>10+ Complete</span>Project</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- PENGALAMAN KERJA (TIMELINE BOX) -->
-        <section id="experience">
-            <div class="container">
-                <h2>Perjalanan Karir</h2>
-                
-                <div class="timeline">
-                    
-                    <!-- Item 1 -->
-                    <article class="timeline-item reveal">
-                        <div class="box-card">
-                            <span class="card-date">Feb 2020 – Apr 2020</span>
-                            <h3>Praktik Kerja Lapangan</h3>
-                            <span class="card-company">PT. Teknikal Global Konsultan</span>
-                            <ul>
-                                <li>Membantu pengawasan konstruksi</li>
-                                <li>Membantu Dokumentasi kegiatan proyek</li>
-                            </ul>
-
-                            <!-- AREA READ MORE -->
-                            <details class="timeline-details">
-                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
-                                <div class="details-content">
-                                    <p>Perjalanan ini dimulai saat saya mengambil Praktik Kerja Lapangan (PKL) di semester 6. Melalui penempatan dari kampus, saya berkesempatan terjun langsung ke proyek <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">Pembangunan Gedung BPMP Provinsi Kalimantan Timur (Tahap 2)</span>. Di bawah bimbingan PT. Teknikal Global Konsultan, saya tidak hanya sekadar hadir, tetapi belajar menjadi mata yang jeli di lapangan. Tugas harian saya adalah <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">mengawasi jalannya pekerjaan konstruksi dan memastikan setiap progres terdokumentasi dengan akurat</span>.</p>
-                                </div>
-                            </details>
-                        </div>
-                    </article>
-
-                    <!-- Item 2 -->
-                    <article class="timeline-item reveal">
-                        <div class="box-card">
-                            <span class="card-date">Mei 2020 – Okt 2020</span>
-                            <h3>Pengawas Lapangan (Magang / Internship)</h3>
-                            <span class="card-company">PT. Teknikal Global Konsultan</span>
-                            <ul>
-                                <li>Membantu pengawasan konstruksi</li>
-                                <li>Membantu menyusun laporan Kegiatan</li>
-                            </ul>
-
-                            <details class="timeline-details">
-                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
-                                <div class="details-content">
-                                    <p>Setelah menyelesaikan masa PKL, saya mendapatkan tawaran berharga untuk kembali bergabung dengan PT Teknikal Global Konsultan sebagai anak magang. Meski saat itu dunia sedang menghadapi tantangan pandemi COVID-19, saya justru melihatnya sebagai kesempatan untuk menyelami lebih dalam bagaimana dunia konstruksi sebenarnya bekerja.</p>
-                                </div>
-                            </details>
-                        </div>
-                    </article>
-
-                    <!-- Item 3 -->
-                    <article class="timeline-item reveal">
-                        <div class="box-card">
-                            <span class="card-date">Jun 2021 – Des 2021</span>
-                            <h3>Pelaksana Lapangan</h3>
-                            <span class="card-company">CV. FM Jaya Mandiri ( Pekerja Lepas )</span>
-                            <ul>
-                                <li>Memimpin pelaksanaan konstruksi</li>
-                                <li>Manajemen Progres & Penjadwalan</li>
-                                <li>Pengendalian Mutu</li>
-                                <li>Menyusun Laporan</li>
-                            </ul>
-
-                            <details class="timeline-details">
-                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
-                                <div class="details-content">
-                                    <p>Setelah masa magang selesai, fokus utama saya adalah menuntaskan skripsi. Namun, kenyataan di lapangan berkata lain, kendala komunikasi dengan dosen pembimbing membuat proses akademik berjalan lebih lambat dari rencana.</p>
-                                </div>
-                            </details>
-                        </div>
-                    </article>
-
-                    <!-- Item 4 -->
-                    <article class="timeline-item reveal">
-                        <div class="box-card">
-                            <span class="card-date">Des 2021 – Jan 2022</span>
-                            <h3>Pelaksana Lapangan</h3>
-                            <span class="card-company">PT. Tunas Karya Perkasa ( Pekerja Lepas )</span>
-                            <ul>
-                                <li>Memimpin pelaksanaan konstruksi</li>
-                                <li>Manajemen Progres & Penjadwalan</li>
-                                <li>Pengendalian Mutu</li>
-                                <li>Menyusun Laporan</li>
-                            </ul>
-
-                            <details class="timeline-details">
-                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
-                                <div class="details-content">
-                                    <p>Pasca menyelesaikan studi, saya berkesempatan terlibat dalam <span style="background-color: #fef08a; padding: 0px 4px; border-radius: 4px;">pembangunan Ibu Kota Nusantara (IKN) pada proyek Pembangunan Jalan Sumbu Kebangsaan Sisi Timur</span>.</p>
-                                </div>
-                            </details>
-                        </div>
-                    </article>
-                    
-                    <!-- Item 5 -->
-                    <article class="timeline-item reveal">
-                        <div class="box-card">
-                            <span class="card-date">Jan 2022 – Apr 2025</span>
-                            <h3>Pelaksana Lapangan</h3>
-                            <span class="card-company">CV. Aqasuma</span>
-                            <ul>
-                                <li>Memimpin pelaksanaan konstruksi</li>
-                                <li>Manajemen Progres & Penjadwalan</li>
-                                <li>Pengendalian Mutu</li>
-                                <li>Menyusun Laporan</li>
-                            </ul>
-
-                            <details class="timeline-details">
-                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
-                                <div class="details-content">
-                                    <p>Langkah saya berlanjut ke Sangatta, Kutai Timur, sebuah kota yang dikenal sebagai pusat tambang batubara terbesar. Di sini saya bergabung dengan kontraktor lokal yang bernama CV. Aqasuma.</p>
-                                </div>
-                            </details>
-                        </div>
-                    </article>
-
-                    <!-- Item 6 -->
-                    <article class="timeline-item reveal">
-                        <div class="box-card">
-                            <span class="card-date">Mei 2025 – Sekarang</span>
-                            <h3>Tim Teknis Quantity & Administrasi</h3>
-                            <span class="card-company">Komando Distrik Militer 0909/ Kutai Timur</span>
-                            <ul>
-                                <li>Menyusun Rencana Anggaran Pelaksanaan (RAP)</li>
-                                <li>Mengelola dan merevisi Contract Change Order (CCO)</li>
-                                <li>Menyusun pelaporan progres</li>
-                                <li>Bertanggung jawab penuh atas penyusunan SPJ</li>
-                            </ul>
-
-                            <details class="timeline-details">
-                                <summary class="read-more-btn">Read More <span class="read-more-icon">▼</span></summary>
-                                <div class="details-content">
-                                    <p>Setelah melewati berbagai dinamika di lapangan, saya mencoba mengambil peluang baru untuk fokus pada sisi manajemen tekni ang akhirnya saat ini, saya bergabung dalam Tim Teknis Administrasi & Quantity di bawah naungan Komando Distrik Militer (KODIM) 0909/Kutai Timur.</p>
-                                </div>
-                            </details>
-                        </div>
-                    </article>
+    <div class="milestone-section">
+        <div class="milestone-inner">
+            <h2>Career Milestone</h2>
+            <div id="game-area" onclick="jump()">
+                <div class="score-board">SCORE: <span id="score">0</span></div>
+                <div id="dino"></div>
+                <div id="game-over">
+                    <p style="font-weight: 600;">GAME OVER</p>
+                    <button onclick="resetGame()">Try Again</button>
                 </div>
             </div>
-        </section>
 
-        <!-- PORTOFOLIO PROYEK (CAROUSEL WITH ARROWS) -->
-        <section id="portfolio">
-            <div class="container">
-                <h2>Dokumentasi Proyek</h2>
-                
-                <!-- CONTAINER SLIDER -->
-                <div class="portfolio-container reveal">
-                    <!-- TOMBOL KIRI -->
-                    <button class="nav-btn prev" id="prevBtn">❮</button>
-
-                    <!-- TRACK SLIDER (Wadah Kartu) -->
-                    <div class="portfolio-track" id="portfolioTrack">
-                        
-                        <!-- Project 1 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2026 | Quantity & Administrasi</span>
-                                <h3 class="project-title">Kegiatan OPLAH & Cetak Sawah</h3>
-                                <p>Bertanggung jawab penuh dalam mengelola efisiensi biaya, volume pekerjaan, dan administrasi kontrak pada proyek OPLAH Fisik (Irigasi & Cetak Sawah).</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd1.jpg">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd2.jpg">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/kd3.jpg">
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2025 | Pelaksana Lapangan</span>
-                                <h3 class="project-title">Dokumentasi Kegiatan di CV. Aqasuma</h3>
-                                <p>Mengawal seluruh siklus pengerjaan fisik secara langsung di lokasi, mulai dari tahap mobilisasi hingga penyelesaian akhir.</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q1.jpg">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/q2.jpg">
-                            </div>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2025 | Pelaksana Lapangan</span>
-                                <h3 class="project-title">Pembangunan Jalan Sumbu Kebangsaan Sisi Timur (IKN)</h3>
-                                <p>Sebagai mitra subkontraktor PT Wijaya Karya (Persero) Tbk. dalam proyek strategis nasional di Ibu Kota Nusantara.</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp1.jpg">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/tkp2.jpg">
-                            </div>
-                        </div>
-
-                        <!-- Project 4 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2021 | Pelaksana Lapangan</span>
-                                <h3 class="project-title">Rehabilitasi Jalan Masuk & Keluar Pelabuhan Kariangau</h3>
-                                <p>Mengelola teknis rehabilitasi jalan di Pelabuhan Kariangau dengan tanggung jawab menyeluruh.</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f1.jpg">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/f2.jpg">
-                            </div>
-                        </div>
-
-                        <!-- Project 5 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2020 | Magang Konsultan Pengawas</span>
-                                <h3 class="project-title">Pelebaran Bahu Jalan Mulawarman, Balikpapan</h3>
-                                <p>Bertanggung jawab sebagai asisten pengawas lapangan dalam memantau teknis pelaksanaan proyek pelebaran bahu jalan.</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg1.jpg">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/mg2.jpg">
-                            </div>
-                        </div>
-
-                        <!-- Project 6 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2020 | Praktik Kerja Lapangan</span>
-                                <h3 class="project-title">Pembangunan Gedung BPMP, Samarinda</h3>
-                                <p>Melaksanakan praktik kerja lapangan pada proyek pembangunan gedung bertingkat.</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/bpmp.jpg">
-                            </div>
-                        </div>
-
-                        <!-- Project 7 -->
-                        <div class="project-card">
-                            <div class="project-info">
-                                <span class="project-meta">2017 | Desain Poster Nasional</span>
-                                <h3 class="project-title">Juara 2 Desain Poster FLS2N</h3>
-                                <p>Meraih predikat Juara 2 dalam kompetisi Desain Poster pada ajang Festival dan Lomba Seni Siswa Nasional (FLS2N).</p>
-                            </div>
-                            <div class="project-img">
-                                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/fls.jpg">
-                            </div>
-                        </div>
-
+            <div class="timeline-container">
+                <div class="milestone-item">
+                    <span class="year-label">2020</span>
+                    <div class="milestone-content">
+                        <h3>Internship</h3>
+                        <p>Elaborate on the activities happening at this point in time.</p>
                     </div>
-
-                    <!-- TOMBOL KANAN -->
-                    <button class="nav-btn next" id="nextBtn">❯</button>
                 </div>
-            </div>
-        </section>
-
-        <!-- SKILLS & CERTIFICATIONS -->
-        <section id="skills">
-            <div class="container">
-                <h2>Miscellaneous</h2>
-                
-                <div class="skills-grid reveal">
-                    <!-- Kolom 1: Pendidikan -->
-                    <div class="skill-box">
-                        <h4>Pendidikan</h4>
-                        <p style="font-weight: 700; margin-bottom: 0.2rem;">S1 Teknik Sipil Universitas Mulawarman</p>
-                        <p style="font-size: 0.9rem;">Jul 2017 – Des 2022 | IPK 3.16/4.00 </p>
+                <div class="milestone-item">
+                    <span class="year-label">2021</span>
+                    <div class="milestone-content">
+                        <h3>Site Supervisor</h3>
+                        <p>Elaborate on the activities happening at this point in time.</p>
                     </div>
-                    
-                    <!-- Kolom 2: Keahlian Teknis -->
-                    <div class="skill-box">
-                        <h4>Kemampuan Teknis</h4>
-                        <div class="tag-container">
-                            <span class="tag">AutoCAD</span>
-                            <span class="tag">Revit</span>
-                            <span class="tag">SAP 2000</span>
-                            <span class="tag">Perhitungan RAB</span>
-                            <span class="tag">Bluebeam Revu</span>
-                            <span class="tag">Microsoft Office</span>
-                            <span class="tag">Adobe Software</span>
-                        </div>
-                        <h4 style="margin-top: 1.5rem;">Manajerial</h4>
-                        <div class="tag-container">
-                            <span class="tag">Manajemen Proyek</span>
-                            <span class="tag">Kepemimpinan</span>
-                            <span class="tag">Komunikasi</span>
-                            <span class="tag">Penyelesaian Masalah</span>
-                        </div>
+                </div>
+                <div class="milestone-item">
+                    <span class="year-label">2022</span>
+                    <div class="milestone-content">
+                        <h3>Site Supervisor</h3>
+                        <p>Elaborate on the activities happening at this point in time.</p>
                     </div>
-                    
-                    <!-- Kolom 3: Sertifikasi -->
-                    <div class="skill-box">
-                        <h4>Sertifikasi (SKK Konstruksi)</h4>
-                        <ul style="list-style: none; margin-top: 1rem;">
-                            <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
-                                Manajer Pelaksanaan Pekerjaan Gedung Jenjang 6 | Lembaga Sertifikasi Profesi Gatensi Konstruksi Indonesia
-                            </li>
-                            <li style="margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
-                                Pengawas Lapangan Drainase Kota Jenjang 6 | Lembaga Sertifikasi Profesi Ataki Konstruksi Indonesia
-                            </li>
-                            <li style="padding-left: 1.2rem; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--accent-color);">✓</span>
-                                Pelaksana Pemasangan Jembatan Rangka Baja Jenjang 6 | Lembaga Sertifikasi Profesi Tenaga Konstruksi Nasional
-                            </li>
-                        </ul>
+                </div>
+                <div class="milestone-item">
+                    <span class="year-label">2023</span>
+                    <div class="milestone-content">
+                        <h3>Site Supervisor</h3>
+                        <p>Elaborate on the activities happening at this point in time.</p>
                     </div>
-
-                    <!-- Kolom 4: Kontak -->
-                    <div class="skill-box">
-                        <h4>Hubungi Saya</h4>
-                        <div class="contact-box-item">
-                            <span class="contact-icon">📧</span>
-                            <a href="mailto:fajrmuh@gmail.com" style="text-decoration: none; color: inherit;">fajrmuh@gmail.com</a>
-                        </div>
+                </div>
+                <div class="milestone-item">
+                    <span class="year-label">2024</span>
+                    <div class="milestone-content">
+                        <h3>Project Controller</h3>
+                        <p>Elaborate on the activities happening at this point in time.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <!-- FOOTER DENGAN SVG -->
-    <footer>
-        <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/b4226db3e67f5fd56446940501605ac79f002786/footer.svg" alt="Footer Illustration" class="footer-img">
-    </footer>
-
-    <!-- JAVASCRIPT UNTUK PARALLAX & CAROUSEL -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- 1. PARALLAX LOGIC ---
-            const parallaxBg = document.getElementById('parallaxBg');
-            const parallaxFg = document.getElementById('parallaxFg');
-            const isMobile = window.innerWidth < 768;
+        // Logika game tetap sama, disesuaikan agar kontras di background biru
+        const dino = document.getElementById("dino");
+        const area = document.getElementById("game-area");
+        const scoreEl = document.getElementById("score");
+        const over = document.getElementById("game-over");
 
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if (!isMobile) {
-                    parallaxBg.style.transform = `translateY(${scrollY * 0.2}px)`;
-                    parallaxFg.style.transform = `translateY(${scrollY * 0.5}px)`;
+        let score = 0;
+        let isJumping = false;
+        let isGameOver = false;
+        let spawnTimeout;
+
+        function jump() {
+            if (isJumping || isGameOver) return;
+            isJumping = true;
+            let pos = 0;
+            let up = setInterval(() => {
+                if (pos >= 85) { 
+                    clearInterval(up);
+                    let down = setInterval(() => {
+                        if (pos <= 0) { clearInterval(down); isJumping = false; }
+                        pos -= 5;
+                        dino.style.bottom = pos + "px";
+                    }, 20);
                 }
-            });
+                pos += 5;
+                dino.style.bottom = pos + "px";
+            }, 18);
+        }
 
-            // --- 2. REVEAL ANIMATION ---
-            const reveals = document.querySelectorAll('.reveal');
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                const elementVisible = 100;
-                reveals.forEach((reveal) => {
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveal.classList.add('active');
-                    }
-                });
-            };
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll();
+        function createCrab() {
+            if (isGameOver) return;
+            const crab = document.createElement("div");
+            crab.classList.add("crab");
+            area.appendChild(crab);
 
-            // --- 3. CAROUSEL LOGIC (GESER PANAH) ---
-            const track = document.getElementById('portfolioTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
+            let crabPos = area.offsetWidth;
+            crab.style.left = crabPos + "px";
 
-            if (track && prevBtn && nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    // Geser sebesar lebar wadah
-                    track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
-                });
+            let move = setInterval(() => {
+                if (isGameOver) { clearInterval(move); return; }
+                crabPos -= 7;
+                crab.style.left = crabPos + "px";
 
-                prevBtn.addEventListener('click', () => {
-                    // Geser ke belakang sebesar lebar wadah
-                    track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
-                });
-            }
-        });
-		        // --- DATA BAHASA (TERJEMAHAN MANUAL) ---
-        const translations = {
-            "txt-about-title": {
-                id: "about me.",
-                en: "about me."
-            },
-            "txt-about-desc": {
-                id: "Nama Saya Mauhammad Fajar, seorang lulusan Teknik Sipil secara latar belakang, namun seorang desainer grafis secara hobi. Fokus pada akurasi data dan detail visual untuk menampilkan hasil yang terbaik. Adaptif dengan teknologi terbaru untuk hasil yang efisien.",
-                en: "My name is Muhammad Fajar, a Civil Engineering graduate by background, but a graphic designer by passion. Focusing on data accuracy and visual details to deliver the best results. Adaptable to the latest technology for efficient outcomes."
-            },
-            "txt-career-title": {
-                id: "Perjalanan Karir",
-                en: "Career Journey"
-            },
-            "txt-portfolio-title": {
-                id: "Dokumentasi Proyek",
-                en: "Project Documentation"
-            },
-            "txt-skills-title": {
-                id: "Miscellaneous",
-                en: "Miscellaneous"
-            }
-            // TAMBAHKAN ID LAINNYA DISINI SESUAI YANG KAMU BUAT DI LANGKAH 3
-        };
-
-        let currentLang = 'id'; // Bahasa default
-
-        const langToggleBtn = document.getElementById('langToggle');
-        
-        langToggleBtn.addEventListener('click', () => {
-            // Ganti Bahasa
-            currentLang = currentLang === 'id' ? 'en' : 'id';
-            
-            // Ubah Teks Tombol
-            langToggleBtn.textContent = currentLang === 'id' ? 'EN' : 'ID';
-
-            // Loop semua elemen dan ganti teksnya
-            for (const [id, texts] of Object.entries(translations)) {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.innerText = texts[currentLang];
+                let dinoBottom = parseInt(dino.style.bottom) || 0;
+                if (crabPos > 50 && crabPos < 90 && dinoBottom < 30) {
+                    isGameOver = true;
+                    over.style.display = "flex";
                 }
-            }
-        });
+
+                if (crabPos < -40) {
+                    clearInterval(move);
+                    crab.remove();
+                    score++;
+                    scoreEl.innerText = score;
+                }
+            }, 20);
+
+            spawnTimeout = setTimeout(createCrab, Math.random() * 2000 + 1000);
+        }
+
+        function resetGame() {
+            isGameOver = false;
+            score = 0;
+            scoreEl.innerText = "0";
+            over.style.display = "none";
+            document.querySelectorAll('.crab').forEach(c => c.remove());
+            createCrab();
+        }
+
+        document.addEventListener("keydown", (e) => { if(e.code === "Space") jump(); });
+        createCrab();
+		
+		// Tambahkan ini di dalam tag <script> agar loncatan lebih responsif di HP
+		area.addEventListener("touchstart", (e) => {
+			e.preventDefault(); // Mencegah zoom/scroll saat ngetap game
+			jump();
+		});
     </script>
 </body>
 </html>
