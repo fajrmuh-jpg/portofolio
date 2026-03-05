@@ -74,7 +74,7 @@
         .milestone-section { 
             width: 100%; 
             background-color: #1c486c; 
-            padding: 40px 80px; 
+            padding: 60px 80px; 
             color: #ffffff; 
         }
         
@@ -222,7 +222,7 @@
 		/* Mobile Mode (HP) */
         @media (max-width: 768px) {
             .container { 
-                padding: 20px 20px 0 20px !important; 
+                padding: 20px 20px 20px 20px !important; 
             }
             
             .content-wrapper { 
@@ -273,12 +273,11 @@
             .milestone-section { 
                 margin-top: 0px; /* Trik untuk memastikan tidak ada garis putih tersisa */
 				margin-bottom: 0px;
-                padding: 20px 20px 20 20px !important 
+                padding: 45px 20px 40px 20px !important 
             }
             
             #game-area { height: 150px; }
-            .timeline-container { flex-direction: column; gap: 10px; }
-            .milestone-item { width: 100%; }
+            .timeline-container { flex-direction: column; gap: 20px; }
 			.score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
 			.milestone-item { 
                 width: 100%; 
@@ -290,12 +289,174 @@
                 align-items: flex-start;
             }
 			.milestone-item:nth-child(even) {
-                text-align: right;
+                text-align: left;
                 align-items: flex-end;
             }
 			.year-label {
                 font-size: 11px;
                 margin-bottom: 4px;
+            }
+        }
+
+        /* --- STYLE BARU: AKTIVITAS TERBARU --- */
+        .activity-section { padding: 50px 0; background: #fff; }
+        .activity-container { max-width: 1350px; margin: 0 auto; padding: 0 20px; }
+        .activity-section h2 { color: #1c486c; font-size: 32px; font-weight: 700; margin-bottom: 30px; }
+
+		.scroll-wrapper {
+			display: flex; 
+			gap: 24px; 
+			overflow-x: auto;
+			scroll-snap-type: x mandatory; 
+			padding: 30px 0; /* Hapus padding kanan-kiri statis di sini */
+			scroll-behavior: smooth; 
+			scrollbar-width: none;
+			/* PENTING: Tambahkan ini agar kartu terakhir punya ruang untuk sejajar */
+			padding-right: 20px; 
+		}
+        .scroll-wrapper::-webkit-scrollbar { display: none; }
+		.act-card {
+			flex: 0 0 638px; 
+			height: 186px; 
+			display: flex;
+			background: #fff; 
+			border-radius: 8px; 
+			text-decoration: none; 
+			color: inherit;
+			scroll-snap-align: start; /* Pastikan magnet berhenti di awal kartu */
+        }
+        .act-img-box {
+            width: 250px; height: 100%; overflow: hidden;
+            border-radius: 8px 0 0 8px; flex-shrink: 0; cursor: pointer; position: relative;
+        }
+        .act-img-box::after {
+            content: "Lihat Galeri"; position: absolute; inset: 0; background: rgba(0,0,0,0.3);
+            color: white; display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: bold; opacity: 0; transition: 0.3s;
+        }
+        .act-img-box:hover::after { opacity: 1; }
+        .act-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+
+        .act-content {
+            flex: 1; padding: 20px 24px; border-radius: 0 8px 8px 0;
+            display: flex; flex-direction: column; border: 1px solid #f2f2f2; border-left: none;
+            transition: 1s; overflow: hidden;
+        }
+        .act-text-scroll { overflow-y: auto; flex-grow: 1; margin-bottom: 8px; padding-right: 8px; }
+        .act-text-scroll::-webkit-scrollbar { width: 3px; }
+        .act-text-scroll::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
+        .act-content h3 { font-size: 19px; color: #000; font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
+        .act-content p { font-size: 14px; color: #555; line-height: 1.5; }
+        .act-date { font-size: 13px; color: #8c98a4; margin-top: auto; }
+
+        .act-card:hover .act-img-box img { transform: scale(1.1); }
+        .act-card:hover .act-content { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+
+        .act-nav { display: flex; gap: 12px; margin-top: 25px; }
+        .act-btn {
+            width: 44px; height: 44px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            border: none; background: #f0f0f0; color: #888; transition: 0.3s;
+        }
+        .act-btn.active { background: #1c486c; color: white; }
+
+        /* LIGHTBOX GALLERY */
+        .lb-modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            display: none; z-index: 10000; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .lb-modal.active { display: flex; }
+        .lb-wrap { position: relative; width: 90%; max-width: 900px; text-align: center; }
+        .lb-img { max-width: 100%; max-height: 75vh; border-radius: 4px; border: 2px solid #fff; }
+        .lb-close { position: absolute; top: -50px; right: 0; color: white; font-size: 40px; cursor: pointer; }
+        .lb-side {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); color: white; border: none;
+            width: 55px; height: 55px; border-radius: 50%; cursor: pointer; font-size: 20px;
+        }
+        .lb-prev { left: -75px; } .lb-next { right: -75px; }
+        .lb-cap { color: white; margin-top: 15px; font-size: 16px; font-weight: 600; }
+        .lb-count { color: #888; font-size: 13px; margin-top: 5px; }
+
+			@media (max-width: 768px) {
+            .activity-section {
+                padding: 20px 0px 130px 0px !important; 
+            }
+
+            .activity-container { 
+                padding: 0 20px; 
+            }
+
+            .activity-section h2 {
+                font-size: 24px; /* Judul lebih kecil untuk layar HP */
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            .act-card { 
+                flex: 0 0 90vw; /* Kartu memakan 50% lebar layar agar kartu berikutnya terlihat sedikit (petunjuk bisa di-swipe) */
+                height: auto; 
+                flex-direction: column; /* Gambar di atas, teks di bawah */
+                min-height: 350px; /* Menjaga konsistensi tinggi kartu */
+            }
+
+            .act-img-box { 
+                width: 100%; 
+                height: 180px; /* Kamu bisa ubah ini (misal: 150px) untuk menyesuaikan proporsi gambar */
+                border-radius: 8px 8px 0 0; /* Lengkungan hanya di atas */
+                border: 1px solid #f2f2f2;
+                border-bottom: none;
+            }
+
+            .act-content { 
+                border: 1px solid #f2f2f2;
+                border-top: none; 
+                border-radius: 0 0 8px 8px; /* Lengkungan hanya di bawah */
+                padding: 15px; /* Padding lebih rapat di mobile */
+            }
+
+            .act-content h3 {
+                font-size: 17px; /* Judul sedikit lebih kecil */
+                margin-bottom: 5px;
+            }
+
+            .act-content p {
+                font-size: 13px; /* Teks deskripsi lebih kecil agar muat lebih banyak */
+                line-height: 1.4;
+            }
+
+            /* Navigasi panah di mobile */
+            .act-nav {
+                justify-content: center; /* Panah di tengah agar mudah dijangkau jempol */
+                margin-top: 15px;
+            }
+
+            .act-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            /* Penyesuaian Lightbox di Mobile */
+            .lb-wrap {
+                width: 95%; /* Lebih lebar di mobile */
+            }
+
+            .lb-img {
+                max-height: 60vh; /* Gambar tidak terlalu tinggi agar caption tidak tertutup */
+            }
+
+            .lb-side { 
+                width: 45px; 
+                height: 45px; 
+                background: rgba(0,0,0,0.5); /* Background lebih gelap agar terlihat di atas foto */
+            }
+
+            .lb-prev { left: 5px; } /* Panah lebih rapat ke pinggir */
+            .lb-next { right: 5px; }
+
+            .lb-close {
+                top: -60px;
+                right: 10px;
             }
         }
     </style>
@@ -333,7 +494,7 @@
 
     <div class="milestone-section">
         <div class="milestone-inner">
-            <h2>Career Milestone</h2>
+            <h2></h2>
             <div id="game-area">
                 <div class="score-board">SCORE: <span id="score">0</span></div>
                 <div id="dino"></div>
@@ -353,7 +514,30 @@
         </div>
     </div>
 
+    <div class="activity-section">
+        <div class="activity-container">
+            <h2>Aktivitas Terbaru Kami</h2>
+            <div class="scroll-wrapper" id="actSlider"></div>
+            <div class="act-nav">
+                <button id="actPrev" class="act-btn">←</button>
+                <button id="actNext" class="act-btn active">→</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="lb-modal" id="lbModal">
+        <div class="lb-wrap">
+            <span class="lb-close" onclick="closeLB()">&times;</span>
+            <button class="lb-side lb-prev" onclick="moveImg(-1)">❮</button>
+            <img src="" id="lbImg" class="lb-img">
+            <button class="lb-side lb-next" onclick="moveImg(1)">❯</button>
+            <div class="lb-cap" id="lbCap"></div>
+            <div class="lb-count" id="lbCount"></div>
+        </div>
+    </div>
+
     <script>
+        /* --- KODE GAME ASLI (TIDAK BERUBAH) --- */
         const dino = document.getElementById("dino");
         const area = document.getElementById("game-area");
         const scoreEl = document.getElementById("score");
@@ -387,20 +571,14 @@
             const crab = document.createElement("div");
             crab.classList.add("crab");
             area.appendChild(crab);
-
             let crabPos = area.offsetWidth;
             crab.style.left = crabPos + "px";
-
             let move = setInterval(() => {
                 if (isGameOver) { clearInterval(move); return; }
                 crabPos -= 4; 
                 crab.style.left = crabPos + "px";
-
                 let dinoBottom = parseInt(dino.style.bottom) || 2;
-                if (crabPos > 45 && crabPos < 70 && dinoBottom < 25) {
-                    gameOver();
-                }
-
+                if (crabPos > 45 && crabPos < 70 && dinoBottom < 25) { gameOver(); }
                 if (crabPos < -40) {
                     clearInterval(move);
                     crab.remove();
@@ -408,21 +586,12 @@
                     scoreEl.innerText = score;
                 }
             }, 20);
-
-            if (!isGameOver) {
-                setTimeout(createCrab, Math.random() * 3000 + 2000);
-            }
+            if (!isGameOver) { setTimeout(createCrab, Math.random() * 3000 + 2000); }
         }
 
-        function gameOver() {
-            isGameOver = true;
-            over.style.display = "flex";
-        }
-
+        function gameOver() { isGameOver = true; over.style.display = "flex"; }
         function resetGame() {
-            isGameOver = false;
-            score = 0;
-            scoreEl.innerText = "0";
+            isGameOver = false; score = 0; scoreEl.innerText = "0";
             over.style.display = "none";
             document.querySelectorAll('.crab').forEach(c => c.remove());
             createCrab();
@@ -431,20 +600,89 @@
         retryBtn.addEventListener("click", (e) => { e.stopPropagation(); resetGame(); });
         area.addEventListener("mousedown", (e) => { if (e.target !== retryBtn) jump(); });
         area.addEventListener("touchstart", (e) => {
-            if (e.target !== retryBtn) {
-                e.preventDefault(); 
-                jump();
-            }
+            if (e.target !== retryBtn) { e.preventDefault(); jump(); }
         }, { passive: false });
-
         document.addEventListener("keydown", (e) => {
-            if(e.code === "Space") {
-                if (isGameOver) resetGame();
-                else jump();
-            }
+            if(e.code === "Space") { if (isGameOver) resetGame(); else jump(); }
+        });
+        createCrab();
+
+        /* --- KODE AKTIVITAS BARU --- */
+        const actData = [
+            { id: 0, title: "Postingan 1", desc: "Kegiatan rutin operasional logistik di pelabuhan.", date: "Mar 05, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/f1.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/f2.jpg?raw=true"] },
+            { id: 1, title: "Postingan 2", desc: "Tim Meratus berkomitmen menjaga standar kualitas tinggi.", date: "Mar 02, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/q2.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/q1.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/q6.jpg?raw=true"] },
+            { id: 2, title: "Postingan 3", desc: "Peninjauan langsung ke lapangan memastikan implementasi teknologi.", date: "Feb 28, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/tkp1.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/tkp2.jpg?raw=true"] },
+            { id: 3, title: "Postingan 4", desc: "Layanan logistik terintegrasi.", date: "Feb 25, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/f1.jpg?raw=true"] },
+            { id: 4, title: "Postingan 5", desc: "Ekspansi jaringan nasional.", date: "Feb 20, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/q2.jpg?raw=true"] },
+            { id: 5, title: "Postingan 6", desc: "Pelatihan tim teknis maritim.", date: "Feb 15, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/tkp1.jpg?raw=true"] }
+        ];
+
+        const actSlider = document.getElementById('actSlider');
+        actData.forEach(item => {
+            actSlider.innerHTML += `
+                <div class="act-card">
+                    <div class="act-img-box" onclick="openLB(${item.id})">
+                        <img src="${item.photos[0]}" alt="cover">
+                    </div>
+                    <div class="act-content">
+                        <div class="act-text-scroll">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                        <span class="act-date">${item.date}</span>
+                    </div>
+                </div>`;
         });
 
-        createCrab();
+        let curPhotos = []; let pIdx = 0; let pTitle = "";
+        function openLB(id) {
+            const p = actData.find(a => a.id === id);
+            curPhotos = p.photos; pTitle = p.title; pIdx = 0;
+            updateLB(); document.getElementById('lbModal').classList.add('active');
+        }
+        function closeLB() { document.getElementById('lbModal').classList.remove('active'); }
+        function moveImg(s) { pIdx = (pIdx + s + curPhotos.length) % curPhotos.length; updateLB(); }
+        function updateLB() {
+            document.getElementById('lbImg').src = curPhotos[pIdx];
+            document.getElementById('lbCap').innerText = pTitle;
+            document.getElementById('lbCount').innerText = `${pIdx + 1} / ${curPhotos.length}`;
+            const b = document.querySelectorAll('.lb-side');
+            b.forEach(x => x.style.display = curPhotos.length > 1 ? 'block' : 'none');
+        }
+
+		// Ganti bagian actNext.onclick dan actPrev.onclick Anda dengan ini:
+
+		const getScrollStep = () => {
+			const firstCard = actSlider.querySelector('.act-card');
+			if (firstCard) {
+				// Menghitung lebar kartu + gap (24px)
+				return firstCard.offsetWidth + 24;
+			}
+			return 600; // fallback
+		};
+
+		document.getElementById('actNext').onclick = () => {
+			actSlider.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+		};
+
+		document.getElementById('actPrev').onclick = () => {
+			actSlider.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+		};
+
+		// Logika tombol active/inactive (sudah benar, tapi kita rapikan sedikit)
+		actSlider.addEventListener('scroll', () => {
+			const l = actSlider.scrollLeft; 
+			const m = actSlider.scrollWidth - actSlider.clientWidth;
+			// Gunakan toleransi 5px untuk mengatasi pembulatan angka di layar browser
+			document.getElementById('actPrev').classList.toggle('active', l > 5);
+			document.getElementById('actNext').classList.toggle('active', l < m - 5);
+		});
+
+        actSlider.addEventListener('scroll', () => {
+            const l = actSlider.scrollLeft; const m = actSlider.scrollWidth - actSlider.clientWidth;
+            document.getElementById('actPrev').className = `act-btn ${l <= 10 ? '' : 'active'}`;
+            document.getElementById('actNext').className = `act-btn ${l >= m - 10 ? '' : 'active'}`;
+        });
     </script>
 </body>
 </html>
