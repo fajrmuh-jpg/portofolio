@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Portofolio Muhammad Fajar</title>
+    <title>Portofolio - Muhammad Fajar</title>
     <style>
         /* --- RESET & LAYOUT DASAR --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
         
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -20,8 +20,7 @@
 			max-width: 1900px;
 			display: flex;
 			justify-content: center;
-			/* Urutan: Atas (60px), Kiri-Kanan (80px), Bawah (0) */
-			padding: 80px 80px 0 80px; 
+			padding: 145px 80px 0 80px; 
 			margin: 0 auto;
 		}
         .content-wrapper {
@@ -96,8 +95,8 @@
         #dino {
             width: 45px; height: 45px;
             position: absolute; 
-            bottom: 2px; 
-            left: 60px;
+            bottom: 0px; 
+            left: 10px;
             background: url('https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/Dinosaur%20Stan%20Sticker%20by%20Google.gif') no-repeat center;
             background-size: contain;
             filter: brightness(0) invert(1); 
@@ -105,7 +104,7 @@
         }
 
         .crab {
-            width: 35px; height: 35px;
+            width: 45px; height: 45px;
             position: absolute; 
             bottom: 2px; 
             background: url('https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/refs/heads/main/crab.gif') no-repeat center;
@@ -113,7 +112,7 @@
             filter: brightness(0) invert(1); 
         }
 
-        .score-board { position: absolute; top: 0; right: 0; font-weight: 600; font-size: 13px; }
+        .score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
 
         #game-over {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -140,208 +139,87 @@
         .milestone-content p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
 		/* --- RESPONSIVE ADJUSTMENTS --- */
-        
-        /* Tablet Mode (iPad, dll) */
         @media (max-width: 1100px) {
-            .container { 
-                padding: 20px 20px 0 20px !important; 
-            }
-            
-            .content-wrapper { 
-                flex-direction: column; 
-                align-items: left; 
-                gap: 10px; /* Jarak antar elemen dipersempit */
-                justify-content: left;
-            }
-
-            .image-box { 
-                width: 100%; 
-                max-width: 250px; 
-                min-width: unset; 
-                flex: none; /* Menghilangkan efek flex yang memaksa tinggi */
-                margin-bottom: 0;
-                display: none; 
-            }
-
-            .text-box { 
-                max-width: 100%; 
-                width: 100%; 
-                text-align: left;
-                flex: none;
-                margin-bottom: 0;
-            }
-
-            .intro-box { 
-                max-width: 100%; 
-                width: 100%; 
-                text-align: left;
-                flex: none; /* PENTING: Agar tinggi kotak hanya setinggi teks */
-                margin-top: 0;
-            }
-            
-            .intro-box h2 { 
-                font-size: 32px;
-                text-align: left;				
-                margin-bottom: 5px; /* Perkecil jarak bawah teks nama */
-                line-height: 1;
-            }
-
-            .stats { 
-                justify-content: left; 
-                gap: 20px;
-                margin-bottom: 20px; /* Jarak terakhir sebelum section biru */
-            }
-
-            .milestone-section { 
-                margin-top: -1px; /* Trik untuk memastikan tidak ada garis putih tersisa */
-                padding: 30px 20px; 
-            }
-            
+            .container { padding: 20px 20px 0 20px !important; }
+            .content-wrapper { flex-direction: column; align-items: left; gap: 10px; justify-content: left; }
+            .image-box { width: 100%; max-width: 250px; min-width: unset; flex: none; margin-bottom: 0; display: none; }
+            .text-box { max-width: 100%; width: 100%; text-align: left; flex: none; margin-bottom: 0; }
+            .intro-box { max-width: 100%; width: 100%; text-align: left; flex: none; margin-top: 0; }
+            .intro-box h2 { font-size: 32px; text-align: left; margin-bottom: 5px; line-height: 1; }
+            .stats { justify-content: left; gap: 20px; margin-bottom: 20px; }
+            .milestone-section { margin-top: -1px; padding: 30px 20px; }
             #game-area { height: 100px; }
             .timeline-container { flex-direction: column; gap: 30px; }
             .milestone-item { width: 100%; }
 			.score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
-			.milestone-item { 
-                width: 100%; 
-                display: flex;
-                flex-direction: column;
-            }
-			.milestone-item:nth-child(odd) {
-                text-align: left;
-                align-items: flex-start;
-            }
-			.milestone-item:nth-child(even) {
-                text-align: right;
-                align-items: flex-end;
-            }
-			.year-label {
-                font-size: 11px;
-                margin-bottom: 4px;
-            }
+			.milestone-item { width: 100%; display: flex; flex-direction: column; }
+			.milestone-item:nth-child(odd) { text-align: left; align-items: flex-start; }
+			.milestone-item:nth-child(even) { text-align: right; align-items: flex-end; }
+			.year-label { font-size: 11px; margin-bottom: 4px; }
         }
-		/* Mobile Mode (HP) */
+
         @media (max-width: 768px) {
-            .container { 
-                padding: 20px 20px 20px 20px !important; 
-            }
-            
-            .content-wrapper { 
-                flex-direction: column; 
-                align-items: left; 
-                gap: 10px; /* Jarak antar elemen dipersempit */
-                justify-content: left;
-            }
-
-            .image-box { 
-                width: 100%; 
-                max-width: 250px; 
-                min-width: unset; 
-                flex: none; /* Menghilangkan efek flex yang memaksa tinggi */
-                margin-bottom: 0;
-                display: none; 
-            }
-
-            .text-box { 
-                max-width: 100%; 
-                width: 100%; 
-                text-align: left;
-                flex: none;
-                margin-bottom: 0;
-            }
-
-            .intro-box { 
-                max-width: 100%; 
-                width: 100%; 
-                text-align: left;
-                flex: none; /* PENTING: Agar tinggi kotak hanya setinggi teks */
-                margin-top: 0;
-            }
-            
-            .intro-box h2 { 
-                font-size: 32px;
-                text-align: justify;				
-                margin-bottom: 5px; /* Perkecil jarak bawah teks nama */
-                line-height: 1;
-            }
-
-            .stats { 
-                justify-content: left; 
-                gap: 20px;
-                margin-bottom: 20px; /* Jarak terakhir sebelum section biru */
-            }
-
-            .milestone-section { 
-                margin-top: 0px; /* Trik untuk memastikan tidak ada garis putih tersisa */
-				margin-bottom: 0px;
-                padding: 45px 20px 40px 20px !important 
-            }
-            
+            .container { padding: 20px 20px 20px 20px !important; }
+            .content-wrapper { flex-direction: column; align-items: left; gap: 10px; justify-content: left; }
+            .image-box { display: none; }
+            .text-box { max-width: 100%; width: 100%; text-align: left; flex: none; margin-bottom: 0; }
+            .intro-box { max-width: 100%; width: 100%; text-align: left; flex: none; margin-top: 0; }
+            .intro-box h2 { font-size: 32px; text-align: justify; margin-bottom: 5px; line-height: 1; }
+            .stats { justify-content: left; gap: 20px; margin-bottom: 20px; }
+            .milestone-section { margin-top: 0px; margin-bottom: 0px; padding: 20px 20px 40px 20px !important }
             #game-area { height: 150px; }
             .timeline-container { flex-direction: column; gap: 20px; }
 			.score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
-			.milestone-item { 
-                width: 100%; 
-                display: flex;
-                flex-direction: column;
-            }
-			.milestone-item:nth-child(odd) {
-                text-align: left;
-                align-items: flex-start;
-            }
-			.milestone-item:nth-child(even) {
-                text-align: left;
-                align-items: flex-end;
-            }
-			.year-label {
-                font-size: 11px;
-                margin-bottom: 4px;
-            }
+			.milestone-item { width: 100%; display: flex; flex-direction: column; }
+			.milestone-item:nth-child(odd) { text-align: left; align-items: flex-start; }
+			.milestone-item:nth-child(even) { text-align: left; align-items: flex-end; }
+			.year-label { font-size: 11px; margin-bottom: 4px; }
         }
 
         /* --- STYLE BARU: AKTIVITAS TERBARU --- */
         .activity-section { padding: 50px 0; background: #fff; }
         .activity-container { max-width: 1350px; margin: 0 auto; padding: 0 20px; }
-        .activity-section h2 { color: #1c486c; font-size: 32px; font-weight: 700; margin-bottom: 30px; }
+        .activity-section h2 { color: #1c486c; font-size: 40px; font-weight: 700; margin-bottom: 30px; }
 
 		.scroll-wrapper {
-			display: flex; 
-			gap: 24px; 
-			overflow-x: auto;
-			scroll-snap-type: x mandatory; 
-			padding: 30px 0; /* Hapus padding kanan-kiri statis di sini */
-			scroll-behavior: smooth; 
-			scrollbar-width: none;
-			/* PENTING: Tambahkan ini agar kartu terakhir punya ruang untuk sejajar */
-			padding-right: 20px; 
+			display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
+			padding: 30px 0; scroll-behavior: smooth; scrollbar-width: none; padding-right: 20px; 
 		}
         .scroll-wrapper::-webkit-scrollbar { display: none; }
 		.act-card {
-			flex: 0 0 638px; 
-			height: 186px; 
-			display: flex;
-			background: #fff; 
-			border-radius: 8px; 
-			text-decoration: none; 
-			color: inherit;
-			scroll-snap-align: start; /* Pastikan magnet berhenti di awal kartu */
+		flex: 0 0 638px; 
+		height: 186px; 
+		display: flex; 
+		background: #fff; 
+		border-radius: 8px; 
+		text-decoration: none; 
+		color: inherit; 
+		scroll-snap-align: start;
         }
+
+		/* Tambahan: Efek shadow juga pada navigasi tombol biar senada */
+		.act-btn:hover {
+			box-shadow: 0 4px 10px rgba(28, 72, 108, 0.2);
+			transform: scale(1.05);
+		}
         .act-img-box {
-            width: 250px; height: 100%; overflow: hidden;
-            border-radius: 8px 0 0 8px; flex-shrink: 0; cursor: pointer; position: relative;
+            width: 250px; height: 100%; overflow: hidden; border-radius: 8px 0 0 8px; flex-shrink: 0; cursor: pointer; position: relative;
         }
         .act-img-box::after {
             content: "Lihat Galeri"; position: absolute; inset: 0; background: rgba(0,0,0,0.3);
-            color: white; display: flex; align-items: center; justify-content: center;
-            font-size: 14px; font-weight: bold; opacity: 0; transition: 0.3s;
+            color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; opacity: 0; transition: 0.3s;
         }
         .act-img-box:hover::after { opacity: 1; }
         .act-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
 
         .act-content {
-            flex: 1; padding: 20px 24px; border-radius: 0 8px 8px 0;
-            display: flex; flex-direction: column; border: 1px solid #f2f2f2; border-left: none;
-            transition: 1s; overflow: hidden;
+            flex: 1; padding: 20px 24px; border-radius: 0 8px 8px 0; display: flex; flex-direction: column; border: 1px solid #f2f2f2; border-left: none; transition: 0.5s; overflow: hidden;
         }
+		.act-content:hover {
+			transform: translateY(0px); /* Kartu sedikit naik ke atas */
+			box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); /* Munculkan efek shadow halus */
+			border-color: transparent; /* Hilangkan border abu-abu agar fokus ke shadow */
+		}
         .act-text-scroll { overflow-y: auto; flex-grow: 1; margin-bottom: 8px; padding-right: 8px; }
         .act-text-scroll::-webkit-scrollbar { width: 3px; }
         .act-text-scroll::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
@@ -349,128 +227,144 @@
         .act-content p { font-size: 14px; color: #555; line-height: 1.5; }
         .act-date { font-size: 13px; color: #8c98a4; margin-top: auto; }
 
-        .act-card:hover .act-img-box img { transform: scale(1.1); }
-        .act-card:hover .act-content { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
-
         .act-nav { display: flex; gap: 12px; margin-top: 25px; }
         .act-btn {
-            width: 44px; height: 44px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; cursor: pointer;
-            border: none; background: #f0f0f0; color: #888; transition: 0.3s;
+            width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; background: #f0f0f0; color: #888; transition: 0.3s;
         }
         .act-btn.active { background: #1c486c; color: white; }
 
         /* LIGHTBOX GALLERY */
         .lb-modal {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-            display: none; z-index: 10000; justify-content: center; align-items: center; flex-direction: column;
+            position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; z-index: 10000; justify-content: center; align-items: center; flex-direction: column;
         }
         .lb-modal.active { display: flex; }
         .lb-wrap { position: relative; width: 90%; max-width: 900px; text-align: center; }
-        .lb-img { max-width: 100%; max-height: 75vh; border-radius: 4px; border: 2px solid #fff; }
+        .lb-img { max-width: 100%; max-height: 85vh; border-radius: 0px; border: 0px solid #fff; }
         .lb-close { position: absolute; top: -50px; right: 0; color: white; font-size: 40px; cursor: pointer; }
         .lb-side {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.1); color: white; border: none;
-            width: 55px; height: 55px; border-radius: 50%; cursor: pointer; font-size: 20px;
+            position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; font-size: 20px;
         }
         .lb-prev { left: -75px; } .lb-next { right: -75px; }
         .lb-cap { color: white; margin-top: 15px; font-size: 16px; font-weight: 600; }
         .lb-count { color: #888; font-size: 13px; margin-top: 5px; }
+		
+		/* Tablet (Layar di bawah 1024px) */
+		@media (max-width: 1024px) {
+			.act-card {
+				flex: 0 0 80%; /* Kartu mengambil 80% lebar layar agar kartu berikutnya sedikit terlihat (clue untuk swipe) */
+				height: auto; /* Biarkan tinggi menyesuaikan konten jika teks panjang */
+				min-height: 186px;
+			}
+		}
 
-			@media (max-width: 768px) {
-            .activity-section {
-                padding: 20px 0px 130px 0px !important; 
-            }
+		/* Mobile (Layar di bawah 768px) */
+		@media (max-width: 768px) {
+			.activity-section h2 {
+				font-size: 50px; /* Judul lebih kecil di mobile */
+				font-weight: 700;
+				margin-bottom: 15px;
+			}
 
-            .activity-container { 
-                padding: 0 20px; 
-            }
+			.scroll-wrapper {
+				gap: 15px; /* Jarak antar kartu lebih rapat */
+				padding: 10px 0 20px 0;
+			}
 
-            .activity-section h2 {
-                font-size: 24px; /* Judul lebih kecil untuk layar HP */
-                margin-bottom: 20px;
-                text-align: left;
-            }
+			.act-card {
+				flex: 0 0 90%; /* Kartu hampir memenuhi lebar layar */
+				flex-direction: column; /* Gambar di atas, teks di bawah (opsional, agar lebih lega) */
+				height: auto;
+				border: 1px solid #f2f2f2;
+			}
 
-            .act-card { 
-                flex: 0 0 90vw; /* Kartu memakan 50% lebar layar agar kartu berikutnya terlihat sedikit (petunjuk bisa di-swipe) */
-                height: auto; 
-                flex-direction: column; /* Gambar di atas, teks di bawah */
-                min-height: 350px; /* Menjaga konsistensi tinggi kartu */
-            }
+			.act-img-box {
+				width: 100%;
+				height: 150px; /* Gambar jadi banner di atas */
+				border-radius: 8px 8px 0 0;
+			}
 
-            .act-img-box { 
-                width: 100%; 
-                height: 180px; /* Kamu bisa ubah ini (misal: 150px) untuk menyesuaikan proporsi gambar */
-                border-radius: 8px 8px 0 0; /* Lengkungan hanya di atas */
-                border: 1px solid #f2f2f2;
-                border-bottom: none;
-            }
+			.act-content {
+				border-radius: 0 0 8px 8px;
+				border-left: 1px solid #f2f2f2; /* Kembalikan border kiri karena posisi berubah */
+				padding: 15px;
+			}
+			
+			.act-nav {
+				display: none; /* Sembunyikan tombol panah di mobile, cukup gunakan swipe jari */
+			}
+		}
 
-            .act-content { 
-                border: 1px solid #f2f2f2;
-                border-top: none; 
-                border-radius: 0 0 8px 8px; /* Lengkungan hanya di bawah */
-                padding: 15px; /* Padding lebih rapat di mobile */
-            }
+        /* --- FOOTER MENU STYLE --- */
+        footer {
+            background: #ffffff; color: #000; padding: 0px 0 30px 0; margin-top: 0px;
+        }
 
-            .act-content h3 {
-                font-size: 17px; /* Judul sedikit lebih kecil */
-                margin-bottom: 5px;
-            }
+        .footer-content {
+            background: #1c486c; max-width: 1300px; margin: 0 auto; padding: 40px; border-radius: 12px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; color: #fff;
+        }
 
-            .act-content p {
-                font-size: 13px; /* Teks deskripsi lebih kecil agar muat lebih banyak */
-                line-height: 1.4;
-            }
+        .footer-logo { flex: 1; min-width: 250px; }
+        .footer-logo h3 { font-size: 24px; margin-bottom: 15px; letter-spacing: 1px; }
+        .footer-logo p { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.6; max-width: 300px; }
 
-            /* Navigasi panah di mobile */
-            .act-nav {
-                justify-content: center; /* Panah di tengah agar mudah dijangkau jempol */
-                margin-top: 15px;
-            }
+        .footer-links { display: flex; gap: 60px; flex-wrap: wrap; }
+        .link-group h4 { font-size: 16px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .link-group ul { list-style: none; }
+        .link-group ul li { margin-bottom: 12px; }
+        .link-group ul li a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .link-group ul li a:hover { color: #fff; padding-left: 5px; }
 
-            .act-btn {
-                width: 40px;
-                height: 40px;
-            }
+        .footer-bottom {
+            max-width: 1300px; margin: 40px auto 0 auto; padding-top: 30px; border-top: 1px solid rgba(0, 0, 0, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(0, 0, 0, 0.5); padding-left: 10px; padding-right: 10px;
+        }
 
-            /* Penyesuaian Lightbox di Mobile */
-            .lb-wrap {
-                width: 95%; /* Lebih lebar di mobile */
-            }
+        .social-icons { display: flex; gap: 15px; }
 
-            .lb-img {
-                max-height: 60vh; /* Gambar tidak terlalu tinggi agar caption tidak tertutup */
-            }
+        /* MODIFIKASI: Style khusus untuk ikon PNG agar warna tetap konsisten */
+		.social-icons a {
+			width: 35px; height: 35px; 
+			background: rgba(28, 72, 108, 0.1); 
+			border-radius: 50%; 
+			display: flex; align-items: center; justify-content: center; 
+			text-decoration: none; transition: 0.3s;
+		}
 
-            .lb-side { 
-                width: 45px; 
-                height: 45px; 
-                background: rgba(0,0,0,0.5); /* Background lebih gelap agar terlihat di atas foto */
-            }
+		.icon-img {
+			width: 20px; height: 20px; 
+			background-size: contain; 
+			background-repeat: no-repeat; 
+			background-position: center;
+			/* Filter ini mengubah warna hitam/gelap menjadi Biru (#1c486c) */
+			filter: invert(24%) sepia(31%) saturate(2222%) hue-rotate(174deg) brightness(93%) contrast(92%);
+			transition: 0.3s;
+		}
 
-            .lb-prev { left: 5px; } /* Panah lebih rapat ke pinggir */
-            .lb-next { right: 5px; }
+		.icon-in { background-image: url('https://github.com/fajrmuh-jpg/portofolio/blob/main/linkedin.png?raw=true'); }
+		.icon-ig { background-image: url('https://github.com/fajrmuh-jpg/portofolio/blob/main/instagram.png?raw=true'); }
 
-            .lb-close {
-                top: -60px;
-                right: 10px;
-            }
+		/* Saat di-hover, ikon menjadi putih dan background menjadi biru */
+		.social-icons a:hover { background: #1c486c; transform: translateY(-3px); }
+		.social-icons a:hover .icon-img { 
+			filter: brightness(0) invert(1); /* Menjadi Putih Bersih */
+		}
+
+        @media (max-width: 1350px) {
+            .footer-content, .footer-bottom { margin-left: 20px; margin-right: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content { flex-direction: column; gap: 30px; padding: 30px 20px; }
+            .footer-links { gap: 30px; width: 100%; justify-content: space-between; }
+            .footer-bottom { flex-direction: column-reverse; gap: 20px; text-align: center; }
         }
     </style>
 </head>
-<body>
+<body id="home">
 
     <div class="container">
-        <div class="content-wrapper">
+        <div class="content-wrapper" id="about">
             <div class="image-box">
                 <div class="hand-drawn draw-name"><br></div>
-                <div class="hand-drawn draw-age"></div>
-                <div class="hand-drawn draw-born"></div>
-                <div class="hand-drawn draw-tags"><br><br></div>
-                <div class="hand-drawn draw-eng"></div>
                 <img src="https://github.com/fajrmuh-jpg/portofolio/blob/main/fotoku.gif?raw=true" alt="Fajar">
             </div>
 
@@ -478,7 +372,7 @@
                 <h1>Project Control / Design</h1>
                 <p class="name-jp">当サイトへようこそ</p>
                 <p class="bio">
-                    "Hello! I'm an engineer who sees the world through both blueprints and pixels. My day job involves managing complex projects as a Project Controller, ensuring every detail aligns with the bigger picture. When I'm not analyzing project timelines, you'll find me exploring graphic visuals and web design. I'm on a mission to bridge the gap between technical engineering and modern digital aesthetics."
+                    "Hello! I'm an engineer who sees the world through both blueprints and pixels. My day job involves managing complex projects as a Project Controller, ensuring every detail aligns with the bigger picture. When I'm not analyzing project timelines, you'll find me exploring graphic visuals and web design."
                 </p>
             </div>
 
@@ -492,9 +386,8 @@
         </div>
     </div>
 
-    <div class="milestone-section">
+    <div class="milestone-section" id="experience">
         <div class="milestone-inner">
-            <h2></h2>
             <div id="game-area">
                 <div class="score-board">SCORE: <span id="score">0</span></div>
                 <div id="dino"></div>
@@ -509,14 +402,14 @@
                 <div class="milestone-item"><span class="year-label">Jun 2021 – Dec 2021</span><div class="milestone-content"><h3>Site Supervisor</h3><p>CV. FM Jaya Mandiri.</p></div></div>
                 <div class="milestone-item"><span class="year-label">Dec 2021 – Jan 2022</span><div class="milestone-content"><h3>Site Supervisor</h3><p>PT. Tunas Karya Perkasa.</p></div></div>
                 <div class="milestone-item"><span class="year-label">Jan 2022 – Apr 2025</span><div class="milestone-content"><h3>Site Supervisor</h3><p>CV. Aqasuma.</p></div></div>
-                <div class="milestone-item"><span class="year-label">May 2025 – Present</span><div class="milestone-content"><h3>Technical Team - Project Controller </h3><p>District Military Command 0909/East Kutai.</p></div></div>
+                <div class="milestone-item"><span class="year-label">May 2025 – Present</span><div class="milestone-content"><h3>Technical Team</h3><p>District Military Command 0909.</p></div></div>
             </div>
         </div>
     </div>
 
-    <div class="activity-section">
+    <div class="activity-section" id="portfolio">
         <div class="activity-container">
-            <h2>Aktivitas Terbaru Kami</h2>
+            <h2>My Recent Projects</h2>
             <div class="scroll-wrapper" id="actSlider"></div>
             <div class="act-nav">
                 <button id="actPrev" class="act-btn">←</button>
@@ -524,6 +417,48 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>MF PORTFOLIO</h3>
+                <p>Bringing engineering precision to digital creative design. Specializing in Project Control and Web Visualization.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                    </ul>
+                </div>
+                
+                <div class="link-group">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:email@kamu.com">Email Me</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Muhammad Fajar. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" title="LinkedIn">
+                    <div class="icon-img icon-in"></div>
+                </a>
+                <a href="#" title="Instagram">
+                    <div class="icon-img icon-ig"></div>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <div class="lb-modal" id="lbModal">
         <div class="lb-wrap">
@@ -537,32 +472,26 @@
     </div>
 
     <script>
-        /* --- KODE GAME ASLI (TIDAK BERUBAH) --- */
+        /* --- KODE GAME ASLI --- */
         const dino = document.getElementById("dino");
         const area = document.getElementById("game-area");
         const scoreEl = document.getElementById("score");
         const over = document.getElementById("game-over");
         const retryBtn = document.getElementById("retry-btn");
-
-        let score = 0;
-        let isJumping = false;
-        let isGameOver = false;
+        let score = 0; let isJumping = false; let isGameOver = false;
 
         function jump() {
             if (isJumping || isGameOver) return;
-            isJumping = true;
-            let pos = 2;
+            isJumping = true; let pos = 2;
             let up = setInterval(() => {
                 if (pos >= 95) { 
                     clearInterval(up);
                     let down = setInterval(() => {
                         if (pos <= 2) { clearInterval(down); isJumping = false; }
-                        pos -= 4;
-                        dino.style.bottom = pos + "px";
+                        pos -= 4; dino.style.bottom = pos + "px";
                     }, 18);
                 }
-                pos += 5;
-                dino.style.bottom = pos + "px";
+                pos += 5; dino.style.bottom = pos + "px";
             }, 16);
         }
 
@@ -575,18 +504,14 @@
             crab.style.left = crabPos + "px";
             let move = setInterval(() => {
                 if (isGameOver) { clearInterval(move); return; }
-                crabPos -= 4; 
-                crab.style.left = crabPos + "px";
+                crabPos -= 4; crab.style.left = crabPos + "px";
                 let dinoBottom = parseInt(dino.style.bottom) || 2;
-                if (crabPos > 45 && crabPos < 70 && dinoBottom < 25) { gameOver(); }
-                if (crabPos < -40) {
-                    clearInterval(move);
-                    crab.remove();
-                    score++;
-                    scoreEl.innerText = score;
+                if (crabPos > 100 && crabPos < 50 && dinoBottom < 20) { gameOver(); }
+                if (crabPos < -1) {
+                    clearInterval(move); crab.remove(); score++; scoreEl.innerText = score;
                 }
             }, 20);
-            if (!isGameOver) { setTimeout(createCrab, Math.random() * 3000 + 2000); }
+            if (!isGameOver) { setTimeout(createCrab, Math.random() * 2000 + 4000); }
         }
 
         function gameOver() { isGameOver = true; over.style.display = "flex"; }
@@ -602,12 +527,10 @@
         area.addEventListener("touchstart", (e) => {
             if (e.target !== retryBtn) { e.preventDefault(); jump(); }
         }, { passive: false });
-        document.addEventListener("keydown", (e) => {
-            if(e.code === "Space") { if (isGameOver) resetGame(); else jump(); }
-        });
+        document.addEventListener("keydown", (e) => { if(e.code === "Space") { if (isGameOver) resetGame(); else jump(); } });
         createCrab();
 
-        /* --- KODE AKTIVITAS BARU --- */
+        /* --- KODE AKTIVITAS --- */
         const actData = [
             { id: 0, title: "Postingan 1", desc: "Kegiatan rutin operasional logistik di pelabuhan.", date: "Mar 05, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/f1.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/f2.jpg?raw=true"] },
             { id: 1, title: "Postingan 2", desc: "Tim Meratus berkomitmen menjaga standar kualitas tinggi.", date: "Mar 02, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/q2.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/q1.jpg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/q6.jpg?raw=true"] },
@@ -650,39 +573,18 @@
             b.forEach(x => x.style.display = curPhotos.length > 1 ? 'block' : 'none');
         }
 
-		// Ganti bagian actNext.onclick dan actPrev.onclick Anda dengan ini:
-
 		const getScrollStep = () => {
 			const firstCard = actSlider.querySelector('.act-card');
-			if (firstCard) {
-				// Menghitung lebar kartu + gap (24px)
-				return firstCard.offsetWidth + 24;
-			}
-			return 600; // fallback
+			return firstCard ? firstCard.offsetWidth + 24 : 600; 
 		};
 
-		document.getElementById('actNext').onclick = () => {
-			actSlider.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
-		};
-
-		document.getElementById('actPrev').onclick = () => {
-			actSlider.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-		};
-
-		// Logika tombol active/inactive (sudah benar, tapi kita rapikan sedikit)
+		document.getElementById('actNext').onclick = () => { actSlider.scrollBy({ left: getScrollStep(), behavior: 'smooth' }); };
+		document.getElementById('actPrev').onclick = () => { actSlider.scrollBy({ left: -getScrollStep(), behavior: 'smooth' }); };
 		actSlider.addEventListener('scroll', () => {
-			const l = actSlider.scrollLeft; 
-			const m = actSlider.scrollWidth - actSlider.clientWidth;
-			// Gunakan toleransi 5px untuk mengatasi pembulatan angka di layar browser
+			const l = actSlider.scrollLeft; const m = actSlider.scrollWidth - actSlider.clientWidth;
 			document.getElementById('actPrev').classList.toggle('active', l > 5);
 			document.getElementById('actNext').classList.toggle('active', l < m - 5);
 		});
-
-        actSlider.addEventListener('scroll', () => {
-            const l = actSlider.scrollLeft; const m = actSlider.scrollWidth - actSlider.clientWidth;
-            document.getElementById('actPrev').className = `act-btn ${l <= 10 ? '' : 'active'}`;
-            document.getElementById('actNext').className = `act-btn ${l >= m - 10 ? '' : 'active'}`;
-        });
     </script>
 </body>
 </html>
