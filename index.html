@@ -15,14 +15,14 @@
             overflow-x: hidden; 
         }
 
-		.container {
-			width: 100%;
-			max-width: 1900px;
-			display: flex;
-			justify-content: center;
-			padding: 145px 80px 0 80px; 
-			margin: 0 auto;
-		}
+        .container {
+            width: 100%;
+            max-width: 1900px;
+            display: flex;
+            justify-content: center;
+            padding: 145px 80px 0 80px; 
+            margin: 0 auto;
+        }
         .content-wrapper {
             display: flex;
             flex-direction: row;
@@ -138,7 +138,7 @@
         .milestone-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
         .milestone-content p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
-		/* --- RESPONSIVE ADJUSTMENTS --- */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 1100px) {
             .container { padding: 20px 20px 0 20px !important; }
             .content-wrapper { flex-direction: column; align-items: left; gap: 10px; justify-content: left; }
@@ -151,11 +151,11 @@
             #game-area { height: 100px; }
             .timeline-container { flex-direction: column; gap: 30px; }
             .milestone-item { width: 100%; }
-			.score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
-			.milestone-item { width: 100%; display: flex; flex-direction: column; }
-			.milestone-item:nth-child(odd) { text-align: left; align-items: flex-start; }
-			.milestone-item:nth-child(even) { text-align: right; align-items: flex-end; }
-			.year-label { font-size: 11px; margin-bottom: 4px; }
+            .score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
+            .milestone-item { width: 100%; display: flex; flex-direction: column; }
+            .milestone-item:nth-child(odd) { text-align: left; align-items: flex-start; }
+            .milestone-item:nth-child(even) { text-align: right; align-items: flex-end; }
+            .year-label { font-size: 11px; margin-bottom: 4px; }
         }
 
         @media (max-width: 768px) {
@@ -169,11 +169,11 @@
             .milestone-section { margin-top: 0px; margin-bottom: 0px; padding: 20px 20px 40px 20px !important }
             #game-area { height: 150px; }
             .timeline-container { flex-direction: column; gap: 20px; }
-			.score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
-			.milestone-item { width: 100%; display: flex; flex-direction: column; }
-			.milestone-item:nth-child(odd) { text-align: left; align-items: flex-start; }
-			.milestone-item:nth-child(even) { text-align: left; align-items: flex-end; }
-			.year-label { font-size: 11px; margin-bottom: 4px; }
+            .score-board { position: absolute; top: 0; left: 0; font-weight: 600; font-size: 13px; }
+            .milestone-item { width: 100%; display: flex; flex-direction: column; }
+            .milestone-item:nth-child(odd) { text-align: left; align-items: flex-start; }
+            .milestone-item:nth-child(even) { text-align: left; align-items: flex-end; }
+            .year-label { font-size: 11px; margin-bottom: 4px; }
         }
 
         /* --- STYLE BARU: AKTIVITAS TERBARU --- */
@@ -181,27 +181,27 @@
         .activity-container { max-width: 1350px; margin: 0 auto; padding: 0 20px; }
         .activity-section h2 { color: #1c486c; font-size: 40px; font-weight: 700; margin-bottom: 30px; }
 
-		.scroll-wrapper {
-			display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
-			padding: 30px 0; scroll-behavior: smooth; scrollbar-width: none; padding-right: 20px; 
-		}
+        .scroll-wrapper {
+            display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
+            padding: 30px 0; scroll-behavior: smooth; scrollbar-width: none; padding-right: 20px; 
+        }
         .scroll-wrapper::-webkit-scrollbar { display: none; }
-		.act-card {
-		flex: 0 0 638px; 
-		height: 186px; 
-		display: flex; 
-		background: #fff; 
-		border-radius: 8px; 
-		text-decoration: none; 
-		color: inherit; 
-		scroll-snap-align: start;
+        .act-card {
+        flex: 0 0 638px; 
+        height: 186px; 
+        display: flex; 
+        background: #fff; 
+        border-radius: 8px; 
+        text-decoration: none; 
+        color: inherit; 
+        scroll-snap-align: start;
         }
 
-		/* Tambahan: Efek shadow juga pada navigasi tombol biar senada */
-		.act-btn:hover {
-			box-shadow: 0 4px 10px rgba(28, 72, 108, 0.2);
-			transform: scale(1.05);
-		}
+        /* Tambahan: Efek shadow juga pada navigasi tombol biar senada */
+        .act-btn:hover {
+            box-shadow: 0 4px 10px rgba(28, 72, 108, 0.2);
+            transform: scale(1.05);
+        }
         .act-img-box {
             width: 250px; height: 100%; overflow: hidden; border-radius: 8px 0 0 8px; flex-shrink: 0; cursor: pointer; position: relative;
         }
@@ -215,11 +215,11 @@
         .act-content {
             flex: 1; padding: 20px 24px; border-radius: 0 8px 8px 0; display: flex; flex-direction: column; border: 1px solid #f2f2f2; border-left: none; transition: 0.5s; overflow: hidden;
         }
-		.act-content:hover {
-			transform: translateY(0px); /* Kartu sedikit naik ke atas */
-			box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); /* Munculkan efek shadow halus */
-			border-color: transparent; /* Hilangkan border abu-abu agar fokus ke shadow */
-		}
+        .act-content:hover {
+            transform: translateY(0px); /* Kartu sedikit naik ke atas */
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); /* Munculkan efek shadow halus */
+            border-color: transparent; /* Hilangkan border abu-abu agar fokus ke shadow */
+        }
         .act-text-scroll { overflow-y: auto; flex-grow: 1; margin-bottom: 8px; padding-right: 8px; }
         .act-text-scroll::-webkit-scrollbar { width: 3px; }
         .act-text-scroll::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
@@ -247,52 +247,285 @@
         .lb-prev { left: -75px; } .lb-next { right: -75px; }
         .lb-cap { color: white; margin-top: 15px; font-size: 16px; font-weight: 600; }
         .lb-count { color: #888; font-size: 13px; margin-top: 5px; }
-		
-		/* Tablet (Layar di bawah 1024px) */
-		@media (max-width: 1024px) {
-			.act-card {
-				flex: 0 0 80%; /* Kartu mengambil 80% lebar layar agar kartu berikutnya sedikit terlihat (clue untuk swipe) */
-				height: auto; /* Biarkan tinggi menyesuaikan konten jika teks panjang */
-				min-height: 186px;
-			}
-		}
+        
+        /* Tablet (Layar di bawah 1024px) */
+        @media (max-width: 1024px) {
+            .act-card {
+                flex: 0 0 80%; /* Kartu mengambil 80% lebar layar agar kartu berikutnya sedikit terlihat (clue untuk swipe) */
+                height: auto; /* Biarkan tinggi menyesuaikan konten jika teks panjang */
+                min-height: 186px;
+            }
+        }
 
-		/* Mobile (Layar di bawah 768px) */
-		@media (max-width: 768px) {
-			.activity-section h2 {
-				font-size: 50px; /* Judul lebih kecil di mobile */
-				font-weight: 700;
-				margin-bottom: 15px;
-			}
+        /* Mobile (Layar di bawah 768px) */
+        @media (max-width: 768px) {
+            .activity-section h2 {
+                font-size: 50px; /* Judul lebih kecil di mobile */
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
 
-			.scroll-wrapper {
-				gap: 15px; /* Jarak antar kartu lebih rapat */
-				padding: 10px 0 20px 0;
-			}
+            .scroll-wrapper {
+                gap: 15px; /* Jarak antar kartu lebih rapat */
+                padding: 10px 0 20px 0;
+            }
 
-			.act-card {
-				flex: 0 0 90%; /* Kartu hampir memenuhi lebar layar */
-				flex-direction: column; /* Gambar di atas, teks di bawah (opsional, agar lebih lega) */
-				height: auto;
-				border: 1px solid #f2f2f2;
-			}
+            .act-card {
+                flex: 0 0 90%; /* Kartu hampir memenuhi lebar layar */
+                flex-direction: column; /* Gambar di atas, teks di bawah (opsional, agar lebih lega) */
+                height: auto;
+                border: 1px solid #f2f2f2;
+            }
 
-			.act-img-box {
-				width: 100%;
-				height: 150px; /* Gambar jadi banner di atas */
-				border-radius: 8px 8px 0 0;
-			}
+            .act-img-box {
+                width: 100%;
+                height: 150px; /* Gambar jadi banner di atas */
+                border-radius: 8px 8px 0 0;
+            }
 
-			.act-content {
-				border-radius: 0 0 8px 8px;
-				border-left: 1px solid #f2f2f2; /* Kembalikan border kiri karena posisi berubah */
-				padding: 15px;
-			}
-			
-			.act-nav {
-				display: none; /* Sembunyikan tombol panah di mobile, cukup gunakan swipe jari */
-			}
-		}
+            .act-content {
+                border-radius: 0 0 8px 8px;
+                border-left: 1px solid #f2f2f2; /* Kembalikan border kiri karena posisi berubah */
+                padding: 15px;
+            }
+            
+            .act-nav {
+                display: none; /* Sembunyikan tombol panah di mobile, cukup gunakan swipe jari */
+            }
+        }
+
+        /* --- TAMBAHAN: STYLE MY SKILLS --- */
+        .skills-section {
+            padding: 60px 0 80px 0;
+            background-color: #f8f9fa; /* Latar belakang sedikit abu-abu muda untuk kontras */
+            border-top: 1px solid #eee;
+        }
+        .skills-container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+        .skills-section h2 {
+            color: #1c486c;
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1;
+        }
+        .section-subtitle {
+            color: #666;
+            font-size: 14px;
+            max-width: 500px;
+            text-align: right;
+            line-height: 1.5;
+        }
+        
+        /* Grid untuk Kartu Skill */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-card {
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 30px 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efek Hover Skill Card */
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(28, 72, 108, 0.1);
+            border-color: #1c486c;
+        }
+        
+        /* Aksen warna biru di kiri kartu */
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: #1c486c;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .skill-card:hover::before { opacity: 1; }
+
+        /* Icon Style */
+        .skill-icon {
+            width: 50px; height: 50px;
+            background: #f0f4f8;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            color: #1c486c;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .skill-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        .skill-info p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Responsif Skills */
+        @media (max-width: 768px) {
+            .skills-section { padding: 40px 0 60px 0; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 30px; }
+            .section-subtitle { text-align: left; }
+            .skills-section h2 { font-size: 32px; }
+            .skills-grid { grid-template-columns: 1fr; } /* Stack kartu di mobile */
+            .skill-card { padding: 20px; }
+        }
+
+        /* --- TAMBAHAN: STYLE SECTION UNTUK MAP & ORIGIN --- */
+        .video-post-section {
+            padding: 0px 0 60px 0;
+            background-color: #ffffff;
+        }
+        .video-post-container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Style Map Box (Full Width) */
+        .map-display-box {
+            margin-bottom: 20px;
+            text-align: center; 
+        }
+        .map-display-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Style Sangatta Origin (Text Only) */
+        .origin-text-only {
+            margin-bottom: 80px;
+            padding: 0 0px;
+        }
+        .origin-text-only h3 {
+            font-size: 32px;
+            color: #000;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .origin-text-only p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* --- STYLE LATEST VIDEO POSTING (MODIFIKASI AUTOPLAY ONLY) --- */
+        .video-post-wrapper {
+            display: flex;
+            background: #fff;
+            border: 0px solid #ffffff;
+            border-radius: 0px;
+            overflow: hidden;
+            box-shadow: 0 0px 0px rgba(0,0,0,0);
+        }
+
+        /* Bagian Video (Kiri) */
+        .video-media-box {
+            flex: 0 0 60%;
+            background: #000;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Video elemen diatur agar memenuhi container */
+        .video-media-box video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover; /* Agar video memenuhi area tanpa gepeng */
+        }
+
+        /* Bagian Konten (Kanan) */
+        .video-content-box {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .video-content-box h2 {
+            font-size: 28px;
+            color: #000;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .video-content-box p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Responsif Video Post */
+        @media (max-width: 900px) {
+            .video-post-wrapper {
+                flex-direction: column;
+            }
+            .video-media-box {
+                flex: none;
+                width: 100%;
+                height: 200px; /* Tinggi video di mobile */
+            }
+            .video-content-box {
+                padding: 30px 20px;
+            }
+            .origin-text-only { padding: 0 10px; margin-bottom: 50px; }
+            .origin-text-only h3 { font-size: 24px; }
+        }
 
         /* --- FOOTER MENU STYLE --- */
         footer {
@@ -321,41 +554,75 @@
         .social-icons { display: flex; gap: 15px; }
 
         /* MODIFIKASI: Style khusus untuk ikon PNG agar warna tetap konsisten */
-		.social-icons a {
-			width: 35px; height: 35px; 
-			background: rgba(28, 72, 108, 0.1); 
-			border-radius: 50%; 
-			display: flex; align-items: center; justify-content: center; 
-			text-decoration: none; transition: 0.3s;
-		}
+        .social-icons a {
+            width: 35px; height: 35px; 
+            background: rgba(28, 72, 108, 0.1); 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            text-decoration: none; transition: 0.3s;
+        }
 
-		.icon-img {
-			width: 20px; height: 20px; 
-			background-size: contain; 
-			background-repeat: no-repeat; 
-			background-position: center;
-			/* Filter ini mengubah warna hitam/gelap menjadi Biru (#1c486c) */
-			filter: invert(24%) sepia(31%) saturate(2222%) hue-rotate(174deg) brightness(93%) contrast(92%);
-			transition: 0.3s;
-		}
+        .icon-img {
+            width: 20px; height: 20px; 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center;
+            /* Filter ini mengubah warna hitam/gelap menjadi Biru (#1c486c) */
+            filter: invert(24%) sepia(31%) saturate(2222%) hue-rotate(174deg) brightness(93%) contrast(92%);
+            transition: 0.3s;
+        }
 
-		.icon-in { background-image: url('https://github.com/fajrmuh-jpg/portofolio/blob/main/linkedin.png?raw=true'); }
-		.icon-ig { background-image: url('https://github.com/fajrmuh-jpg/portofolio/blob/main/instagram.png?raw=true'); }
+        .icon-in { background-image: url('https://github.com/fajrmuh-jpg/portofolio/blob/main/linkedin.png?raw=true'); }
+        .icon-ig { background-image: url('https://github.com/fajrmuh-jpg/portofolio/blob/main/instagram.png?raw=true'); }
 
-		/* Saat di-hover, ikon menjadi putih dan background menjadi biru */
-		.social-icons a:hover { background: #1c486c; transform: translateY(-3px); }
-		.social-icons a:hover .icon-img { 
-			filter: brightness(0) invert(1); /* Menjadi Putih Bersih */
-		}
+        /* Saat di-hover, ikon menjadi putih dan background menjadi biru */
+        .social-icons a:hover { background: #1c486c; transform: translateY(-3px); }
+        .social-icons a:hover .icon-img { 
+            filter: brightness(0) invert(1); /* Menjadi Putih Bersih */
+        }
 
         @media (max-width: 1350px) {
             .footer-content, .footer-bottom { margin-left: 20px; margin-right: 20px; }
+			.social-icons a {
+            width: 35px; height: 35px; 
+            background: rgba(28, 72, 108, 0.1); 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            text-decoration: none; transition: 0.3s;
+			}
+
+			.icon-img {
+				width: 20px; height: 20px; 
+				background-size: contain; 
+				background-repeat: no-repeat; 
+				background-position: center;
+				/* Filter ini mengubah warna hitam/gelap menjadi Biru (#1c486c) */
+				filter: invert(24%) sepia(31%) saturate(2222%) hue-rotate(174deg) brightness(93%) contrast(92%);
+				transition: 0.3s;
+			}
         }
 
         @media (max-width: 768px) {
             .footer-content { flex-direction: column; gap: 30px; padding: 30px 20px; }
             .footer-links { gap: 30px; width: 100%; justify-content: space-between; }
             .footer-bottom { flex-direction: column-reverse; gap: 20px; text-align: center; }
+			.social-icons a {
+            width: 35px; height: 35px; 
+            background: rgba(28, 72, 108, 0.1); 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            text-decoration: none; transition: 0.3s;
+			}
+
+			.icon-img {
+				width: 20px; height: 20px; 
+				background-size: contain; 
+				background-repeat: no-repeat; 
+				background-position: center;
+				/* Filter ini mengubah warna hitam/gelap menjadi Biru (#1c486c) */
+				filter: invert(24%) sepia(31%) saturate(2222%) hue-rotate(174deg) brightness(93%) contrast(92%);
+				transition: 0.3s;
+			}
         }
     </style>
 </head>
@@ -369,7 +636,7 @@
             </div>
 
             <div class="text-box">
-                <h1>Project Control / Design</h1>
+                <h1>Project Control / </h1>
                 <p class="name-jp">当サイトへようこそ</p>
                 <p class="bio">
                     "Hello! I'm an engineer who sees the world through both blueprints and pixels. My day job involves managing complex projects as a Project Controller, ensuring every detail aligns with the bigger picture. When I'm not analyzing project timelines, you'll find me exploring graphic visuals and web design."
@@ -380,7 +647,7 @@
                 <h2>Muhammad<br>Fajar</h2>
                 <div class="stats">
                     <div class="stat-item"><span>5+ Years of</span>Experience</div>
-                    <div class="stat-item"><span>10+ Complete</span>Project</div>
+                    <div class="stat-item"><span>10+ Completed</span>Projects</div>
                 </div>
             </div>
         </div>
@@ -409,12 +676,105 @@
 
     <div class="activity-section" id="portfolio">
         <div class="activity-container">
-            <h2>My Recent Projects</h2>
+            <h2>Recent Works</h2>
             <div class="scroll-wrapper" id="actSlider"></div>
             <div class="act-nav">
                 <button id="actPrev" class="act-btn">←</button>
                 <button id="actNext" class="act-btn active">→</button>
             </div>
+        </div>
+    </div>
+
+    <!-- --- TAMBAHAN: MY SKILLS SECTION --- -->
+    <div class="skills-section" id="skills">
+        <div class="skills-container">
+            <div class="section-header">
+                <h2>My Skills</h2>
+                <p class="section-subtitle">Kombinasi keahlian teknis rekayasa dan kreativitas desain untuk memberikan solusi yang presisi dan estetis.</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Microsoft Office -->
+                <div class="skill-card">
+                    <div class="skill-icon">Ms</div>
+                    <div class="skill-info">
+                        <h3>Microsoft Office</h3>
+                        <p>Excel (Data Analysis), Word, PowerPoint, dan Project Management.</p>
+                    </div>
+                </div>
+                
+                <!-- AutoCAD -->
+                <div class="skill-card">
+                    <div class="skill-icon">Cad</div>
+                    <div class="skill-info">
+                        <h3>AutoCAD</h3>
+                        <p>Drafting teknis 2D, denah, dan gambar kerja presisi.</p>
+                    </div>
+                </div>
+                
+                <!-- Bluebeam Revu -->
+                <div class="skill-card">
+                    <div class="skill-icon">Bb</div>
+                    <div class="skill-info">
+                        <h3>Bluebeam Revu</h3>
+                        <p>Markups, pengukuran, dan manajemen dokumen PDF proyek.</p>
+                    </div>
+                </div>		
+                
+                <!-- Adobe Creative Suite -->
+                <div class="skill-card">
+                    <div class="skill-icon">Ai</div>
+                    <div class="skill-info">
+                        <h3>Adobe Creative Suite</h3>
+                        <p>Photoshop, Illustrator, Indesign, for Image editing & visual graphic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- SECTION VIDEO & EXTRA INFO --- -->
+    <div class="video-post-section">
+        <div class="video-post-container">
+            
+            <!-- --- POSISI BARU: GAMBAR MAP --- -->
+            <div class="map-display-box">
+                <img src="https://raw.githubusercontent.com/fajrmuh-jpg/portofolio/390bf54d52943ed88ffe16e334c87c27da41ea53/MAP.svg" alt="Project Map">
+            </div>
+
+            <!-- --- POSISI BARU: TEKS SANGATTA ORIGIN --- -->
+            <div class="origin-text-only">
+                <h3>Sangatta / East Kutai</h3>
+                <p>
+                    Originally a small settlement along the Sangatta River, the area’s trajectory changed forever with the discovery of massive coal deposits in the late 20th century, leading to its official designation as the capital of East Kutai Regency in 1999. Today, it stands as a testament to rapid growth where professionals like myself, who live and work here, strive to balance industrial scale with sustainable regional development. Being a part of this community allows me to witness and contribute directly to its ongoing transformation.
+                </p>
+            </div>
+
+            <!-- --- LATEST VIDEO POSTING SECTION (AUTOPLAY ONLY) --- -->
+            <div class="video-post-wrapper">
+                <div class="video-media-box">
+                    <!-- Video autoplay, muted, loop, tanpa controls, tanpa overlay -->
+                    <video autoplay muted loop playsinline>
+                        <source src="https://cdn.jsdelivr.net/gh/fajrmuh-jpg/portofolio@main/assets/images/Monitor.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-content-box">
+                    <h2>Latest Project Monitoring Visualization</h2>
+                    <p>
+                        Sistem monitoring real-time yang terintegrasi untuk efisiensi operasional di lapangan. Video ini menunjukkan antarmuka dashboard yang dirancang untuk memantau progres proyek secara akurat dan cepat.
+                    </p>
+                    <div class="video-meta">
+                        <div class="meta-item">
+                            <strong>Duration:</strong> 00:45
+                        </div>
+                        <div class="meta-item">
+                            <strong>Updated:</strong> Today
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -433,6 +793,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#experience">Experience</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#skills">Skills</a></li>
                     </ul>
                 </div>
                 
@@ -573,18 +934,22 @@
             b.forEach(x => x.style.display = curPhotos.length > 1 ? 'block' : 'none');
         }
 
-		const getScrollStep = () => {
-			const firstCard = actSlider.querySelector('.act-card');
-			return firstCard ? firstCard.offsetWidth + 24 : 600; 
-		};
+        const getScrollStep = () => {
+            const firstCard = actSlider.querySelector('.act-card');
+            return firstCard ? firstCard.offsetWidth + 24 : 600; 
+        };
 
-		document.getElementById('actNext').onclick = () => { actSlider.scrollBy({ left: getScrollStep(), behavior: 'smooth' }); };
-		document.getElementById('actPrev').onclick = () => { actSlider.scrollBy({ left: -getScrollStep(), behavior: 'smooth' }); };
-		actSlider.addEventListener('scroll', () => {
-			const l = actSlider.scrollLeft; const m = actSlider.scrollWidth - actSlider.clientWidth;
-			document.getElementById('actPrev').classList.toggle('active', l > 5);
-			document.getElementById('actNext').classList.toggle('active', l < m - 5);
-		});
+        document.getElementById('actNext').onclick = () => { actSlider.scrollBy({ left: getScrollStep(), behavior: 'smooth' }); };
+        document.getElementById('actPrev').onclick = () => { actSlider.scrollBy({ left: -getScrollStep(), behavior: 'smooth' }); };
+        actSlider.addEventListener('scroll', () => {
+            const l = actSlider.scrollLeft; const m = actSlider.scrollWidth - actSlider.clientWidth;
+            document.getElementById('actPrev').classList.toggle('active', l > 5);
+            document.getElementById('actNext').classList.toggle('active', l < m - 5);
+        });
+
+        /* --- KODE VIDEO PLAYER (DIHAPUS KARENA AUTOPLAY ONLY) --- */
+        // Tidak ada script video tambahan yang diperlukan untuk autoplay loop tanpa kontrol
+
     </script>
 </body>
 </html>
