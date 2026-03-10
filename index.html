@@ -159,7 +159,7 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 20px 20px 20px 20px !important; }
+            .container { padding: 20px 20px 5px 20px !important; }
             .content-wrapper { flex-direction: column; align-items: left; gap: 10px; justify-content: left; }
             .image-box { display: none; }
             .text-box { max-width: 100%; width: 100%; text-align: left; flex: none; margin-bottom: 0; }
@@ -269,7 +269,7 @@
                 gap: 15px; /* Jarak antar kartu lebih rapat */
                 padding: 10px 0 20px 0;
             }
-
+			.lb-prev { left: 0px; } .lb-next { right: 0px; }
             .act-card {
                 flex: 0 0 90%; /* Kartu hampir memenuhi lebar layar */
                 flex-direction: column; /* Gambar di atas, teks di bawah (opsional, agar lebih lega) */
@@ -636,7 +636,7 @@
                 <div class="milestone-item"><span class="year-label">Jun 2021 – Dec 2021</span><div class="milestone-content"><h3>Site Supervisor</h3><p>CV. FM Jaya Mandiri.</p></div></div>
                 <div class="milestone-item"><span class="year-label">Dec 2021 – Jan 2022</span><div class="milestone-content"><h3>Site Supervisor</h3><p>PT. Tunas Karya Perkasa.</p></div></div>
                 <div class="milestone-item"><span class="year-label">Jan 2022 – Apr 2025</span><div class="milestone-content"><h3>Site Supervisor</h3><p>CV. Aqasuma.</p></div></div>
-                <div class="milestone-item"><span class="year-label">May 2025 – Present</span><div class="milestone-content"><h3>Technical Team</h3><p>District Military Command 0909.</p></div></div>
+                <div class="milestone-item"><span class="year-label">May 2025 – Present</span><div class="milestone-content"><h3>Technical Team / Project Controller</h3><p>District Military Command 0909/KTM.</p></div></div>
             </div>
         </div>
     </div>
@@ -729,14 +729,14 @@
                 <div class="video-content-box">
                     <h2>Latest Project Monitoring Visualization</h2>
                     <p>
-                        Sistem monitoring real-time yang terintegrasi untuk efisiensi operasional di lapangan. Video ini menunjukkan antarmuka dashboard yang dirancang untuk memantau progres proyek secara akurat dan cepat.
+                        A streamlined digital monitoring platform providing realtime oversight for land Optimization projects. The integrated dashboard shown here facilitates data-driven decision making through precise and instantaneous progress reporting.
                     </p>
                     <div class="video-meta">
                         <div class="meta-item">
-                            <strong>Duration:</strong> 00:45
+                            <strong>Project:</strong> OPLAH
                         </div>
                         <div class="meta-item">
-                            <strong>Updated:</strong> Today
+                            <strong>Executor:</strong> KODIM 0909/KTM
                         </div>
                     </div>
                 </div>
@@ -860,12 +860,12 @@
 
         /* --- KODE AKTIVITAS --- */
         const actData = [
-            { id: 0, title: "Land Optimization", desc: "Land clearing and site preparation for paddy field expansion projects commissioned by the East Kutai Food & Crops Department", date: "Mar 05, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%204.jpeg?raw=true"] },
-            { id: 1, title: "Infrastructure Facilities", desc: "Supervising multiple infrastructure development projects within PT. Multi Kusuma Cemerlang's rubber plantation areas.", date: "Mar 02, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/MKC%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/MKC%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/MKC%203.jpeg?raw=true"] },
-            { id: 2, title: "Soil stabilization", desc: "Overseeing Soil stabilization and the installation of Terramesh System for road realignment under PT Wijaya Karya.", date: "Feb 28, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%204.jpeg?raw=true"] },
-            { id: 3, title: "Road rehabilitation", desc: "Supervised the road rehabilitation project at Kariangau Port, Balikpapan, focusing on structural improvements and technical oversight of port infrastructure.", date: "Feb 25, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/PEL%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/PEL%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/PEL%203.jpeg?raw=true"] },
-            { id: 4, title: "Retaining Wall", desc: "Supervised the construction of Stone Masonry Foundation for PT. Wijaya Karya’s underpass project", date: "Feb 20, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan1.png?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan%204.jpeg?raw=true"] },
-            { id: 5, title: "Cut & Fill", desc: "Technical supervision of cut and fill activities for the preliminary construction of IKN access roads.", date: "Feb 15, 2026", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%204.jpeg?raw=true"] },
+            { id: 0, title: "Land Optimization", desc: "Land clearing and site preparation for Rice field expansion projects commissioned by the East Kutai Food & Crops Department", date: "District Military Command 0909/KTM", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/CS%204.jpeg?raw=true"] },
+            { id: 1, title: "Infrastructure Facilities", desc: "Supervising multiple infrastructure development projects within PT. Multi Kusuma Cemerlang's rubber plantation areas.", date: "CV. Aqasuma", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/MKC%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/MKC%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/MKC%203.jpeg?raw=true"] },
+            { id: 2, title: "Soil stabilization", desc: "Overseeing Soil stabilization and the installation of Terramesh System for road realignment under PT Wijaya Karya.", date: "CV. Aqasuma", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/SPE%204.jpeg?raw=true"] },
+            { id: 3, title: "Retaining Wall", desc: "Supervised the construction of Stone Masonry Foundation under PT. Wijaya Karya’s underpass project", date: "CV. Aqasuma", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan1.png?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/Pelikan%204.jpeg?raw=true"] },
+			{ id: 4, title: "Road rehabilitation", desc: "Supervised the road rehabilitation project at Kariangau Port, Balikpapan, focusing on structural improvements and technical oversight of port infrastructure.", date: "CV. FM Jaya Mandiri", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/PEL%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/PEL%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/PEL%203.jpeg?raw=true"] },
+            { id: 5, title: "Cut & Fill", desc: "Technical supervision of cut and fill activities for the preliminary construction of IKN access roads under PT. Wijaya Karya’s Akses Jalan Sumbu Kebangsaan Sisi Timur IKN project.", date: "PT. Tunas Karya Perkasa", photos: ["https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%201.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%202.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%203.jpeg?raw=true", "https://github.com/fajrmuh-jpg/portofolio/blob/main/assets/images/TKP%204.jpeg?raw=true"] },
         ];
 
         const actSlider = document.getElementById('actSlider');
