@@ -182,7 +182,7 @@
         /* --- STYLE BARU: AKTIVITAS TERBARU --- */
         .activity-section { padding: 50px 0; background: #fff; }
         .activity-container { max-width: 1350px; margin: 0 auto; padding: 0 20px; }
-        .activity-section h2 { color: #1c486c; font-size: 40px; font-weight: 700; margin-bottom: 30px; }
+        .activity-section h2 { color: #1c486c; font-size: 30px; font-weight: 700; margin-bottom: 30px; }
 
         .scroll-wrapper {
             display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
@@ -263,7 +263,7 @@
         /* Mobile (Layar di bawah 768px) */
         @media (max-width: 768px) {
             .activity-section h2 {
-                font-size: 50px; /* Judul lebih kecil di mobile */
+                font-size: 30px; /* Judul lebih kecil di mobile */
                 font-weight: 700;
                 margin-bottom: 15px;
             }
@@ -297,11 +297,12 @@
             }
         }
 
-        /* --- TAMBAHAN: STYLE MY SKILLS --- */
+        /* --- STYLE MY SKILLS --- */
         .skills-section {
             padding: 60px 0 80px 0;
-            background-color: #f8f9fa; /* Latar belakang sedikit abu-abu muda untuk kontras */
+            background-color: #ffffff; /* Latar belakang sedikit abu-abu muda untuk kontras */
             border-top: 1px solid #eee;
+			border-bottom: 1px solid #eee;
         }
         .skills-container {
             max-width: 1350px;
@@ -316,7 +317,7 @@
         }
         .skills-section h2 {
             color: #1c486c;
-            font-size: 40px;
+            font-size: 30px;
             font-weight: 700;
             margin: 0;
             line-height: 1;
@@ -399,12 +400,12 @@
             .skills-section { padding: 40px 0 60px 0; }
             .section-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 30px; }
             .section-subtitle { text-align: left; }
-            .skills-section h2 { font-size: 32px; }
+            .skills-section h2 { font-size: 30px; }
             .skills-grid { grid-template-columns: 1fr; } /* Stack kartu di mobile */
             .skill-card { padding: 20px; }
         }
 
-        /* --- TAMBAHAN: STYLE SECTION UNTUK MAP & ORIGIN --- */
+        /* --- STYLE SECTION UNTUK MAP & ORIGIN --- */
         .video-post-section {
             padding: 0px 0 60px 0;
             background-color: #ffffff;
@@ -427,15 +428,16 @@
             margin: 0 auto;
         }
 
-        /* Style Sangatta Origin (Text Only) */
+        /* Style Map (Text Only) */
         .origin-text-only {
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             padding: 0 0px;
         }
         .origin-text-only h3 {
             font-size: 32px;
             color: #000;
             margin-bottom: 20px;
+			text-align: left; 
             font-weight: 700;
             line-height: 1.2;
         }
@@ -536,7 +538,7 @@
         }
 
         .footer-content {
-            background: #1c486c; max-width: 1310px; margin: 0 auto; padding: 40px; border-radius: 0px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; color: #fff;
+            background: #1c486c; max-width: 1310px; margin: 0 auto; padding: 40px; border-radius: 15px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; color: #fff;
         }
 
         .footer-logo { flex: 1; min-width: 250px; }
@@ -595,177 +597,6 @@
             .footer-bottom { flex-direction: column-reverse; gap: 20px; text-align: center; display: none;}
         }
 
-        /* =========================================
-           STYLE TAMBAHAN: BOQ SHOWCASE (INTEGRATED)
-           ========================================= */
-        
-        :root {
-            /* Menggunakan warna tema utama website */
-            --primary-blue: #1c486c;
-            --text-gray: #555555;
-        }
-
-        .service-showcase {
-            background-color: transparent; /* Transparan agar menyatu */
-            padding: 100px 0 0 0; /* Padding atas/bawah saja, kiri/kanan diatur container */
-            margin-top: 0px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header Section */
-        .showcase-header {
-            text-align: left; 
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 20;
-        }
-
-        .showcase-header h2 {
-            /* Font mengikuti body (Inter) */
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            letter-spacing: normal; 
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-
-        .showcase-subtitle {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 900px;
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        /* NAVIGASI TAB */
-        .tabs-nav {
-            display: flex;
-            justify-content: flex-start; 
-            gap: 25px; 
-            margin-bottom: 40px;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            z-index: 100; 
-            overflow-x: auto; 
-            white-space: nowrap;
-            padding-bottom: 25px; 
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            font-size: 0.9rem; 
-            font-weight: 700;
-            color: #999;
-            cursor: pointer;
-            padding: 10px 5px;
-            position: relative; 
-            z-index: 101;
-            transition: color 0.3s ease;
-            text-transform: capitalize;
-        }
-
-        .tab-btn:hover { color: var(--primary-blue); }
-
-        .tab-btn::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            bottom: -6px; 
-            left: 0;
-            background-color: var(--primary-blue);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .tab-btn.active { color: var(--primary-blue); }
-        .tab-btn.active::after { transform: scaleX(1); }
-
-        /* TEKNIK GRID STACK */
-        .tabs-wrapper {
-            display: grid;
-            grid-template-columns: 1fr; 
-            grid-template-rows: auto;
-            position: relative;
-            z-index: 10; 
-        }
-
-        .tab-content {
-            grid-column: 1;
-            grid-row: 1;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 0; 
-            pointer-events: none; 
-            transition: opacity 0.15s ease-in-out, visibility 0.15s, z-index 0s 0.15s;
-            display: flex;
-            align-items: center;
-        }
-
-        .tab-content.active {
-            opacity: 1;
-            visibility: visible;
-            z-index: 10;
-            pointer-events: auto; 
-            transition: opacity 0.15s ease-in-out, visibility 0.15s;
-        }
-
-        /* Layout Kiri: Teks */
-        .content-text {
-            flex: 1;
-            padding-right: 50px;
-        }
-
-        .main-headline {
-            /* Font mengikuti body (Inter) */
-            font-size: 1.8rem; 
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .description {
-            font-size: 1rem;
-            color: var(--text-gray);
-            line-height: 1.7;
-            text-align: justify;
-        }
-        
-        .description ul {
-            margin-top: 15px;
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        .description li {
-            margin-bottom: 8px;
-        }
-        .description strong {
-            color: #000;
-        }
-
-        /* RESPONSIVE BOQ SHOWCASE */
-        @media (max-width: 768px) {
-            .showcase-header h2 { font-size: 2.5rem; }
-            .showcase-subtitle { font-size: 1rem; }
-            
-            .tabs-nav { 
-                justify-content: flex-start; 
-                padding-bottom: 10px;
-            }
-            
-            .tab-btn { font-size: 0.85rem; }
-
-            .tabs-wrapper .tab-content {
-                flex-direction: column-reverse;
-                gap: 20px;
-            }
-            .content-text { padding-right: 0; text-align: left; }
-            .description { text-align: left; }
-        }
     </style>
 </head>
 <body id="home">
@@ -811,14 +642,14 @@
                 <div class="milestone-item"><span class="year-label">Jun 2021 – Dec 2021</span><div class="milestone-content"><h3>Site Supervisor</h3><p>CV. FM Jaya Mandiri</p></div></div>
                 <div class="milestone-item"><span class="year-label">Dec 2021 – Jan 2022</span><div class="milestone-content"><h3>Site Supervisor</h3><p>PT. Tunas Karya Perkasa</p></div></div>
                 <div class="milestone-item"><span class="year-label">Jan 2022 – Apr 2025</span><div class="milestone-content"><h3>Site Supervisor</h3><p>CV. Aqasuma</p></div></div>
-                <div class="milestone-item"><span class="year-label">May 2025 – Present</span><div class="milestone-content"><h3>Project Controller & Technical Administrator</h3><p>Department of Agriculture East Kutai & KODIM 0909/KTM</p></div></div>
+                <div class="milestone-item"><span class="year-label">May 2025 – Present</span><div class="milestone-content"><h3>Project Controller & Technical Administrator</h3><p>Department of Agriculture East Kutai & East Kutai Military District Command</p></div></div>
             </div>
         </div>
     </div>
 
     <div class="activity-section" id="portfolio">
         <div class="activity-container">
-            <h2>Recent Works</h2>
+            <h2>RECENT WORKS</h2>
             <div class="scroll-wrapper" id="actSlider"></div>
             <div class="act-nav">
                 <button id="actPrev" class="act-btn">←</button>
@@ -827,12 +658,12 @@
         </div>
     </div>
 
-    <!-- --- TAMBAHAN: MY SKILLS SECTION --- -->
+    <!-- --- MY SKILLS SECTION --- -->
     <div class="skills-section" id="skills">
         <div class="skills-container">
             <div class="section-header">
-                <h2>My Skills</h2>
-                <p class="section-subtitle">Leveraging a diverse technical toolkit to ensure accuracy for complex infrastructure developments.</p>
+                <h2>SKILLS</h2>
+                <p class="section-subtitle"></p>
             </div>
 
             <div class="skills-grid">
@@ -881,14 +712,12 @@
             
             <!-- --- POSISI BARU: GAMBAR MAP --- -->
             <div class="map-display-box">
-                <img src="https://cdn.jsdelivr.net/gh/fajrmuh-jpg/portofolio@main/MAP.svg" alt="Project Map">
             </div>
 
             <!-- --- POSISI BARU: TEKS SANGATTA ORIGIN --- -->
             <div class="origin-text-only">
-                <h3>Land Optimization</h3>
+                <h3></h3>
                 <p>
-                    The Land Optimization Project (OPLAH) focuses on transforming wetlands into productive agricultural areas by improving water management systems and supporting infrastructure. This initiative aims to increase the Food security or vulnerability level in a region and sustainable food productivity through integrated technical collaboration."
                 </p>
             </div>
 
@@ -904,98 +733,18 @@
                 <div class="video-content-box">
                     <h2>Latest Project Monitoring Visualization</h2>
                     <p>
-                        A streamlined digital <a href="https://cetaksawahktm.vercel.app/#dashboard" target="_blank" style="color: blue; text-decoration: underline;">monitoring</a> platform providing realtime oversight for land Optimization projects. The integrated dashboard shown here facilitates data-driven decision making through precise and instantaneous progress reporting.
+                        A streamlined digital <a href="https://cetaksawahktm.vercel.app/#dashboard" target="_blank" style="color: black;">monitoring</a> platform providing realtime oversight for land Optimization projects. The integrated dashboard shown here facilitates data-driven decision making through precise and instantaneous progress reporting.
                     </p>
                     <div class="video-meta">
                         <div class="meta-item">
                             <strong>Project:</strong> OPLAH
                         </div>
                         <div class="meta-item">
-                            <strong>Executor:</strong> KODIM 0909/KTM
+                            <strong>Executor:</strong> East Kutai Military District Command
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- =========================================
-                 INTEGRASI BOQ SHOWCASE (MULAI DI SINI)
-                 ========================================= -->
-            <section class="service-showcase">
-                
-                <div class="showcase-header">
-                    <h2>Developing a Bill of Quantities</h2>
-                    <p class="showcase-subtitle">
-                      
-                    </p>
-                </div>
-
-                <div class="tabs-nav">
-                    <button class="tab-btn active" onclick="openTab(event, 'step1')">WBS Identification</button>
-                    <button class="tab-btn" onclick="openTab(event, 'step2')">Quantity Takeoff</button>
-                    <button class="tab-btn" onclick="openTab(event, 'step3')">Basic Rate Analysis</button>
-                    <button class="tab-btn" onclick="openTab(event, 'step4')">Unit Price Analysis</button>
-                    <button class="tab-btn" onclick="openTab(event, 'step5')">Recapitulation</button>
-                </div>
-
-                <!-- WRAPPER GRID -->
-                <div class="tabs-wrapper">
-
-                    <!-- TAB 1: WBS Identification -->
-                    <div id="step1" class="tab-content active">
-                        <div class="content-text">
-                            <h3 class="main-headline">Work Breakdown Structure (WBS) Identification</h3>
-                            <div class="description">
-                                <p>A project is decomposed into smaller, manageable components called work packages through a Work Breakdown Structure (WBS), which is defined as a hierarchical, deliverable oriented framework where the total project scope is established to bridge project goals with detailed plans, ensuring that all deliverables, costs, and resources are accurately identified and scheduled.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TAB 2: Quantity Takeoff -->
-                    <div id="step2" class="tab-content">
-                        <div class="content-text">
-                            <h3 class="main-headline">Quantity Takeoff (QTO)</h3>
-                            <div class="description">
-                                <p>is the most critical phase in the pre construction stage where an estimator or Quantity Surveyor (QS) deconstructs every element within the technical drawings (architectural, structural, and MEP) to identify and measure every physical unit of material to be purchased and labor to be hired. This process is not merely counting items but a specialized analytical technique that transforms design visualizations into highly accurate raw numerical data; this data then serves as the "backbone" for developing the Bill of Quantities (BoQ), scheduling material procurement to prevent onsite surpluses or shortages, and acting as a control tool to monitor material wastage throughout the project duration.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TAB 3: Basic Rate Analysis -->
-                    <div id="step3" class="tab-content">
-                        <div class="content-text">
-                            <h3 class="main-headline">Basic Rate Analysis (Resources Pricing)</h3>
-                            <div class="description">
-                                <p>Once the quantities are finalized, you must determine the current market rates for the project’s location. Labor: Standard wage rates based on regional regulations or market averages. Material: Purchase price of materials delivered to the site (including logistics and handling). Equipment: Hourly or daily rental rates for machinery and specialized tools.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TAB 4: Unit Price Analysis -->
-                    <div id="step4" class="tab-content">
-                        <div class="content-text">
-                            <h3 class="main-headline">Unit Price Analysis (UPA)</h3>
-                            <div class="description">
-                                <p>This step involves merging the quantities with production coefficients. In international practice, this is often called Resource-Based Estimating. Calculate the "Coefficient" (the amount of labor, material, or equipment time needed to complete one unit of work). Example: To calculate the unit price for 1 m³ of excavation, you multiply the hourly labor rate by the productivity index required to move that volume of soil.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TAB 5: Recapitulation -->
-                    <div id="step5" class="tab-content">
-                        <div class="content-text">
-                            <h3 class="main-headline">Recapitulation & Final Reporting</h3>
-                            <div class="description">
-                                <p>The final step is consolidating all data into a Bill of Quantities (BoQ) spreadsheet, featuring Item Descriptions, Units, Quantities, Unit Rates, and Total Prices, costs per work division, Tax (VAT) and a calculated margin for overhead and profit (typically ranging from 5% to 15%).</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <!-- End Wrapper -->
-
-            </section>
-            <!-- =========================================
-                 AKHIR INTEGRASI BOQ SHOWCASE
-                 ========================================= -->
 
         </div>
     </div>
@@ -1140,7 +889,7 @@ const actData = [
   },
   { 
     id: 2, 
-    title: "Gabion Wall", 
+    title: "Soil stabilization", 
     desc: "Overseeing Soil stabilization and the installation of Terramesh System for road realignment under PT Wijaya Karya.", 
     date: "CV. Aqasuma", 
     photos: [
@@ -1232,30 +981,6 @@ const actData = [
             document.getElementById('actPrev').classList.toggle('active', l > 5);
             document.getElementById('actNext').classList.toggle('active', l < m - 5);
         });
-
-        /* --- KODE VIDEO PLAYER (DIHAPUS KARENA AUTOPLAY ONLY) --- */
-        // Tidak ada script video tambahan yang diperlukan untuk autoplay loop tanpa kontrol
-
-        /* --- TAMBAHAN: SCRIPT BOQ SHOWCASE --- */
-        function openTab(evt, tabName) {
-            // 1. Hapus class 'active' dari semua tombol
-            var tabLinks = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
-
-            // 2. Hapus class 'active' dari semua konten
-            var tabContent = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
-
-            // 3. Aktifkan tombol yang diklik
-            evt.currentTarget.classList.add("active");
-
-            // 4. Aktifkan konten yang dipilih
-            document.getElementById(tabName).classList.add("active");
-        }
 
     </script>
 </body>
