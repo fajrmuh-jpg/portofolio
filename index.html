@@ -6,7 +6,7 @@
     <title>Portofolio - Muhammad Fajar</title>
 
     <link rel="icon" href="android-chrome-512x512.png">
-	
+    
     <style>
         /* --- RESET & LAYOUT DASAR --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
@@ -302,7 +302,7 @@
             padding: 60px 0 80px 0;
             background-color: #ffffff; /* Latar belakang sedikit abu-abu muda untuk kontras */
             border-top: 1px solid #eee;
-			border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
         .skills-container {
             max-width: 1350px;
@@ -437,7 +437,7 @@
             font-size: 32px;
             color: #000;
             margin-bottom: 20px;
-			text-align: left; 
+            text-align: left; 
             font-weight: 700;
             line-height: 1.2;
         }
@@ -448,7 +448,7 @@
             margin: 0;
         }
 
-        /* --- STYLE LATEST VIDEO POSTING (MODIFIKASI AUTOPLAY ONLY) --- */
+		/* --- STYLE LATEST VIDEO POSTING (MODIFIKASI AUTOPLAY ONLY) --- */
         .video-post-wrapper {
             display: flex;
             background: #fff;
@@ -456,6 +456,7 @@
             border-radius: 0px;
             overflow: hidden;
             box-shadow: 0 0px 0px rgba(0,0,0,0);
+            margin-bottom: 60px; /* Jarak pemisah antar konten video */
         }
 
         /* Bagian Video (Kiri) */
@@ -519,6 +520,7 @@
         @media (max-width: 900px) {
             .video-post-wrapper {
                 flex-direction: column;
+                margin-bottom: 40px; /* Jarak lebih rapat di mobile */
             }
             .video-media-box {
                 flex: none;
@@ -528,7 +530,7 @@
             .video-content-box {
                 padding: 30px 0px;
             }
-            .origin-text-only { padding: 0 0px; margin-bottom: 50px; }
+            .origin-text-only { padding: 0 0px; margin-bottom: 0px; }
             .origin-text-only h3 { font-size: 24px; }
         }
 
@@ -720,18 +722,17 @@
                 <p>
                 </p>
             </div>
-
-            <!-- --- LATEST VIDEO POSTING SECTION (AUTOPLAY ONLY) --- -->
+            <!-- --- LATEST VIDEO POSTING SECTION 2 (DUPLIKAT) --- -->
             <div class="video-post-wrapper">
                 <div class="video-media-box">
                     <!-- Video autoplay, muted, loop, tanpa controls, tanpa overlay -->
                     <video autoplay muted loop playsinline>
-                        <source src="https://cdn.jsdelivr.net/gh/fajrmuh-jpg/portofolio@main/assets/images/Monitor.mp4" type="video/mp4">
+                        <source src="https://cdn.jsdelivr.net/gh/fajrmuh-jpg/portofolio@main/assets/images/PR1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-content-box">
-                    <h2>Latest Project Monitoring Visualization</h2>
+                    <h2>Progress Reporting</h2>
                     <p>
                         A streamlined digital <a href="https://cetaksawahktm.vercel.app/#dashboard" target="_blank" style="color: black;">monitoring</a> platform providing realtime oversight for land Optimization projects. The integrated dashboard shown here facilitates data-driven decision making through precise and instantaneous progress reporting.
                     </p>
@@ -745,7 +746,57 @@
                     </div>
                 </div>
             </div>
-
+			
+            <!-- --- LATEST VIDEO POSTING SECTION 2 (DUPLIKAT) --- -->
+            <div class="video-post-wrapper">
+                <div class="video-media-box">
+                    <!-- Video autoplay, muted, loop, tanpa controls, tanpa overlay -->
+                    <video autoplay muted loop playsinline>
+                        <source src="https://cdn.jsdelivr.net/gh/fajrmuh-jpg/portofolio@main/assets/images/Monitor.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-content-box">
+                    <h2>Monitoring Visualization</h2>
+                    <p>
+                        A streamlined digital <a href="https://cetaksawahktm.vercel.app/#dashboard" target="_blank" style="color: black;">monitoring</a> platform providing realtime oversight for land Optimization projects. The integrated dashboard shown here facilitates data-driven decision making through precise and instantaneous progress reporting.
+                    </p>
+                    <div class="video-meta">
+                        <div class="meta-item">
+                            <strong>Project:</strong> OPLAH
+                        </div>
+                        <div class="meta-item">
+                            <strong>Executor:</strong> East Kutai Military District Command
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+            <!-- --- LATEST VIDEO POSTING SECTION 2 (DUPLIKAT) --- -->
+            <div class="video-post-wrapper">
+                <div class="video-media-box">
+                    <!-- Video autoplay, muted, loop, tanpa controls, tanpa overlay -->
+                    <video autoplay muted loop playsinline>
+                        <source src="https://cdn.jsdelivr.net/gh/fajrmuh-jpg/portofolio@main/assets/images/Monitor.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-content-box">
+                    <h2>Project Monitoring Visualization</h2>
+                    <p>
+                        A streamlined digital <a href="https://cetaksawahktm.vercel.app/#dashboard" target="_blank" style="color: black;">monitoring</a> platform providing realtime oversight for land Optimization projects. The integrated dashboard shown here facilitates data-driven decision making through precise and instantaneous progress reporting.
+                    </p>
+                    <div class="video-meta">
+                        <div class="meta-item">
+                            <strong>Project:</strong> OPLAH
+                        </div>
+                        <div class="meta-item">
+                            <strong>Executor:</strong> East Kutai Military District Command
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
         </div>
     </div>
 
